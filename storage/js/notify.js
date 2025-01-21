@@ -64,5 +64,5 @@
         }
 
         window.onload = () => {
-            createNotification('Welcome to v1.7!');
+            createNotification('Working out bugs..');
         };
