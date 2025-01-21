@@ -1,22 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-K8CCSDNPV3');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
+    <title>Game</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../storage/css/iframe2.css">
+    <link href="/storage/css/iframe2.css" rel="stylesheet">
 </head>
 <body>
-
 <div class="navbar">
     <div class="left-side">
         <a href="/">
@@ -37,6 +28,14 @@
 
 <div class="container">
     <iframe id="game-frame" class="game-iframe" allowfullscreen></iframe>
+    <div class="button-bar">
+        <button onclick="refreshGame()">&#x21bb;</button>
+        <button onclick="toggleFullscreen()">&#x26F6;</button>
+        <button onclick="DiscordBM()"><i class="fa-brands fa-discord"></i></button>
+        <button onclick="AI()"><i class="fa-solid fa-robot"></i></button>
+        <button onclick="openInAboutBlank()"><i class="fa-solid fa-up-right-from-square"></i></button>
+    </div>
+</div>
 
 <div id="popup" class="popup">
     <p>Would you like to save or upload your US4 data?</p>
@@ -82,40 +81,40 @@
     }
 
     function AI() {
-        window.location.href = "javascript: (function() { fetch('../storage/js/ai.js') .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); }) .then(scriptText => eval(scriptText)) .catch(error => console.error('Error fetching or executing the script:', error)); })();";
+        window.location.href = "javascript: (function() { fetch('https://voucan-us4.github.io/ai/bookmarklet.js') .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); }) .then(scriptText => eval(scriptText)) .catch(error => console.error('Error fetching or executing the script:', error)); })();";
     }
 
-    function openInAboutBlank() {
-        const siteTitle = localStorage.getItem('siteTitle') || "Home";
-        const siteLogo = localStorage.getItem('siteLogo') || "../storage/images/googleclassroom.png";
+function openInAboutBlank() {
+    const siteTitle = localStorage.getItem('siteTitle') || "Home";
+    const siteLogo = localStorage.getItem('siteLogo') || "https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png";
 
-        const newTab = window.open('about:blank', '_blank');
+    const newTab = window.open('about:blank', '_blank');
 
-        if (newTab) {
-            newTab.document.title = siteTitle;
+    if (newTab) {
+        newTab.document.title = siteTitle;
 
-            const favicon = newTab.document.createElement('link');
-            favicon.rel = 'icon';
-            favicon.href = siteLogo;
-            newTab.document.head.appendChild(favicon);
+        const favicon = newTab.document.createElement('link');
+        favicon.rel = 'icon';
+        favicon.href = siteLogo;
+        newTab.document.head.appendChild(favicon);
 
-            const iframe = newTab.document.createElement('iframe');
-            iframe.src = document.getElementById('game-frame').src;
-            iframe.style.width = '100vw';
-            iframe.style.height = '100vh';
-            iframe.style.border = 'none';
+        const iframe = newTab.document.createElement('iframe');
+        iframe.src = document.getElementById('game-frame').src;
+        iframe.style.width = '100vw';
+        iframe.style.height = '100vh';
+        iframe.style.border = 'none';
 
-            newTab.document.body.style.margin = '0';
-            newTab.document.body.appendChild(iframe);
-        } else {
-            console.error("Failed to open About:Blank page.");
-        }
+        newTab.document.body.style.margin = '0';
+        newTab.document.body.appendChild(iframe);
+    } else {
+        console.error("Failed to open About:Blank page.");
     }
+}
 
     function saveData() {
         const newTab = window.open('about:blank', '_blank');
         const iframe = document.createElement('iframe');
-        iframe.src = 'data';
+        iframe.src = '/pages/data';
         iframe.style.width = '100vw';
         iframe.style.height = '100vh';
         iframe.style.border = 'none';
@@ -133,7 +132,5 @@
         document.getElementById('popup').style.display = 'none';
     }
 </script>
-    <script type="text/javascript" src="../storage/js/settings-1.js"></script>
-    <script type="text/javascript" src="/storage/js/notify.js"></script>
 </body>
 </html>
