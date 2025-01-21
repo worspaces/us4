@@ -6,43 +6,6 @@
             margin: 0;
             padding-top: 60px;
         }
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            color: white;
-            z-index: 1000;
-            overflow-x: auto;
-        }
-
-        .nav-buttons a {
-            color: white;
-            margin-left: 15px;
-            text-decoration: none;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-        .logo-text {
-            display: flex;
-            align-items: center;
-        }
-        .logo-text img {
-            height: 40px;
-            margin-right: 10px;
-        }
-        .logo-text a {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            text-decoration: none;
-        }
         .game-grid {
             display: flex;
             flex-wrap: wrap;
@@ -141,3 +104,51 @@
         .blur-content {
             filter: blur(5px);
         }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 10px 5%;
+  color: white;
+  border-radius: 10px;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  z-index: 1000;
+}
+
+.navbar .left-side {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 20px;
+  color: white;
+}
+
+.navbar .left-side img {
+  height: 40px;
+}
+
+.navbar .right-side {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar .right-side a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.navbar .right-side a:hover {
+  background-color: #ffc700;
+  color: black;
+}
