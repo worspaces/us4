@@ -1,194 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-K8CCSDNPV3');
-    </script>
-    <meta property="og:title" content="US4">
-    <meta property="og:description" content="Search the web freely, watch your favorite movies and shows, and play your favorite gąmes with US4">
-    <meta property="og:image" content="storage/images/logo.png">
-    <meta name="keywords" content="US4">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="icon" href="storage/images/googleclassroom.png" type="image/png">
+    <title>Game</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="storage/css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
-<style>
+    <style>
         body {
-            background: url('storage/images/bg.gif') repeat center center fixed;
-            background-color: black;
-            background-size: 100%;
             font-family: Arial, sans-serif;
+            background: url('/bg.gif') repeat center center fixed;
+            background-color: black;
+            background-size: 200px, 105px;
             margin: 0;
-            padding-top: 60px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
-</style>
+        .container {
+            border: 2px solid #ffc700;
+            border-radius: 10px;
+            width: 80vw;
+            background-color: #000;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            height: 75vh; 
+        }
+        .game-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px 10px 0 0;
+            flex-grow: 1;
+        }
+        .button-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #333;
+            border-radius: 0 0 20px 20px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .button-bar button {
+            background-color: #000;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 0 10px;
+            padding: 10px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .button-bar button:hover {
+            background-color: #ffc700;
+            color: #000;
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: url('/bg.gif') repeat center center fixed;
+            background-color: black;
+            border: 2px solid gold;
+            padding: 20px;
+            text-align: center;
+            display: none;
+            z-index: 1000;
+            border-radius: 10px;
+            color: white;
+        }
+        .popup button {
+            background: grey;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .popup button:hover {
+            background: #ccc;
+        }
+    </style>
 </head>
 <body>
-
-<div class="navbar">
-    <div class="left-side">
-        <a href="/">
-            <img src="/storage/images/logo.png" alt="logo">
-        </a>
+<div class="container">
+    <iframe id="game-frame" class="game-iframe" allowfullscreen></iframe>
+    <div class="button-bar">
+        <button onclick="refreshGame()">&#x21bb;</button>
+        <button onclick="toggleFullscreen()">&#x26F6;</button>
+        <button onclick="DiscordBM()"><i class="fa-brands fa-discord"></i></button>
+        <button onclick="AI()"><i class="fa-solid fa-robot"></i></button>
+        <button onclick="openInAboutBlank()"><i class="fa-solid fa-up-right-from-square"></i></button>
     </div>
-<div class="right-side">
-    <a href="/"><i class="fa fa-home"></i> </a>
-    <a href="/pages/games"><i class="fas fa-gamepad"></i> </a>
-    <a href="/pages/movies"><i class="fa-solid fa-video"></i> </a>
-    <a href="/pages/apps"><i class="fa-sharp fa-solid fa-layer-group"></i> </a>
-    <a href="/pages/prox"><i class="fas fa-globe"></i> </a>
-    <a href="/pages/partners"><i class="fa-solid fa-users"></i> </a>
-    <a href="/pages/extra"><i class="fas fa-plus"></i> </a>
-    <a href="/pages/settings"><i class="fa-solid fa-gear"></i> </a>
-</div>
 </div>
 
+<div id="popup" class="popup">
+    <p>Would you like to save or upload your US4 data?</p>
+    <button onclick="saveData()">Yes</button>
+    <button onclick="closePopup()">No</button>
+    <button onclick="dontShowAgain()">Don't Show Again</button>
+</div>
 
-    <div class="game-title blur-content">US4 | Featured</div>
-    <div class="games-title blur-content" id="randomMessage"></div>
-
-    <div class="game-grid blur-content" id="gameGrid">
-        <div class="game-button">
-            <a href="/pages/iframe?url=/clusterrush/index">
-                <img src="/clusterrush/clusterrush.png" alt="Cluster Rush">
-                <div class="overlay-text">Cluster Rush</div>
-            </a>
-        </div>
-        <div class="game-button">
-            <a href="/pages/iframe?url=/basketrandom/index">
-                <img src="/basketrandom/basketrandom.jfif" alt="Basket Random">
-                <div class="overlay-text">Basket Random</div>
-            </a>
-        </div>
-        <div class="game-button">
-            <a href="/pages/iframe?url=/SubwaySurfers/proxed">
-                <img src="/SubwaySurfers/subway.jfif" alt="Subway Surfers">
-                <div class="overlay-text">Subway Surfers</div>
-            </a>
-        </div>
-        <div class="game-button">
-            <a href="/pages/iframe2?url=/pages/apps/ai">
-                <img src="/apps/images/ai.png" alt="AI">
-                <div class="overlay-text">AI</div>
-            </a>
-        </div>
-        <div class="game-button">
-            <a href="/pages/iframe?url=/snowrider3D/index">
-                <img src="/games-repo/snow-rider/snowrider.png" alt="Snow Rider 3D">
-                <div class="overlay-text">Snow Rider 3D</div>
-            </a>
-        </div>
-        <div class="game-button">
-            <a href="/pages/movies">
-                <img src="/apps/images/hvtrs8_-hgaptkvg.raeeq.fet_rrgvkeus-iaols-rgtpo_tt.png" alt="Movies">
-                <div class="overlay-text">Movies</div>
-            </a>
-        </div>
-        <div class="game-button">
-            <a href="/pages/prox">
-                <img src="/apps/images/download.png" alt="Prօxy">
-                <div class="overlay-text">Prօxy</div>
-            </a>
-        </div>
-    </div>
-    <div class="update-log-overlay" id="updateLog">
-        <div class="update-log-content">
-            <h2>Update Log</h2>
-            <p>Make sure to use link hub - voucan.github.io/link-hub</p>
-            <p>Version 1.7: Organized files, improved some stuff </p>
-        </div>
-    </div>
-
-    <script>
-        const currentVersion = "1.7"; 
-
-        window.onload = function() {
-            const storedVersion = localStorage.getItem('updateLogVersion');
-            if (storedVersion !== currentVersion) {
-                document.getElementById('updateLog').style.display = 'flex';
-                document.querySelectorAll('.blur-content').forEach(function(element) {
-                    element.classList.add('blur-content');
-                });
-            } else {
-                document.getElementById('updateLog').style.display = 'none';
-                document.querySelectorAll('.blur-content').forEach(function(element) {
-                    element.classList.remove('blur-content');
-                });
-            }
-
-            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-            document.getElementById('randomMessage').textContent = randomMessage;
-        };
-
-document.getElementById('updateLog').addEventListener('click', function() {
-    if (!localStorage.getItem('firstVisit')) {
-        localStorage.setItem('firstVisit', 'true');
-
-        const container = document.createElement('div');
-        container.style.position = 'relative';
-        container.style.width = '100%';
-        container.style.height = '100%';
-
-        const closeButton = document.createElement('button');
-        closeButton.textContent = 'X';
-        closeButton.style.position = 'absolute';
-        closeButton.style.top = '10px';
-        closeButton.style.right = '10px';
-        closeButton.style.background = 'black';
-        closeButton.style.color = 'white';
-        closeButton.style.border = 'none';
-        closeButton.style.padding = '5px 10px';
-        closeButton.style.fontSize = '16px';
-        closeButton.style.cursor = 'pointer';
-        closeButton.style.borderRadius = '5px';
-
-        closeButton.addEventListener('click', function() {
-            container.parentElement.style.display = 'none';
-        });
-
-        const message = document.createElement('div');
-        message.textContent = 'Select Your Site Settings - You can edit this in the settings tab';
-        message.style.textAlign = 'center';
-        message.style.fontFamily = 'Comfortaa, sans-serif';
-        message.style.fontWeight = 'bold';
-        message.style.fontSize = '20px';
-        message.style.marginBottom = '10px';
-
-        const iframe = document.createElement('iframe');
-        iframe.src = '/pages/settings';
-        iframe.style.width = '100%';
-        iframe.style.height = 'calc(100% - 40px)';
-        iframe.style.border = 'none';
-        iframe.style.borderRadius = 'inherit';
-
-        container.appendChild(message);
-        container.appendChild(closeButton);
-        container.appendChild(iframe);
-
-        const updateLog = document.getElementById('updateLog');
-        updateLog.innerHTML = '';
-        updateLog.appendChild(container);
-    } else {
-        document.getElementById('updateLog').style.opacity = '0';
-        setTimeout(function() {
-            document.getElementById('updateLog').style.display = 'none';
-            document.querySelectorAll('.blur-content').forEach(function(element) {
-                element.classList.remove('blur-content');
-            });
-        }, 500);
-        localStorage.setItem('updateLogVersion', currentVersion);
+<script>
+    function getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
     }
-});
-    </script>
-    <script src="storage/js/messages.js"></script>
-    <script type="text/javascript" src="storage/js/settings-1.js"></script>
-    <script type="text/javascript" src="/storage/js/notify.js"></script>
+
+    window.onload = function() {
+        if (!localStorage.getItem('dontShowPopup')) {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        const iframe = document.getElementById('game-frame');
+        const url = getUrlParameter('url') || '/404';
+        iframe.src = url;
+    };
+
+    function refreshGame() {
+        const iframe = document.getElementById('game-frame');
+        iframe.src = iframe.src;
+    }
+
+    function toggleFullscreen() {
+        const iframe = document.getElementById('game-frame');
+        if (!document.fullscreenElement) {
+            iframe.requestFullscreen().catch(err => {
+                alert(`Error attempting to enable fullscreen mode: ${err.message}`);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    }
+
+    function DiscordBM() {
+        window.location.href = "javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3';s.async=true;s.defer=true;document.body.appendChild(s);s.onload=function(){new Crate({server:'1157125685178007672',channel:'1210407964586807376'})}})();";
+    }
+
+    function AI() {
+        window.location.href = "javascript: (function() { fetch('https://voucan-us4.github.io/ai/bookmarklet.js') .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); }) .then(scriptText => eval(scriptText)) .catch(error => console.error('Error fetching or executing the script:', error)); })();";
+    }
+
+function openInAboutBlank() {
+    const siteTitle = localStorage.getItem('siteTitle') || "Home";
+    const siteLogo = localStorage.getItem('siteLogo') || "https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png";
+
+    const newTab = window.open('about:blank', '_blank');
+
+    if (newTab) {
+        newTab.document.title = siteTitle;
+
+        const favicon = newTab.document.createElement('link');
+        favicon.rel = 'icon';
+        favicon.href = siteLogo;
+        newTab.document.head.appendChild(favicon);
+
+        const iframe = newTab.document.createElement('iframe');
+        iframe.src = document.getElementById('game-frame').src;
+        iframe.style.width = '100vw';
+        iframe.style.height = '100vh';
+        iframe.style.border = 'none';
+
+        newTab.document.body.style.margin = '0';
+        newTab.document.body.appendChild(iframe);
+    } else {
+        console.error("Failed to open About:Blank page.");
+    }
+}
+
+    function saveData() {
+        const newTab = window.open('about:blank', '_blank');
+        const iframe = document.createElement('iframe');
+        iframe.src = '/apps/embeds/site-data';
+        iframe.style.width = '100vw';
+        iframe.style.height = '100vh';
+        iframe.style.border = 'none';
+        newTab.document.body.style.margin = '0';
+        newTab.document.body.appendChild(iframe);
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    function dontShowAgain() {
+        localStorage.setItem('dontShowPopup', 'true');
+        document.getElementById('popup').style.display = 'none';
+    }
+</script>
 </body>
 </html>
