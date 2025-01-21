@@ -3,10 +3,12 @@
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-K8CCSDNPV3');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-K8CCSDNPV3');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,35 +26,36 @@
             <img src="/storage/images/logo.png" alt="logo">
         </a>
     </div>
-<div class="right-side">
-    <a href="/"><i class="fa fa-home"></i> </a>
-    <a href="/pages/games"><i class="fas fa-gamepad"></i> </a>
-    <a href="/pages/movies"><i class="fa-solid fa-video"></i> </a>
-    <a href="/pages/apps"><i class="fa-sharp fa-solid fa-layer-group"></i> </a>
-    <a href="/pages/prox"><i class="fas fa-globe"></i> </a>
-    <a href="/pages/partners"><i class="fa-solid fa-users"></i> </a>
-    <a href="/pages/extra"><i class="fas fa-plus"></i> </a>
-    <a href="/pages/settings"><i class="fa-solid fa-gear"></i> </a>
-</div>
-</div>
-
-<div class="main-content">
-<div class="container">
-    <iframe id="game-frame" class="game-iframe" allowfullscreen></iframe>
-    <div class="button-bar">
-        <button onclick="refreshGame()">&#x21bb;</button>
-        <button onclick="toggleFullscreen()">&#x26F6;</button>
-        <button onclick="DiscordBM()"><i class="fa-brands fa-discord"></i></button>
-        <button onclick="AI()"><i class="fa-solid fa-robot"></i></button>
-        <button onclick="openInAboutBlank()"><i class="fa-solid fa-up-right-from-square"></i></button>
+    <div class="right-side">
+        <a href="/"><i class="fa fa-home"></i></a>
+        <a href="/pages/games"><i class="fas fa-gamepad"></i></a>
+        <a href="/pages/movies"><i class="fa-solid fa-video"></i></a>
+        <a href="/pages/apps"><i class="fa-sharp fa-solid fa-layer-group"></i></a>
+        <a href="/pages/prox"><i class="fas fa-globe"></i></a>
+        <a href="/pages/partners"><i class="fa-solid fa-users"></i></a>
+        <a href="/pages/extra"><i class="fas fa-plus"></i></a>
+        <a href="/pages/settings"><i class="fa-solid fa-gear"></i></a>
     </div>
 </div>
 
-<div id="popup" class="popup">
-    <p>Would you like to save or upload your US4 data?</p>
-    <button onclick="saveData()">Yes</button>
-    <button onclick="closePopup()">No</button>
-    <button onclick="dontShowAgain()">Don't Show Again</button>
+<div class="main-content">
+    <div class="container">
+        <iframe id="game-frame" class="game-iframe" allowfullscreen></iframe>
+        <div class="button-bar">
+            <button onclick="refreshGame()">&#x21bb;</button>
+            <button onclick="toggleFullscreen()">&#x26F6;</button>
+            <button onclick="openDiscord()">Discord</button>
+            <button onclick="runAI()">AI</button>
+            <button onclick="openInAboutBlank()">&#x2197;</button>
+        </div>
+    </div>
+
+    <div id="popup" class="popup">
+        <p>Would you like to save or upload your US4 data?</p>
+        <button onclick="saveData()">Yes</button>
+        <button onclick="closePopup()">No</button>
+        <button onclick="dontShowAgain()">Don't Show Again</button>
+    </div>
 </div>
 
 <script>
@@ -87,12 +90,28 @@
         }
     }
 
-    function DiscordBM() {
-        window.location.href = "javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3';s.async=true;s.defer=true;document.body.appendChild(s);s.onload=function(){new Crate({server:'1157125685178007672',channel:'1210407964586807376'})}})();";
+    function openDiscord() {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/@widgetbot/crate@3';
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+        script.onload = () => {
+            new Crate({
+                server: '1157125685178007672',
+                channel: '1210407964586807376'
+            });
+        };
     }
 
-    function AI() {
-        window.location.href = "javascript: (function() { fetch('../storage/js/ai.js') .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); }) .then(scriptText => eval(scriptText)) .catch(error => console.error('Error fetching or executing the script:', error)); })();";
+    function runAI() {
+        fetch('../storage/js/ai.js')
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.text();
+            })
+            .then(scriptText => eval(scriptText))
+            .catch(error => console.error('Error fetching or executing the script:', error));
     }
 
     function openInAboutBlank() {
@@ -123,14 +142,11 @@
     }
 
     function saveData() {
-        const newTab = window.open('about:blank', '_blank');
-        const iframe = document.createElement('iframe');
-        iframe.src = 'data';
-        iframe.style.width = '100vw';
-        iframe.style.height = '100vh';
-        iframe.style.border = 'none';
-        newTab.document.body.style.margin = '0';
-        newTab.document.body.appendChild(iframe);
+        const newTab = window.open('data', '_blank');
+        if (newTab) {
+            newTab.document.body.style.margin = '0';
+            newTab.document.body.innerHTML = '<iframe src="data" style="width:100vw; height:100vh; border:none;"></iframe>';
+        }
         document.getElementById('popup').style.display = 'none';
     }
 
@@ -143,7 +159,8 @@
         document.getElementById('popup').style.display = 'none';
     }
 </script>
-    <script type="text/javascript" src="../storage/js/settings-1.js"></script>
-    <script type="text/javascript" src="/storage/js/notify.js"></script>
+
+<script src="../storage/js/settings-1.js"></script>
+<script src="/storage/js/notify.js"></script>
 </body>
 </html>
