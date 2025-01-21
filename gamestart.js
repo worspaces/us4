@@ -10,7 +10,7 @@ window.addEventListener("load", function() {
     loadingScreen.style.flexDirection = "column";
     loadingScreen.style.justifyContent = "center";
     loadingScreen.style.alignItems = "center";
-    loadingScreen.style.backgroundImage = "url('/bg.gif')";
+    loadingScreen.style.backgroundImage = "url('/storage/images/bg.gif')";
     loadingScreen.style.backgroundColor = "black";
     loadingScreen.style.backgroundSize = "cover";
     loadingScreen.style.color = "gold";
@@ -18,7 +18,7 @@ window.addEventListener("load", function() {
     loadingScreen.style.fontFamily = "'Comfortaa', cursive";
 
     const logo = document.createElement("img");
-    logo.src = "/logo.png";
+    logo.src = "/storage/images/logo.png";
     logo.style.maxWidth = "150px";
     logo.style.marginBottom = "20px";
     loadingScreen.appendChild(logo);
