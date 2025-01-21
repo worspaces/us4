@@ -93,8 +93,8 @@
         </div>
         <div class="game-button">
             <a href="/pages/prox">
-                <img src="/pages/apps/images/download.png" alt="Prօxy">
-                <div class="overlay-text">Prօxy</div>
+                <img src="/pages/apps/images/download.png" alt="Prցxy">
+                <div class="overlay-text">Prցxy</div>
             </a>
         </div>
     </div>
@@ -127,65 +127,65 @@
             document.getElementById('randomMessage').textContent = randomMessage;
         };
 
-document.getElementById('updateLog').addEventListener('click', function() {
-    if (!localStorage.getItem('firstVisit')) {
-        localStorage.setItem('firstVisit', 'true');
+        document.getElementById('updateLog').addEventListener('click', function() {
+            if (!localStorage.getItem('firstVisit')) {
+                localStorage.setItem('firstVisit', 'true');
 
-        const container = document.createElement('div');
-        container.style.position = 'relative';
-        container.style.width = '100%';
-        container.style.height = '100%';
+                const container = document.createElement('div');
+                container.style.position = 'relative';
+                container.style.width = '100%';
+                container.style.height = '100%';
 
-        const closeButton = document.createElement('button');
-        closeButton.textContent = 'X';
-        closeButton.style.position = 'absolute';
-        closeButton.style.top = '10px';
-        closeButton.style.right = '10px';
-        closeButton.style.background = 'black';
-        closeButton.style.color = 'white';
-        closeButton.style.border = 'none';
-        closeButton.style.padding = '5px 10px';
-        closeButton.style.fontSize = '16px';
-        closeButton.style.cursor = 'pointer';
-        closeButton.style.borderRadius = '5px';
+                const closeButton = document.createElement('button');
+                closeButton.textContent = 'X';
+                closeButton.style.position = 'absolute';
+                closeButton.style.top = '10px';
+                closeButton.style.right = '10px';
+                closeButton.style.background = 'black';
+                closeButton.style.color = 'white';
+                closeButton.style.border = 'none';
+                closeButton.style.padding = '5px 10px';
+                closeButton.style.fontSize = '16px';
+                closeButton.style.cursor = 'pointer';
+                closeButton.style.borderRadius = '5px';
 
-        closeButton.addEventListener('click', function() {
-            container.parentElement.style.display = 'none';
+                closeButton.addEventListener('click', function() {
+                    container.parentElement.style.display = 'none';
+                });
+
+                const message = document.createElement('div');
+                message.textContent = 'Select Your Site Settings - You can edit this in the settings tab';
+                message.style.textAlign = 'center';
+                message.style.fontFamily = 'Comfortaa, sans-serif';
+                message.style.fontWeight = 'bold';
+                message.style.fontSize = '20px';
+                message.style.marginBottom = '10px';
+
+                const iframe = document.createElement('iframe');
+                iframe.src = '/pages/settings';
+                iframe.style.width = '100%';
+                iframe.style.height = 'calc(100% - 40px)';
+                iframe.style.border = 'none';
+                iframe.style.borderRadius = 'inherit';
+
+                container.appendChild(message);
+                container.appendChild(closeButton);
+                container.appendChild(iframe);
+
+                const updateLog = document.getElementById('updateLog');
+                updateLog.innerHTML = '';
+                updateLog.appendChild(container);
+            } else {
+                document.getElementById('updateLog').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('updateLog').style.display = 'none';
+                    document.querySelectorAll('.blur-content').forEach(function(element) {
+                        element.classList.remove('blur-content');
+                    });
+                }, 500);
+                localStorage.setItem('updateLogVersion', currentVersion);
+            }
         });
-
-        const message = document.createElement('div');
-        message.textContent = 'Select Your Site Settings - You can edit this in the settings tab';
-        message.style.textAlign = 'center';
-        message.style.fontFamily = 'Comfortaa, sans-serif';
-        message.style.fontWeight = 'bold';
-        message.style.fontSize = '20px';
-        message.style.marginBottom = '10px';
-
-        const iframe = document.createElement('iframe');
-        iframe.src = '/pages/settings';
-        iframe.style.width = '100%';
-        iframe.style.height = 'calc(100% - 40px)';
-        iframe.style.border = 'none';
-        iframe.style.borderRadius = 'inherit';
-
-        container.appendChild(message);
-        container.appendChild(closeButton);
-        container.appendChild(iframe);
-
-        const updateLog = document.getElementById('updateLog');
-        updateLog.innerHTML = '';
-        updateLog.appendChild(container);
-    } else {
-        document.getElementById('updateLog').style.opacity = '0';
-        setTimeout(function() {
-            document.getElementById('updateLog').style.display = 'none';
-            document.querySelectorAll('.blur-content').forEach(function(element) {
-                element.classList.remove('blur-content');
-            });
-        }, 500);
-        localStorage.setItem('updateLogVersion', currentVersion);
-    }
-});
     </script>
     <script src="storage/js/messages.js"></script>
     <script type="text/javascript" src="storage/js/settings-1.js"></script>
