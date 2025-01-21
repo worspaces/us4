@@ -95,3 +95,51 @@ body {
 	align-items: center;
 	height: 100vh;
 }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 10px 5%;
+  color: white;
+  border-radius: 10px;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  z-index: 1000;
+}
+
+.navbar .left-side {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 20px;
+  color: white;
+}
+
+.navbar .left-side img {
+  height: 40px;
+}
+
+.navbar .right-side {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar .right-side a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.navbar .right-side a:hover {
+  background-color: #ffc700;
+  color: black;
+}
