@@ -1,0 +1,49 @@
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin: 0;
+            padding-top: 20px;
+        }
+
+        #search-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #uv-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-bar-home {
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        #search-button {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .desc {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        #dynamicParagraph {
+            text-align: center;
+            font-size: 1.5em;
+            margin: 20px 0;
+        }

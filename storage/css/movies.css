@@ -1,0 +1,26 @@
+        }
+        .centered-text {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 28px;
+            color: gold;
+        }
+
+        .mod-button {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            border: 2px solid gold;
+            background-color: black;
+            color: gold;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .mod-button:hover {
+            background-color: gold;
+            color: black;
+        }

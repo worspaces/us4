@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-K8CCSDNPV3');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../storage/css/anotherstyle.css">
+    <link rel="stylesheet" href="../storage/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="navbar">
+    <div class="left-side">
+        <a href="/">
+            <img src="/storage/images/logo.png" alt="logo">
+        </a>
+    </div>
+<div class="right-side">
+    <a href="/"><i class="fa fa-home"></i> </a>
+    <a href="/pages/games"><i class="fas fa-gamepad"></i> </a>
+    <a href="/pages/movies"><i class="fa-solid fa-video"></i> </a>
+    <a href="/pages/apps"><i class="fa-sharp fa-solid fa-layer-group"></i> </a>
+    <a href="/pages/prox"><i class="fas fa-globe"></i> </a>
+    <a href="/pages/partners"><i class="fa-solid fa-users"></i> </a>
+    <a href="/pages/extra"><i class="fas fa-plus"></i> </a>
+    <a href="/pages/settings"><i class="fa-solid fa-gear"></i> </a>
+</div>
+</div>
+    <div class="game-title">Partners</div>
+    <div class="games-title">Want to partner? Join our discord!</div> 
+
+    <div class="game-grid" id="gameGrid">
+        <div class="game-button">
+            <a href="https://szvy.website/" target="_blank">
+                <img src="https://i.ibb.co/GM0TFjM/szvylogo.png" alt="Szvy Central">
+                <div class="overlay-text">Szvy Central</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="https://ixl.brunys.site/" target="_blank">
+                <img src="https://ixl.brunys.site/assets/images/favicon.ico" alt="BIW">
+                <div class="overlay-text">BrunysIXL</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="https://mexi.my/" target="_blank">
+                <img src="https://mexi.my/3dgifmaker09916.gif" alt="Mexismath">
+                <div class="overlay-text">Mexismath</div>
+            </a>
+        </div>
+<div class="game-button">
+            <a href="https://canlite.org" target="_blank">
+                <img src="https://raw.githubusercontent.com/voucan/embed/refs/heads/main/pixlr-image-generator-42e6fc26-2f94-478d-9b3c-3d40c0aad15d.jpg" alt="Canlite">
+                <div class="overlay-text">Canlite</div>
+            </a>
+        </div>
+<div class="game-button">
+            <a href="https://benrogo.net/" target="_blank">
+                <img src="https://benrogo.net/static/images/wizard_240x240-christmas.png" alt="Benrogo">
+                <div class="overlay-text">Benrogo</div>
+            </a>
+        </div>
+<div class="game-button">
+            <a href="https://discord.gg/ArpFF92gzB" target="_blank">
+                <img src="https://cdn.discordapp.com/icons/1296796409948803156/eec9232ff03be5b18f2ac8c3c6137cd3.webp?size=4096" alt="Apex Network">
+                <div class="overlay-text">Apex Network</div>
+            </a>
+        </div>
+<div class="game-button">
+            <a href="https://devman.goated.fr.8bit.ca" target="_blank">
+                <img src="https://cdn.discordapp.com/icons/1157131792143351880/d7a4deb773202f5f940ccfc7ecfbf6db.webp?size=4096" alt="Acceleration">
+                <div class="overlay-text">Acceleration</div>
+            </a>
+        </div>
+<div class="game-button">
+            <a href="https://truffled.lol" target="_blank">
+                <img src="https://truffled.lol/png/logo.svg" alt="Truffled">
+                <div class="overlay-text">Truffled</div>
+            </a>
+        </div>
+<div class="game-button">
+            <a href="https://gr4ys0n.github.io/" target="_blank">
+                <img src="https://gr4ys0n.github.io/Logo.jpg" alt="The Gaming Escape">
+                <div class="overlay-text">The Gaming Escape</div>
+            </a>
+        </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function checkGridAlignment() {
+            const gameGrid = document.getElementById('gameGrid');
+            const buttons = document.querySelectorAll('.game-button');
+            const pageWidth = window.innerWidth;
+            
+            buttons.forEach(button => {
+                const rect = button.getBoundingClientRect();
+                const distanceToRightEdge = pageWidth - rect.right;
+                
+             
+                if (distanceToRightEdge < 75) {
+                    button.style.clear = 'both';
+                } else {
+                    button.style.clear = 'none';
+                }
+            });
+        }
+
+    
+        window.addEventListener('resize', checkGridAlignment);
+        window.addEventListener('load', checkGridAlignment);
+    </script>
+    <script type="text/javascript" src="../storage/js/settings-1.js"></script>
+    <script type="text/javascript" src="/storage/js/notify.js"></script>
+</body>
+</html>

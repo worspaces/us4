@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>US4 - AI</title>
+    <link href="../../storage/css/style.css" rel="stylesheet">
+    <link href="../../storage/css/ai.css" rel="stylesheet">
+</head>
+<body>
+    <div id="chat-container">
+        <div class="message bot"><img src="https://voucan-us4.github.io/ai/logo.png" alt="AI Logo">Hello. How are you doing today?</div>
+    </div>
+    
+    <div id="input-container">
+        <textarea id="user-input" placeholder="Type your message here..."></textarea>
+        <button id="send-button"></button>
+    </div>
+
+    <script>
+        document.getElementById('send-button').addEventListener('click', function() {
+            const userInput = document.getElementById('user-input').value.trim();
+            if (userInput) {
+                const newMessage = document.createElement('div');
+                newMessage.classList.add('message', 'user');
+                newMessage.textContent = userInput;
+
+                document.getElementById('chat-container').appendChild(newMessage);
+                document.getElementById('user-input').value = '';
+                document.getElementById('chat-container').scrollTop = document.getElementById('chat-container').scrollHeight;
+            }
+        });
+    </script>
+    <script src="../../storage/js/ai-html.js"></script>
+</body>
+</html>

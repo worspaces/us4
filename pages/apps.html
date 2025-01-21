@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-K8CCSDNPV3');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../storage/css/anotherstyle.css">
+    <link rel="stylesheet" href="../storage/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="navbar">
+    <div class="left-side">
+        <a href="/">
+            <img src="/storage/images/logo.png" alt="logo">
+        </a>
+    </div>
+<div class="right-side">
+    <a href="/"><i class="fa fa-home"></i> </a>
+    <a href="/pages/games"><i class="fas fa-gamepad"></i> </a>
+    <a href="/pages/movies"><i class="fa-solid fa-video"></i> </a>
+    <a href="/pages/apps"><i class="fa-sharp fa-solid fa-layer-group"></i> </a>
+    <a href="/pages/prox"><i class="fas fa-globe"></i> </a>
+    <a href="/pages/partners"><i class="fa-solid fa-users"></i> </a>
+    <a href="/pages/extra"><i class="fas fa-plus"></i> </a>
+    <a href="/pages/settings"><i class="fa-solid fa-gear"></i> </a>
+</div>
+</div>
+    <div class="game-title">Apps</div>
+
+    <div class="search-bar-container">
+        <input type="text" id="gameSearch" class="search-bar" placeholder="Search for an app" oninput="filterGames()">
+    </div>
+
+    <div class="game-grid" id="gameGrid">
+        <div class="game-button">
+            <a href="/pages/apps/discord">
+                <img src="/pages/apps/images/discord.png" alt="Discord">
+                <div class="overlay-text">Discord</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/pages/iframe2?url=/pages/apps/ai">
+                <img src="/pages/apps/images/ai.png" alt="AI">
+                <div class="overlay-text">AI</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/pages/iframe2?url=/thirtydollarwebsite">
+                <img src="/seraph/download.png" alt="Thirty Dollar Website">
+                <div class="overlay-text">Thirty Dollar Website</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/pages/iframe2?url=/pages/apps/youtube">
+                <img src="/pages/apps/images/invid.png" alt="Youtube (Invidious)">
+                <div class="overlay-text">Youtube (Invidious)</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/pages/iframe2?url=/pages/apps/soundcloud">
+                <img src="/pages/apps/images/soundcloud.png" alt="Soundcloud">
+                <div class="overlay-text">Soundcloud</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/pages/iframe2?url=/pages/apps/geforce">
+                <img src="/pages/apps/images/geforce.png" alt="Geforce">
+                <div class="overlay-text">Geforce</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/pages/iframe?url=/pages/apps/aptoide">
+                <img src="/pages/apps/images/aptoide.png" alt="Aptoide">
+                <div class="overlay-text">Aptoide</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/pages/iframe2?url=/pages/apps/javascript-executor">
+                <img src="/pages/apps/images/script.png" alt="Javascript Executor">
+                <div class="overlay-text">Javascript Executor</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/pages/iframe2?url=/pages/apps/c.ai">
+                <img src="/pages/apps/images/characterai.png" alt="c.ai">
+                <div class="overlay-text">c.ai</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/pages/iframe2?url=/pages/apps/xbox-cloud">
+                <img src="/pages/apps/images/xbox.png" alt="Xbox Cloud Gaming">
+                <div class="overlay-text">Xbox Cloud Gaming</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/pages/iframe2?url=/pages/apps/spotify">
+                <img src="/pages/apps/images/spotify.png" alt="Spotify">
+                <div class="overlay-text">Spotify</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/pages/iframe2?url=/pages/apps/gradecalc">
+                <img src="/pages/apps/images/gradecalc.png" alt="Grade Calculator">
+                <div class="overlay-text">Grade Calculator</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/pages/iframe2?url=/pages/apps/desmos">
+                <img src="/pages/apps/images/desmos.png" alt="Desmos">
+                <div class="overlay-text">Desmos</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/pages/iframe2?url=/pages/apps/kahoot">
+                <img src="/pages/apps/images/kahoot.png" alt="Kahoot (Hacked)">
+                <div class="overlay-text">Kahoot (Hacked)</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/pages/iframe2?url=/pages/apps/link-gen">
+                <img src="/pages/apps/images/gen.png" alt="Link Generator (Benrogo)">
+                <div class="overlay-text">Link Generator (Benrogo)</div>
+            </a>
+        </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function checkGridAlignment() {
+            const gameGrid = document.getElementById('gameGrid');
+            const buttons = document.querySelectorAll('.game-button');
+            const pageWidth = window.innerWidth;
+            
+            buttons.forEach(button => {
+                const rect = button.getBoundingClientRect();
+                const distanceToRightEdge = pageWidth - rect.right;
+                
+             
+                if (distanceToRightEdge < 75) {
+                    button.style.clear = 'both';
+                } else {
+                    button.style.clear = 'none';
+                }
+            });
+        }
+        window.addEventListener('resize', checkGridAlignment);
+        window.addEventListener('load', checkGridAlignment);
+    </script>
+
+    <script type="text/javascript" src="../storage/js/settings-1.js"></script>
+
+    <script>
+        function filterGames() {
+            const searchInput = document.getElementById('gameSearch').value.toLowerCase();
+            const games = document.querySelectorAll('.game-button');
+
+            games.forEach(game => {
+                const gameTitle = game.querySelector('.overlay-text').textContent.toLowerCase();
+                if (gameTitle.includes(searchInput)) {
+                    game.style.display = 'block';
+                } else {
+                    game.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript" src="/storage/js/notify.js"></script>
+</body>
+</html>
