@@ -1,101 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-K8CCSDNPV3');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game</title>
+    <title>Home</title>
+    <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: url('/bg.gif') repeat center center fixed;
-            background-color: black;
-            background-size: 200px, 105px;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .container {
-            border: 2px solid #ffc700;
-            border-radius: 10px;
-            width: 80vw;
-            background-color: #000;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; 
-            height: 75vh; 
-        }
-        .game-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 10px 10px 0 0;
-            flex-grow: 1;
-        }
-        .button-bar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #333;
-            border-radius: 0 0 20px 20px;
-            padding: 10px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .button-bar button {
-            background-color: #000;
-            border: none;
-            color: #fff;
-            font-size: 20px;
-            cursor: pointer;
-            margin: 0 10px;
-            padding: 10px;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .button-bar button:hover {
-            background-color: #ffc700;
-            color: #000;
-        }
-        .popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: url('/bg.gif') repeat center center fixed;
-            background-color: black;
-            border: 2px solid gold;
-            padding: 20px;
-            text-align: center;
-            display: none;
-            z-index: 1000;
-            border-radius: 10px;
-            color: white;
-        }
-        .popup button {
-            background: grey;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .popup button:hover {
-            background: #ccc;
-        }
-    </style>
+    <link rel="stylesheet" href="../storage/css/iframe.css">
 </head>
 <body>
+
+<div class="navbar">
+    <div class="left-side">
+        <a href="/">
+            <img src="/storage/images/logo.png" alt="logo">
+        </a>
+    </div>
+<div class="right-side">
+    <a href="/"><i class="fa fa-home"></i> </a>
+    <a href="/pages/games"><i class="fas fa-gamepad"></i> </a>
+    <a href="/pages/movies"><i class="fa-solid fa-video"></i> </a>
+    <a href="/pages/apps"><i class="fa-sharp fa-solid fa-layer-group"></i> </a>
+    <a href="/pages/prox"><i class="fas fa-globe"></i> </a>
+    <a href="/pages/partners"><i class="fa-solid fa-users"></i> </a>
+    <a href="/pages/extra"><i class="fas fa-plus"></i> </a>
+    <a href="/pages/settings"><i class="fa-solid fa-gear"></i> </a>
+</div>
+</div>
+
+<div class="main-content">
 <div class="container">
     <iframe id="game-frame" class="game-iframe" allowfullscreen></iframe>
     <div class="button-bar">
@@ -151,40 +91,40 @@
     }
 
     function AI() {
-        window.location.href = "javascript: (function() { fetch('https://voucan-us4.github.io/ai/bookmarklet.js') .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); }) .then(scriptText => eval(scriptText)) .catch(error => console.error('Error fetching or executing the script:', error)); })();";
+        window.location.href = "javascript: (function() { fetch('../storage/js/ai.js') .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); }) .then(scriptText => eval(scriptText)) .catch(error => console.error('Error fetching or executing the script:', error)); })();";
     }
 
-function openInAboutBlank() {
-    const siteTitle = localStorage.getItem('siteTitle') || "Home";
-    const siteLogo = localStorage.getItem('siteLogo') || "https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png";
+    function openInAboutBlank() {
+        const siteTitle = localStorage.getItem('siteTitle') || "Home";
+        const siteLogo = localStorage.getItem('siteLogo') || "../storage/images/googleclassroom.png";
 
-    const newTab = window.open('about:blank', '_blank');
+        const newTab = window.open('about:blank', '_blank');
 
-    if (newTab) {
-        newTab.document.title = siteTitle;
+        if (newTab) {
+            newTab.document.title = siteTitle;
 
-        const favicon = newTab.document.createElement('link');
-        favicon.rel = 'icon';
-        favicon.href = siteLogo;
-        newTab.document.head.appendChild(favicon);
+            const favicon = newTab.document.createElement('link');
+            favicon.rel = 'icon';
+            favicon.href = siteLogo;
+            newTab.document.head.appendChild(favicon);
 
-        const iframe = newTab.document.createElement('iframe');
-        iframe.src = document.getElementById('game-frame').src;
-        iframe.style.width = '100vw';
-        iframe.style.height = '100vh';
-        iframe.style.border = 'none';
+            const iframe = newTab.document.createElement('iframe');
+            iframe.src = document.getElementById('game-frame').src;
+            iframe.style.width = '100vw';
+            iframe.style.height = '100vh';
+            iframe.style.border = 'none';
 
-        newTab.document.body.style.margin = '0';
-        newTab.document.body.appendChild(iframe);
-    } else {
-        console.error("Failed to open About:Blank page.");
+            newTab.document.body.style.margin = '0';
+            newTab.document.body.appendChild(iframe);
+        } else {
+            console.error("Failed to open About:Blank page.");
+        }
     }
-}
 
     function saveData() {
         const newTab = window.open('about:blank', '_blank');
         const iframe = document.createElement('iframe');
-        iframe.src = '/apps/embeds/site-data';
+        iframe.src = 'data';
         iframe.style.width = '100vw';
         iframe.style.height = '100vh';
         iframe.style.border = 'none';
@@ -202,5 +142,7 @@ function openInAboutBlank() {
         document.getElementById('popup').style.display = 'none';
     }
 </script>
+    <script type="text/javascript" src="../storage/js/settings-1.js"></script>
+    <script type="text/javascript" src="/storage/js/notify.js"></script>
 </body>
 </html>
