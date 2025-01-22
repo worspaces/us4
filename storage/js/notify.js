@@ -1,4 +1,4 @@
-const Notify = false;
+const Notify = true;
 
 function createNotification(message) {
     if (!Notify) return;
@@ -69,5 +69,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('Our discord server was raided. If you were banned, you should be unbanned now');
+    createNotification('All users banned during the raid have been unbanned.');
 };
