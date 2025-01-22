@@ -69,5 +69,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('Thank you for your patience. US4 is fully working again!');
+    createNotification('Our discord server was raided. If you were banned, you should be unbanned now');
 };
