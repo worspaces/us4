@@ -1,68 +1,73 @@
-        const Notify = true;
+const Notify = true;
 
-        function createNotification(message) {
-            if (!Notify) return;
+function createNotification(message) {
+    if (!Notify) return;
 
-            const notification = document.createElement('div');
-            notification.style.position = 'fixed';
-            notification.style.top = '20px';
-            notification.style.right = '20px';
-            notification.style.backgroundColor = '#222';
-            notification.style.color = 'gold';
-            notification.style.padding = '15px 20px';
-            notification.style.borderRadius = '5px';
-            notification.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.2)';
-            notification.style.fontFamily = 'Arial, sans-serif';
-            notification.style.fontSize = '16px';
-            notification.style.zIndex = '1000';
-            notification.style.display = 'flex';
-            notification.style.justifyContent = 'space-between';
-            notification.style.alignItems = 'center';
+    const savedMessage = localStorage.getItem('readMessage');
+    if (savedMessage === message) return;
 
-            const messageSpan = document.createElement('span');
-            messageSpan.textContent = message;
-            notification.appendChild(messageSpan);
+    localStorage.setItem('readMessage', message);
 
-            const closeButton = document.createElement('button');
-            closeButton.textContent = 'X';
-            closeButton.style.backgroundColor = 'transparent';
-            closeButton.style.color = 'gold';
-            closeButton.style.border = 'none';
-            closeButton.style.cursor = 'pointer';
-            closeButton.style.marginLeft = '10px';
-            closeButton.style.fontSize = '16px';
-            closeButton.style.fontWeight = 'bold';
+    const notification = document.createElement('div');
+    notification.style.position = 'fixed';
+    notification.style.top = '20px';
+    notification.style.right = '20px';
+    notification.style.backgroundColor = '#222';
+    notification.style.color = 'gold';
+    notification.style.padding = '15px 20px';
+    notification.style.borderRadius = '5px';
+    notification.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.2)';
+    notification.style.fontFamily = 'Arial, sans-serif';
+    notification.style.fontSize = '16px';
+    notification.style.zIndex = '1000';
+    notification.style.display = 'flex';
+    notification.style.justifyContent = 'space-between';
+    notification.style.alignItems = 'center';
 
-            closeButton.addEventListener('click', () => {
-                document.body.removeChild(notification);
-            });
+    const messageSpan = document.createElement('span');
+    messageSpan.textContent = message;
+    notification.appendChild(messageSpan);
 
-            notification.appendChild(closeButton);
+    const closeButton = document.createElement('button');
+    closeButton.textContent = 'X';
+    closeButton.style.backgroundColor = 'transparent';
+    closeButton.style.color = 'gold';
+    closeButton.style.border = 'none';
+    closeButton.style.cursor = 'pointer';
+    closeButton.style.marginLeft = '10px';
+    closeButton.style.fontSize = '16px';
+    closeButton.style.fontWeight = 'bold';
 
-            const topBar = document.createElement('div');
-            topBar.style.position = 'absolute';
-            topBar.style.top = '0';
-            topBar.style.left = '0';
-            topBar.style.height = '4px';
-            topBar.style.backgroundColor = 'gold';
-            topBar.style.width = '100%';
-            topBar.style.transition = 'width 5s linear';
+    closeButton.addEventListener('click', () => {
+        document.body.removeChild(notification);
+    });
 
-            notification.appendChild(topBar);
+    notification.appendChild(closeButton);
 
-            document.body.appendChild(notification);
+    const topBar = document.createElement('div');
+    topBar.style.position = 'absolute';
+    topBar.style.top = '0';
+    topBar.style.left = '0';
+    topBar.style.height = '4px';
+    topBar.style.backgroundColor = 'gold';
+    topBar.style.width = '100%';
+    topBar.style.transition = 'width 5s linear';
 
-            setTimeout(() => {
-                topBar.style.width = '0';
-            }, 50);
+    notification.appendChild(topBar);
 
-            setTimeout(() => {
-                if (document.body.contains(notification)) {
-                    document.body.removeChild(notification);
-                }
-            }, 5050);
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        topBar.style.width = '0';
+    }, 50);
+
+    setTimeout(() => {
+        if (document.body.contains(notification)) {
+            document.body.removeChild(notification);
         }
+    }, 5050);
+}
 
-        window.onload = () => {
-            createNotification('Working out bugs..');
-        };
+window.onload = () => {
+    createNotification('Thank you for your patience. US4 is fully working again!');
+};
