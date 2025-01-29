@@ -83,8 +83,8 @@ body {
 }
 .navbar {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center items horizontally */
+  flex-direction: column;
+  align-items: center;
   background-color: #222;
   padding: 20px 10px;
   color: white;
