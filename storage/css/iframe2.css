@@ -21,10 +21,11 @@ body {
   height: 100vh;
 }
 .game-iframe {
-  width: 100%;
+  width: calc(100% - 50px);
   height: 100%;
   border: none;
   flex-grow: 1;
+  margin-left: 50px;
 }
 .button-bar {
   display: flex;
