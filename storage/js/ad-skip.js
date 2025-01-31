@@ -1,10 +1,10 @@
 const button = document.createElement("button");
-button.innerText = "Auto-Skip Ad";
+button.innerText = "Skip Ad";
 button.style.position = "fixed";
 button.style.bottom = "20px";
 button.style.right = "20px";
 button.style.padding = "10px 20px";
-button.style.background = "#ff0000";
+button.style.background = "#808080";
 button.style.color = "#fff";
 button.style.border = "none";
 button.style.borderRadius = "8px";
