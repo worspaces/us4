@@ -14,8 +14,8 @@ button.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
 button.style.zIndex = "9999";
 button.style.transition = "background 0.3s";
 
-button.onmouseover = () => button.style.background = "#cc0000";
-button.onmouseout = () => button.style.background = "#ff0000";
+button.onmouseover = () => button.style.background = "#2F2F2F";
+button.onmouseout = () => button.style.background = "#808080";
 
 button.onclick = () => {
     if (document.getElementsByClassName("video-ads")[0].innerHTML !== "") {
