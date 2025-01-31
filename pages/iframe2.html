@@ -11,9 +11,7 @@
 <body>
 <div class="navbar">
     <div class="left-side">
-        <a href="/">
-            <img src="/storage/images/logo.png" alt="logo">
-        </a>
+        <a href="/"><img src="/storage/images/logo.png" alt="logo"></a>
         <a href="/"><i class="fa fa-home"></i></a>
         <a href="/pages/games"><i class="fas fa-gamepad"></i></a>
         <a href="/pages/movies"><i class="fa-solid fa-video"></i></a>
@@ -26,8 +24,7 @@
 </div>
 
 <div class="container">
-    <iframe id="game-frame" class="game-iframe" allowfullscreen></iframe>
-    </div>
+    <iframe id="game-frame" class="game-iframe" allowfullscreen style="margin-left: 50px; width: calc(100% - 50px);"></iframe>
 </div>
 
 <div id="popup" class="popup">
@@ -77,32 +74,30 @@
         window.location.href = "javascript: (function() { fetch('https://voucan-us4.github.io/ai/bookmarklet.js') .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); }) .then(scriptText => eval(scriptText)) .catch(error => console.error('Error fetching or executing the script:', error)); })();";
     }
 
-function openInAboutBlank() {
-    const siteTitle = localStorage.getItem('siteTitle') || "Home";
-    const siteLogo = localStorage.getItem('siteLogo') || "https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png";
+    function openInAboutBlank() {
+        const siteTitle = localStorage.getItem('siteTitle') || "Home";
+        const siteLogo = localStorage.getItem('siteLogo') || "https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png";
+        const newTab = window.open('about:blank', '_blank');
 
-    const newTab = window.open('about:blank', '_blank');
+        if (newTab) {
+            newTab.document.title = siteTitle;
+            const favicon = newTab.document.createElement('link');
+            favicon.rel = 'icon';
+            favicon.href = siteLogo;
+            newTab.document.head.appendChild(favicon);
 
-    if (newTab) {
-        newTab.document.title = siteTitle;
+            const iframe = newTab.document.createElement('iframe');
+            iframe.src = document.getElementById('game-frame').src;
+            iframe.style.width = '100vw';
+            iframe.style.height = '100vh';
+            iframe.style.border = 'none';
 
-        const favicon = newTab.document.createElement('link');
-        favicon.rel = 'icon';
-        favicon.href = siteLogo;
-        newTab.document.head.appendChild(favicon);
-
-        const iframe = newTab.document.createElement('iframe');
-        iframe.src = document.getElementById('game-frame').src;
-        iframe.style.width = '100vw';
-        iframe.style.height = '100vh';
-        iframe.style.border = 'none';
-
-        newTab.document.body.style.margin = '0';
-        newTab.document.body.appendChild(iframe);
-    } else {
-        console.error("Failed to open About:Blank page.");
+            newTab.document.body.style.margin = '0';
+            newTab.document.body.appendChild(iframe);
+        } else {
+            console.error("Failed to open About:Blank page.");
+        }
     }
-}
 
     function saveData() {
         const newTab = window.open('about:blank', '_blank');
@@ -125,6 +120,6 @@ function openInAboutBlank() {
         document.getElementById('popup').style.display = 'none';
     }
 </script>
-    <script type="text/javascript" src="/storage/js/settings-1.js"></script>
+<script type="text/javascript" src="/storage/js/settings-1.js"></script>
 </body>
 </html>
