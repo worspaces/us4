@@ -31,32 +31,34 @@ if (panicKey && panicUrl) {
 
 const autocloak = localStorage.getItem('autocloakEnabled') === 'true';
 if (autocloak) {
-    window.onload = function() {
-        const newTab = window.open('about:blank', '_blank');
-        if (!newTab) {
-            alert("Please enable popups to proceed.");
-            return;
-        }
+    if (window.location.href !== 'about:blank') {
+        window.onload = function() {
+            const newTab = window.open('about:blank', '_blank');
+            if (!newTab) {
+                alert("Please enable popups to proceed.");
+                return;
+            }
 
-        const siteTitle = localStorage.getItem('siteTitle') || "Home";
-        const siteLogo = localStorage.getItem('siteLogo') || "https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png";
+            const siteTitle = localStorage.getItem('siteTitle') || "Home";
+            const siteLogo = localStorage.getItem('siteLogo') || "/storage/images/googleclassroom.png";
 
-        newTab.document.title = siteTitle;
+            newTab.document.title = siteTitle;
 
-        const favicon = document.createElement('link');
-        favicon.rel = 'icon';
-        favicon.href = siteLogo;
-        newTab.document.head.appendChild(favicon);
+            const favicon = document.createElement('link');
+            favicon.rel = 'icon';
+            favicon.href = siteLogo;
+            newTab.document.head.appendChild(favicon);
 
-        const iframe = document.createElement('iframe');
-        iframe.src = '/cloaked';
-        iframe.style.width = '100vw';
-        iframe.style.height = '100vh';
-        iframe.style.border = 'none';
-        newTab.document.body.style.margin = '0';
-        newTab.document.body.appendChild(iframe);
+            const iframe = document.createElement('iframe');
+            iframe.src = '/cloaked';
+            iframe.style.width = '100vw';
+            iframe.style.height = '100vh';
+            iframe.style.border = 'none';
+            newTab.document.body.style.margin = '0';
+            newTab.document.body.appendChild(iframe);
 
-        const panicUrl = localStorage.getItem('panicUrl') || "https://classroom.google.com";
-        window.location.href = panicUrl;
-    };
+            const panicUrl = localStorage.getItem('panicUrl') || "https://classroom.google.com";
+            window.location.href = panicUrl;
+        };
+    }
 }
