@@ -29,36 +29,44 @@ if (panicKey && panicUrl) {
     });
 }
 
-const autocloak = localStorage.getItem('autocloakEnabled') === 'true';
-if (autocloak) {
-    if (window.location.href !== 'about:blank') {
-        window.onload = function() {
-            const newTab = window.open('about:blank', '_blank');
-            if (!newTab) {
-                alert("Please enable popups to proceed.");
-                return;
-            }
+let inFrame;
 
-            const siteTitle = localStorage.getItem('siteTitle') || "Home";
-            const siteLogo = localStorage.getItem('siteLogo') || "/storage/images/googleclassroom.png";
+try {
+  inFrame = window !== top;
+} catch (e) {
+  inFrame = true;
+}
 
-            newTab.document.title = siteTitle;
+if (
+  !inFrame &&
+  !navigator.userAgent.includes("Firefox") &&
+  localStorage.getItem("autocloakEnabled") === "true"
+) {
+  const popup = open("about:blank", "_blank");
+  if (!popup || popup.closed) {
+    alert(
+      "Please allow popups for this site. Doing so will allow us to open the site in an about:blank tab and prevent this site from showing up in your history. You can turn this off in the site settings."
+    );
+  } else {
+    const siteTitle = localStorage.getItem('siteTitle') || "Home";
+    const siteLogo = localStorage.getItem('siteLogo') || "https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png";
 
-            const favicon = document.createElement('link');
-            favicon.rel = 'icon';
-            favicon.href = siteLogo;
-            newTab.document.head.appendChild(favicon);
+    popup.document.title = siteTitle;
 
-            const iframe = document.createElement('iframe');
-            iframe.src = '/cloaked';
-            iframe.style.width = '100vw';
-            iframe.style.height = '100vh';
-            iframe.style.border = 'none';
-            newTab.document.body.style.margin = '0';
-            newTab.document.body.appendChild(iframe);
+    const favicon = document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.href = siteLogo;
+    popup.document.head.appendChild(favicon);
 
-            const panicUrl = localStorage.getItem('panicUrl') || "https://classroom.google.com";
-            window.location.href = panicUrl;
-        };
-    }
+    const iframe = document.createElement('iframe');
+    iframe.src = '/pages/prox';
+    iframe.style.width = '100vw';
+    iframe.style.height = '100vh';
+    iframe.style.border = 'none';
+    popup.document.body.style.margin = '0';
+    popup.document.body.appendChild(iframe);
+
+    const panicUrl = localStorage.getItem('panicUrl') || "https://classroom.google.com";
+    window.location.href = panicUrl;
+  }
 }
