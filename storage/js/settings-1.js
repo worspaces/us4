@@ -45,11 +45,11 @@ if (
   const popup = open("about:blank", "_blank");
   if (!popup || popup.closed) {
     alert(
-      "Please allow popups for this site. Doing so will allow us to open the site in an about:blank tab and prevent this site from showing up in your history. You can turn this off in the site settings."
+      "Please enable popups for auto-about:blank to work correctly. Keep in mind some games may not work correctly in about:blank."
     );
   } else {
     const siteTitle = localStorage.getItem('siteTitle') || "Home";
-    const siteLogo = localStorage.getItem('siteLogo') || "https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png";
+    const siteLogo = localStorage.getItem('siteLogo') || "/storage/images/googleclassroom.png";
 
     popup.document.title = siteTitle;
 
