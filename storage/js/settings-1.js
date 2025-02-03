@@ -59,7 +59,7 @@ if (
     popup.document.head.appendChild(favicon);
 
     const iframe = document.createElement('iframe');
-    iframe.src = '/';
+    iframe.src = '#';
     iframe.style.width = '100vw';
     iframe.style.height = '100vh';
     iframe.style.border = 'none';
