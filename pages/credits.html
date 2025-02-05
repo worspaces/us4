@@ -1,0 +1,133 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-K8CCSDNPV3');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../storage/css/anotherstyle.css">
+    <link rel="stylesheet" href="../storage/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="navbar">
+    <div class="left-side">
+        <a href="/">
+            <img src="/storage/images/logo.png" alt="logo">
+        </a>
+    </div>
+<div class="right-side">
+     <script type="text/javascript" src="/storage/js/nav.js"></script>
+</div>
+</div>
+    <div class="game-title">Credits</div>
+
+    <div class="search-bar-container">
+        <input type="text" id="gameSearch" class="search-bar" placeholder="Search for an app" oninput="filterGames()">
+    </div>
+
+    <div class="game-grid" id="gameGrid">
+        <div class="game-button">
+            <a href="/">
+                <img src="https://voucan.github.io/vcngrey.png" alt="Voucan">
+                <div class="overlay-text">Voucan: Website, Games, Apps</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="https://brunys.site">
+                <img src="https://brunys.site/brunyssonicpfp.jpeg" alt="Brunys">
+                <div class="overlay-text">Brunys: Games</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="https://frogiee.one">
+                <img src="https://frogiee.one/media/pfp.png" alt="Frogiee1">
+                <div class="overlay-text">Frogiee1: Now.gg Bypass</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="https://a456pur.dev/">
+                <img src="https://a456pur.dev/images/astra.jpg" alt="Astralogical">
+                <div class="overlay-text">Astralogical: Thirty Dollar Website</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="https://sleepy-cat.monster">
+                <img src="https://cdn.discordapp.com/avatars/781680288522567680/c6292ab698da51088d46a0e4608237dd.webp?size=4096" alt="Sleepy Cat">
+                <div class="overlay-text">Sleepy Cat: Sandtetris</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="https://github.com/titaniumnetwork-dev">
+                <img src="https://avatars.githubusercontent.com/u/47227492?s=200&v=4" alt="Titanium Network">
+                <div class="overlay-text">Titanium Network: Ultraviolet</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="https://benrogo.net">
+                <img src="https://benrogo.net/static/images/wizard_240x240-regular.png" alt="Benrogo">
+                <div class="overlay-text">Benrogo: Bare Server</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="https://discord.com/users/1152700631514099793">
+                <img src="https://cdn.discordapp.com/avatars/1152700631514099793/81df95bb8c5459481e8bc0466f51e812.webp?size=4096" alt="Nobody">
+                <div class="overlay-text">Nobody: Art</div>
+            </a>
+        </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function checkGridAlignment() {
+            const gameGrid = document.getElementById('gameGrid');
+            const buttons = document.querySelectorAll('.game-button');
+            const pageWidth = window.innerWidth;
+            
+            buttons.forEach(button => {
+                const rect = button.getBoundingClientRect();
+                const distanceToRightEdge = pageWidth - rect.right;
+                
+             
+                if (distanceToRightEdge < 75) {
+                    button.style.clear = 'both';
+                } else {
+                    button.style.clear = 'none';
+                }
+            });
+        }
+        window.addEventListener('resize', checkGridAlignment);
+        window.addEventListener('load', checkGridAlignment);
+    </script>
+
+    <script type="text/javascript" src="../storage/js/settings-1.js"></script>
+
+    <script>
+        function filterGames() {
+            const searchInput = document.getElementById('gameSearch').value.toLowerCase();
+            const games = document.querySelectorAll('.game-button');
+
+            games.forEach(game => {
+                const gameTitle = game.querySelector('.overlay-text').textContent.toLowerCase();
+                if (gameTitle.includes(searchInput)) {
+                    game.style.display = 'block';
+                } else {
+                    game.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript" src="/storage/js/notify.js"></script>
+</body>
+</html>
