@@ -1,4 +1,4 @@
-const Notify = true;
+const Notify = false;
 
 function createNotification(message) {
     if (!Notify) return;
@@ -69,5 +69,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('All users banned during the raid have been unbanned.');
+    createNotification('hi');
 };
