@@ -108,7 +108,7 @@ body {
             <p>Version 1.7: Organized files, improved some stuff </p>
         </div>
     </div>
-    <script src="/storage/js/messages.js"></script>
+
     <script>
         const currentVersion = "1.72"; 
 
@@ -126,7 +126,9 @@ body {
                 });
             }
 
-//messages stuff is gone sadly
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('randomMessage').textContent = randomMessage;
+        };
 
         document.getElementById('updateLog').addEventListener('click', function() {
             if (!localStorage.getItem('firstVisit')) {
@@ -188,6 +190,7 @@ body {
             }
         });
     </script>
+    <script src="/storage/js/messages.js"></script>
     <script type="text/javascript" src="storage/js/settings-1.js"></script>
     <script type="text/javascript" src="storage/js/notify.js"></script>
 </body>
