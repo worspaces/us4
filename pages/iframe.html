@@ -12,6 +12,9 @@
     <link href="/storage/css/iframe.css" rel="stylesheet">
 </head>
 <body>
+
+  <script type="text/javascript" src="/storage/js/background.js"></script>
+
 <div class="navbar">
     <div class="left-side">
         <a href="/">
@@ -42,20 +45,23 @@
 </div>
 
 <script>
-    function getUrlParameter(name) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(name);
+function getUrlParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+window.onload = function() {
+    if (!localStorage.getItem('dontShowPopup')) {
+        document.getElementById('popup').style.display = 'block';
     }
 
-    window.onload = function() {
-        if (!localStorage.getItem('dontShowPopup')) {
-            document.getElementById('popup').style.display = 'block';
-        }
-
+//hopefully this fixes background.js changing the body after iframe is loaded
+    setTimeout(function() {
         const iframe = document.getElementById('game-frame');
         const url = getUrlParameter('url') || '/404';
         iframe.src = url;
-    };
+    }, 2000);
+};
 
     function refreshGame() {
         const iframe = document.getElementById('game-frame');
@@ -130,6 +136,5 @@ function openInAboutBlank() {
     }
 </script>
     <script type="text/javascript" src="/storage/js/settings-1.js"></script>
-    <script type="text/javascript" src="/storage/js/background.js"></script>
 </body>
 </html>
