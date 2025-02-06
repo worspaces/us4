@@ -1,6 +1,6 @@
 body {
     color: #fff;
-    background: url('/storage/images/bg.gif') center center fixed no-repeat;
+   /* background: url('/storage/images/bg.gif') center center fixed no-repeat; */
     background-color: black;
     background-size: cover;
     font-family: "Outfit", sans-serif;
