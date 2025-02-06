@@ -1,8 +1,3 @@
-window.onload = function() {
-    var storedColor = localStorage.getItem('backgroundColor') || '#000';
-    document.body.style.backgroundColor = storedColor;
-    var colorPicker = document.getElementById('colorPicker');
-    if (colorPicker) {
-        colorPicker.value = storedColor;
-    }
-};
+window.addEventListener('load', function() {
+    document.body.style.backgroundColor = localStorage.getItem('backgroundColor') || '#000';
+});
