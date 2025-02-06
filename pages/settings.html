@@ -16,8 +16,8 @@
     <title>Home</title>
     <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="../storage/css/settings.css" rel="stylesheet">
-    <link href="../storage/css/style.css" rel="stylesheet">
+    <link href="/storage/css/settings.css" rel="stylesheet">
+    <link href="/storage/css/style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -37,6 +37,9 @@
 </div>
     <div class="settings-container">
         <h1>Settings</h1>
+
+<label for="backgroundColorPicker">Select Background Color:</label>
+        <input type="color" id="backgroundColorPicker">
 
         <div class="checkbox-container">
             <div>
@@ -198,6 +201,18 @@
         if (event.key === panicKey && panicUrl) {
             window.location.href = panicUrl;
         }
+    });
+</script>
+<script>
+    var storedColor = localStorage.getItem('backgroundColor') || '#0a0d31';
+    document.body.style.backgroundColor = storedColor;
+
+    var colorPicker = document.getElementById('backgroundColorPicker');
+    colorPicker.value = storedColor;
+
+    colorPicker.addEventListener('input', function () {
+        document.body.style.backgroundColor = colorPicker.value;
+        localStorage.setItem('backgroundColor', colorPicker.value);
     });
 </script>
     <script type="text/javascript" src="/storage/js/notify.js"></script>
