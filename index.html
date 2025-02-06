@@ -126,13 +126,7 @@ body {
                 });
             }
 
-        if (typeof messages !== 'undefined' && Array.isArray(messages) && messages.length > 0) {
-            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-            document.getElementById('randomMessage').textContent = randomMessage;
-        } else {
-            console.warn("messages.js is not loaded or empty.");
-        }
-    };
+//messages stuff is gone sadly
 
         document.getElementById('updateLog').addEventListener('click', function() {
             if (!localStorage.getItem('firstVisit')) {
