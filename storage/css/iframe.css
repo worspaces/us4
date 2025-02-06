@@ -12,6 +12,7 @@ body {
   overflow: hidden;
 }
 .container {
+  border: 1px solid #000;
   border-radius: 10px;
   width: 80vw;
   position: relative;
