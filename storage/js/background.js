@@ -6,9 +6,3 @@ window.onload = function() {
         colorPicker.value = storedColor;
     }
 };
-
-function changeBackgroundColor() {
-    var color = document.getElementById("colorPicker").value;
-    document.body.style.backgroundColor = color;
-    localStorage.setItem('backgroundColor', color);
-}
