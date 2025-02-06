@@ -11,7 +11,7 @@ window.addEventListener("load", function() {
     loadingScreen.style.justifyContent = "center";
     loadingScreen.style.alignItems = "center";
     loadingScreen.style.backgroundImage = "url('/storage/images/bg.gif')";
-    loadingScreen.style.backgroundColor = "black";
+    loadingScreen.style.backgroundColor = localStorage.getItem('backgroundColor') || '#000';
     loadingScreen.style.backgroundSize = "cover";
     loadingScreen.style.color = "gold";
     loadingScreen.style.zIndex = "1000";
