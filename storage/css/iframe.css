@@ -64,8 +64,8 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   background: url("/storage/images/bg.gif") repeat center center fixed;
-  background-color: black;
-  border: 2px solid gold;
+/*  background-color: black;
+  border: 2px solid gold; */
   padding: 20px;
   text-align: center;
   display: none;
