@@ -1,3 +1,7 @@
+window.onload = function () {
+    document.body.style.backgroundColor = localStorage.getItem('backgroundColor') || 'black';
+};
+
 const beforeUnloadEnabled = localStorage.getItem('beforeUnloadEnabled') === 'true';
 if (beforeUnloadEnabled) {
     window.addEventListener('beforeunload', function (e) {
@@ -70,12 +74,3 @@ if (
     window.location.href = panicUrl;
   }
 }
-
-window.onload = function() {
-    var storedColor = localStorage.getItem('backgroundColor') || 'black';
-    document.body.style.backgroundColor = storedColor;
-    var colorPicker = document.getElementById('colorPicker');
-    if (colorPicker) {
-        colorPicker.value = storedColor;
-    }
-};
