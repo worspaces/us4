@@ -23,13 +23,6 @@
 </div>
 </div>
 
-<script>
-window.onload = function() {
-    var storedColor = localStorage.getItem('backgroundColor') || '#000';
-    document.body.style.backgroundColor = storedColor;
-};
-</script>
-
 <div class="container">
     <iframe id="game-frame" class="game-iframe" allowfullscreen></iframe>
     <div class="button-bar">
@@ -137,5 +130,6 @@ function openInAboutBlank() {
     }
 </script>
     <script type="text/javascript" src="/storage/js/settings-1.js"></script>
+    <script type="text/javascript" src="/storage/js/background.js"></script>
 </body>
 </html>
