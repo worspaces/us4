@@ -40,6 +40,7 @@
         return urlParams.get(name);
     }
 
+    window.onload = function() {
         const iframe = document.getElementById('game-frame');
         const url = getUrlParameter('url') || '/404';
         iframe.src = url;
@@ -66,7 +67,12 @@
     }
 
     function AI() {
-        window.location.href = "javascript: (function() { fetch('https://voucan-us4.github.io/ai/bookmarklet.js') .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); }) .then(scriptText => eval(scriptText)) .catch(error => console.error('Error fetching or executing the script:', error)); })();";
+        window.location.href = "javascript:(function() { 
+            fetch('https://voucan-us4.github.io/ai/bookmarklet.js')
+            .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); })
+            .then(scriptText => eval(scriptText))
+            .catch(error => console.error('Error fetching or executing the script:', error)); 
+        })();";
     }
 
     function openInAboutBlank() {
@@ -115,5 +121,6 @@
     }
 </script>
 <script type="text/javascript" src="/storage/js/settings-1.js"></script>
+
 </body>
 </html>
