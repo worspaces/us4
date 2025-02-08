@@ -102,6 +102,7 @@ a {
 }
 .search-bar {
   width: 50%;
+  max-width: 600px;
   padding: 10px;
   border-radius: 20px;
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -111,6 +112,7 @@ a {
   font-size: 16px;
   outline: none;
   transition: all 0.3s ease;
+  text-align: center;
 }
 .search-bar::placeholder {
   color: rgba(255, 255, 255, 0.7);
