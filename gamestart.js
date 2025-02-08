@@ -1,4 +1,6 @@
 window.addEventListener("load", function () {
+    const userBgColor = localStorage.getItem('backgroundColor') || '#000';
+
     const loadingScreen = document.createElement("div");
     loadingScreen.id = "loadingScreen";
     Object.assign(loadingScreen.style, {
@@ -12,9 +14,9 @@ window.addEventListener("load", function () {
         justifyContent: "center",
         alignItems: "center",
         backgroundImage: "url('/storage/images/bg.gif')",
-        backgroundColor: localStorage.getItem('backgroundColor') || '#000',
+        backgroundColor: userBgColor,
         backgroundSize: "cover",
-        color: "gold",
+        color: getTextColor(userBgColor),
         zIndex: "1000",
         fontFamily: "'Comfortaa', cursive",
         backdropFilter: "blur(10px)"
@@ -25,7 +27,7 @@ window.addEventListener("load", function () {
         src: "/storage/images/logo2.png",
         maxWidth: "150px",
         marginBottom: "20px",
-        animation: "fadeIn 1s ease-in-out"
+        filter: getTextColor(userBgColor) === '#000' ? 'invert(1)' : 'none'
     });
 
     const text = document.createElement("p");
@@ -53,18 +55,18 @@ window.addEventListener("load", function () {
         height: "10px",
         borderRadius: "5px",
         overflow: "hidden",
-        border: "2px solid gold",
+        border: `2px solid ${getTextColor(userBgColor)}`,
         marginTop: "20px",
-        backgroundColor: "rgba(0, 0, 0, 0.3)",
+        backgroundColor: adjustBrightness(userBgColor, -30),
         position: "relative",
-        boxShadow: "0 0 10px rgba(255, 215, 0, 0.5)"
+        boxShadow: `0 0 10px ${adjustBrightness(userBgColor, 50)}`
     });
 
     const progressBar = document.createElement("div");
     Object.assign(progressBar.style, {
         height: "100%",
         width: "0%",
-        background: "linear-gradient(90deg, gold, orange)",
+        background: `linear-gradient(90deg, ${adjustBrightness(userBgColor, 70)}, ${adjustBrightness(userBgColor, 30)})`,
         transition: "width 0.2s ease-in-out"
     });
 
@@ -96,3 +98,22 @@ const fontLink = document.createElement("link");
 fontLink.rel = "stylesheet";
 fontLink.href = "https://fonts.googleapis.com/css2?family=Comfortaa&display=swap";
 document.head.appendChild(fontLink);
+
+function getTextColor(bgColor) {
+    const r = parseInt(bgColor.slice(1, 3), 16);
+    const g = parseInt(bgColor.slice(3, 5), 16);
+    const b = parseInt(bgColor.slice(5, 7), 16);
+    return (r * 0.299 + g * 0.587 + b * 0.114) > 186 ? '#000' : '#fff';
+}
+
+function adjustBrightness(hex, percent) {
+    let r = parseInt(hex.slice(1, 3), 16);
+    let g = parseInt(hex.slice(3, 5), 16);
+    let b = parseInt(hex.slice(5, 7), 16);
+
+    r = Math.min(255, Math.max(0, r + (r * percent) / 100));
+    g = Math.min(255, Math.max(0, g + (g * percent) / 100));
+    b = Math.min(255, Math.max(0, b + (b * percent) / 100));
+
+    return `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
+}
