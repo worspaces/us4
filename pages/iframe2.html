@@ -24,6 +24,7 @@
         <a href="/pages/credits"><i class="fa-solid fa-book"></i></a>
         <a href="/pages/extra"><i class="fas fa-plus"></i></a>
         <a href="/pages/settings"><i class="fa-solid fa-gear"></i></a>
+        <a href="/pages/data"><i class="fa-solid fa-file-arrow-down"></i></a>
     </div>
 </div>
 
@@ -33,23 +34,11 @@
     </div>
 </div>
 
-<div id="popup" class="popup">
-    <p>Would you like to save or upload your US4 data?</p>
-    <button onclick="saveData()">Yes</button>
-    <button onclick="closePopup()">No</button>
-    <button onclick="dontShowAgain()">Don't Show Again</button>
-</div>
-
 <script>
     function getUrlParameter(name) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(name);
     }
-
-    window.onload = function() {
-        if (!localStorage.getItem('dontShowPopup')) {
-            document.getElementById('popup').style.display = 'block';
-        }
 
         const iframe = document.getElementById('game-frame');
         const url = getUrlParameter('url') || '/404';
@@ -114,7 +103,6 @@
         iframe.style.border = 'none';
         newTab.document.body.style.margin = '0';
         newTab.document.body.appendChild(iframe);
-        document.getElementById('popup').style.display = 'none';
     }
 
     function closePopup() {
