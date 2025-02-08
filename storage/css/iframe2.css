@@ -89,6 +89,7 @@ body {
   height: 100vh;
   width: 50px;
   z-index: 1000;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
 }
 .navbar .left-side {
   display: flex;
@@ -109,15 +110,15 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 8px;
-  background-color: #333;
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease;
 }
 .navbar .left-side a:hover {
-  background-color: #ffc700;
-  color: black;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
 }
 .content {
   flex-grow: 1;
