@@ -36,14 +36,12 @@
 
 <script>
     function getUrlParameter(name) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(name);
+        return new URLSearchParams(window.location.search).get(name);
     }
 
     window.onload = function() {
         const iframe = document.getElementById('game-frame');
-        const url = getUrlParameter('url') || '/404';
-        iframe.src = url;
+        iframe.src = getUrlParameter('url') || '/404';
     };
 
     function refreshGame() {
@@ -54,9 +52,7 @@
     function toggleFullscreen() {
         const iframe = document.getElementById('game-frame');
         if (!document.fullscreenElement) {
-            iframe.requestFullscreen().catch(err => {
-                alert(`Error attempting to enable fullscreen mode: ${err.message}`);
-            });
+            iframe.requestFullscreen().catch(err => alert(`Error: ${err.message}`));
         } else {
             document.exitFullscreen();
         }
@@ -67,17 +63,15 @@
     }
 
     function AI() {
-        window.location.href = "javascript:(function() { 
-            fetch('https://voucan-us4.github.io/ai/bookmarklet.js')
-            .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); })
-            .then(scriptText => eval(scriptText))
-            .catch(error => console.error('Error fetching or executing the script:', error)); 
-        })();";
+        fetch('https://voucan-us4.github.io/ai/bookmarklet.js')
+            .then(response => response.ok ? response.text() : Promise.reject('Network error'))
+            .then(eval)
+            .catch(console.error);
     }
 
     function openInAboutBlank() {
         const siteTitle = localStorage.getItem('siteTitle') || "Home";
-        const siteLogo = localStorage.getItem('siteLogo') || "https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png";
+        const siteLogo = localStorage.getItem('siteLogo') || "/storage/images/googleclassroom.png";
         const newTab = window.open('about:blank', '_blank');
 
         if (newTab) {
@@ -86,29 +80,25 @@
             favicon.rel = 'icon';
             favicon.href = siteLogo;
             newTab.document.head.appendChild(favicon);
-
+            
             const iframe = newTab.document.createElement('iframe');
             iframe.src = document.getElementById('game-frame').src;
-            iframe.style.width = '100vw';
-            iframe.style.height = '100vh';
-            iframe.style.border = 'none';
-
+            iframe.style = 'width:100vw; height:100vh; border:none';
+            
             newTab.document.body.style.margin = '0';
             newTab.document.body.appendChild(iframe);
-        } else {
-            console.error("Failed to open About:Blank page.");
         }
     }
 
     function saveData() {
         const newTab = window.open('about:blank', '_blank');
-        const iframe = document.createElement('iframe');
-        iframe.src = '/pages/data';
-        iframe.style.width = '100vw';
-        iframe.style.height = '100vh';
-        iframe.style.border = 'none';
-        newTab.document.body.style.margin = '0';
-        newTab.document.body.appendChild(iframe);
+        if (newTab) {
+            const iframe = document.createElement('iframe');
+            iframe.src = '/pages/data';
+            iframe.style = 'width:100vw; height:100vh; border:none';
+            newTab.document.body.style.margin = '0';
+            newTab.document.body.appendChild(iframe);
+        }
     }
 
     function closePopup() {
@@ -117,10 +107,10 @@
 
     function dontShowAgain() {
         localStorage.setItem('dontShowPopup', 'true');
-        document.getElementById('popup').style.display = 'none';
+        closePopup();
     }
 </script>
-<script type="text/javascript" src="/storage/js/settings-1.js"></script>
+<script src="/storage/js/settings-1.js"></script>
 
 </body>
 </html>
