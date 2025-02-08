@@ -13,7 +13,6 @@ window.addEventListener("load", function () {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundImage: "url('/storage/images/bg.gif')",
         backgroundColor: userBgColor,
         backgroundSize: "cover",
         color: getTextColor(userBgColor),
