@@ -44,11 +44,6 @@ function getUrlParameter(name) {
     return urlParams.get(name);
 }
 
-window.onload = function() {
-    if (!localStorage.getItem('dontShowPopup')) {
-        document.getElementById('popup').style.display = 'block';
-    }
-
 //hopefully this fixes background.js changing the body after iframe is loaded
     setTimeout(function() {
         const iframe = document.getElementById('game-frame');
