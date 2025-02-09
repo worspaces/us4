@@ -22,7 +22,7 @@
 <body>
 
 <script src="/particles.js"></script>
-<script src="/app.js"></script>
+  <script src="/app.js"></script>
 <div id="particles-js"></div>
 
 <div class="navbar">
@@ -31,69 +31,52 @@
             <img src="/storage/images/logo.png" alt="logo">
         </a>
     </div>
-    <div class="right-side">
-        <script type="text/javascript" src="/storage/js/nav.js"></script>
-    </div>
+<div class="right-side">
+     <script type="text/javascript" src="/storage/js/nav.js"></script>
 </div>
-<div class="settings-container">
-    <h1>Settings</h1>
-
-    <label for="backgroundColorPicker">Select Background Color:</label>
-    <input type="color" id="backgroundColorPicker">
-
-    <div class="checkbox-container">
-        <div>
-            <label for="beforeUnloadToggle">Anti-Close</label>
-            <input type="checkbox" id="beforeUnloadToggle" />
-        </div>
-        <div>
-            <label for="autocloakToggle">Auto-about:blank</label>
-            <input type="checkbox" id="autocloakToggle" />
-        </div>
-    </div>
-
-    <hr>
-
-    <label for="siteTitle">Set Site Title:</label>
-    <input type="text" id="siteTitle" placeholder="Enter site title" />
-
-    <label for="siteLogo">Set Site Favicon:</label>
-    <input type="file" id="siteLogo" accept="image/*" />
-
-    <button id="saveSettings">Save Title & Favicon</button>
-
-    <hr>
-
-    <label for="panicKey">Set Panic Button Key:</label>
-    <input type="text" id="panicKey" placeholder="Enter key (e.g., F1)" />
-
-    <label for="panicUrl">Set Panic Button URL:</label>
-    <input type="text" id="panicUrl" placeholder="Enter URL to redirect to" />
-
-    <button id="savePanicButtonSettings">Save Panic Button Settings</button>
-
-    <hr>
-
-    <button id="resetSettings" class="reset-button">Reset Tab Name and Icon</button>
-    <button id="resetPanicButtonSettings" class="reset-button">Reset Panic Button Settings</button>
-
-    <hr>
-
-    <h2>Choose Website Theme</h2>
-
-    <label for="themeSelector">Pick a theme:</label>
-    <select id="themeSelector">
-        <option value="none">None</option>
-        <option value="preset1">Seraph</option>
-        <option value="preset2">MIT App Inventor</option>
-        <option value="custom">Custom</option>
-    </select>
-
-    <label for="customTheme">Custom Theme URL:</label>
-    <input type="url" id="customTheme" placeholder="Enter custom theme URL" disabled>
-
-    <button id="saveThemeSettings">Save Theme</button>
 </div>
+    <div class="settings-container">
+        <h1>Settings</h1>
+
+<label for="backgroundColorPicker">Select Background Color:</label>
+        <input type="color" id="backgroundColorPicker">
+
+        <div class="checkbox-container">
+            <div>
+                <label for="beforeUnloadToggle">Anti-Close</label>
+                <input type="checkbox" id="beforeUnloadToggle" />
+            </div>
+            <div>
+                <label for="autocloakToggle">Auto-about:blank</label>
+                <input type="checkbox" id="autocloakToggle" />
+            </div>
+        </div>
+
+        <hr>
+
+        <label for="siteTitle">Set Site Title:</label>
+        <input type="text" id="siteTitle" placeholder="Enter site title" />
+
+        <label for="siteLogo">Set Site Favicon:</label>
+        <input type="file" id="siteLogo" accept="image/*" />
+
+        <button id="saveSettings">Save Title & Favicon</button>
+
+        <hr>
+
+        <label for="panicKey">Set Panic Button Key:</label>
+        <input type="text" id="panicKey" placeholder="Enter key (e.g., F1)" />
+
+        <label for="panicUrl">Set Panic Button URL:</label>
+        <input type="text" id="panicUrl" placeholder="Enter URL to redirect to" />
+
+        <button id="savePanicButtonSettings">Save Panic Button Settings</button>
+
+        <hr>
+
+        <button id="resetSettings" class="reset-button">Reset Tab Name and Icon</button>
+        <button id="resetPanicButtonSettings" class="reset-button">Reset Panic Button Settings</button>
+    </div>
 
 <script>
     const beforeUnloadToggle = document.getElementById('beforeUnloadToggle');
@@ -106,9 +89,6 @@
     const savePanicButtonSettingsButton = document.getElementById('savePanicButtonSettings');
     const resetSettingsButton = document.getElementById('resetSettings');
     const resetPanicButtonSettingsButton = document.getElementById('resetPanicButtonSettings');
-    const themeSelector = document.getElementById('themeSelector');
-    const customThemeInput = document.getElementById('customTheme');
-    const saveThemeSettingsButton = document.getElementById('saveThemeSettings');
 
     beforeUnloadToggle.checked = localStorage.getItem('beforeUnloadEnabled') === 'true';
     autocloakToggle.checked = localStorage.getItem('autocloakEnabled') === 'true';
@@ -123,24 +103,6 @@
         faviconLink.href = savedLogo;
         document.head.appendChild(faviconLink);
     }
-
-    const savedTheme = localStorage.getItem('theme') || 'none';
-    themeSelector.value = savedTheme;
-
-    if (savedTheme === 'custom') {
-        customThemeInput.disabled = false;
-        customThemeInput.value = localStorage.getItem('customTheme') || '';
-    } else {
-        customThemeInput.disabled = true;
-    }
-
-    themeSelector.addEventListener('change', function() {
-        if (themeSelector.value === 'custom') {
-            customThemeInput.disabled = false;
-        } else {
-            customThemeInput.disabled = true;
-        }
-    });
 
     saveSettingsButton.addEventListener('click', function() {
         const siteTitle = siteTitleInput.value;
@@ -192,27 +154,56 @@
         localStorage.removeItem('panicUrl');
     });
 
-    saveThemeSettingsButton.addEventListener('click', function() {
-        const selectedTheme = themeSelector.value;
-        localStorage.setItem('theme', selectedTheme);
-
-        if (selectedTheme === 'custom') {
-            const customThemeUrl = customThemeInput.value;
-            localStorage.setItem('customTheme', customThemeUrl);
-            document.body.style.backgroundColor = 'transparent';
-            document.body.style.backgroundImage = `url("${customThemeUrl}")`;
-        } else if (selectedTheme === 'Seraph') {
-            document.body.style.backgroundColor = 'black';
-            document.body.style.backgroundImage = 'url("https://seraph.reveriestudios.online/images/backgrounds/seraph/homebg.jpg")';
-        } else if (selectedTheme === 'MIT App Inventor') {
-            document.body.style.backgroundColor = 'white';
-            document.body.style.backgroundImage = 'url("https://code.appinventor.mit.edu/static/images/squairy_light.png")';
+    beforeUnloadToggle.addEventListener('change', function() {
+        localStorage.setItem('beforeUnloadEnabled', beforeUnloadToggle.checked);
+        if (beforeUnloadToggle.checked) {
+            window.addEventListener('beforeunload', function(e) {
+                e.preventDefault();
+                e.returnValue = '';
+            });
         } else {
-            document.body.style.backgroundColor = '';
-            document.body.style.backgroundImage = '';
+            window.removeEventListener('beforeunload', function(e) {
+                e.preventDefault();
+                e.returnValue = '';
+            });
         }
     });
 
+    autocloakToggle.addEventListener('change', function() {
+        localStorage.setItem('autocloakEnabled', autocloakToggle.checked);
+        if (autocloakToggle.checked) {
+            const newTab = window.open('about:blank', '_blank');
+            if (newTab) {
+                const iframe = document.createElement('iframe');
+                iframe.src = '/';
+                iframe.style.width = '100vw';
+                iframe.style.height = '100vh';
+                iframe.style.border = 'none';
+                newTab.document.body.style.margin = '0';
+                newTab.document.body.appendChild(iframe);
+            }
+            const panicUrl = localStorage.getItem('panicUrl') || "https://classroom.google.com";
+            window.location.href = panicUrl;
+        }
+    });
+
+    if (beforeUnloadToggle.checked) {
+        window.addEventListener('beforeunload', function(e) {
+            e.preventDefault();
+            e.returnValue = '';
+        });
+    }
+
+    window.addEventListener('keydown', function(event) {
+        const panicKey = localStorage.getItem('panicKey');
+        const panicUrl = localStorage.getItem('panicUrl');
+
+        if (event.key === panicKey && panicUrl) {
+            window.location.href = panicUrl;
+        }
+    });
+</script>
+<script>
     var storedColor = localStorage.getItem('backgroundColor') || 'black';
     document.body.style.backgroundColor = storedColor;
 
@@ -224,7 +215,7 @@
         localStorage.setItem('backgroundColor', colorPicker.value);
     });
 </script>
-<script type="text/javascript" src="/storage/js/notify.js"></script>
-<script type="text/javascript" src="/storage/js/background.js"></script>
+    <script type="text/javascript" src="/storage/js/notify.js"></script>
+    <script type="text/javascript" src="/storage/js/background.js"></script>
 </body>
 </html>
