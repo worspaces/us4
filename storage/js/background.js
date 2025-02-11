@@ -15,8 +15,6 @@ window.addEventListener('load', function() {
     const month = today.getMonth();
     const date = today.getDate();
     const year = today.getFullYear();
-
-    const easterDate = getEasterDate(year);
     const columbusDay = getColumbusDay(year);
     const veteransDay = getVeteransDay(year);
 
