@@ -4,7 +4,7 @@ window.addEventListener('load', function() {
     const date = today.getDate();
 
     if (month === 1 && date === 14) {
-        document.body.style.backgroundColor = '#FF0000';
+        document.body.style.backgroundColor = '#b61924';
     }
 
     else if (month === 1 && date >= 15 && date <= 21 && today.getDay() === 1) {
