@@ -20,7 +20,7 @@ window.addEventListener('load', function () {
     fetch("/particlesconfig.json")
         .then(response => response.json())
         .then(config => {
-            particlesJS("particles-js", isValentines ? config.valentineConfig : isPresidents ? config.presidentsDayConfig : config.defaultConfig);
+            particlesJS("particles-js", isValentines ? config.valentinesConfig : isPresidents ? config.presidentsConfig : config.defaultConfig);
         })
         .catch(error => console.error("Error loading particles config:", error));
 });
