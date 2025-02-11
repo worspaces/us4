@@ -1,3 +1,4 @@
 window.addEventListener('load', function() {
-    document.body.style.backgroundColor = '#b61924'; // localStorage.getItem('backgroundColor') || '#b61924';
+    document.body.style.backgroundColor = localStorage.getItem('backgroundColor') || '#000';
+    localStorage.setItem('backgroundColor', '#b61924');
 });
