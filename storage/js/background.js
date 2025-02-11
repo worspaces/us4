@@ -17,6 +17,18 @@ function getEasterDate(year) {
   return new Date(year, month - 1, day);
 }
 
+function getColumbusDay(year) {
+    const date = new Date(year, 9, 1);  
+    const day = date.getDay();
+    const difference = (8 - day + 7) % 7;
+    date.setDate(1 + difference + 7);  
+    return date;
+}
+
+function getVeteransDay(year) {
+    return new Date(year, 10, 11);
+}
+
 window.addEventListener('load', function() {
     const today = new Date();
     const month = today.getMonth();
@@ -24,6 +36,8 @@ window.addEventListener('load', function() {
     const year = today.getFullYear();
 
     const easterDate = getEasterDate(year);
+    const columbusDay = getColumbusDay(year);
+    const veteransDay = getVeteransDay(year);
 
     if (month === 1 && date === 14) {
         document.body.style.backgroundColor = '#b61924'; // Valentine's Day
@@ -39,6 +53,14 @@ window.addEventListener('load', function() {
 
     else if (month === easterDate.getMonth() && date === easterDate.getDate()) {
         document.body.style.backgroundColor = '#FF69B4'; // Easter
+    }
+
+    else if (month === columbusDay.getMonth() && date === columbusDay.getDate()) {
+        document.body.style.backgroundColor = '#0033A0'; // Columbus Day
+    }
+
+    else if (month === veteransDay.getMonth() && date === veteransDay.getDate()) {
+        document.body.style.backgroundColor = '#0033A0'; // Veterans Day
     }
 
     else {
