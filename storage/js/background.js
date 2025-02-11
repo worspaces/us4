@@ -38,7 +38,7 @@ window.addEventListener('load', function() {
     }
 
     else if (month === easterDate.getMonth() && date === easterDate.getDate()) {
-        document.body.style.backgroundColor = '#FF69B4'; // Easter (light pink)
+        document.body.style.backgroundColor = '#FF69B4'; // Easter
     }
 
     else {
