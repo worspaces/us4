@@ -22,7 +22,7 @@ window.addEventListener('load', function() {
         document.body.style.backgroundColor = '#b61924'; // Valentine's Day
     }
 
-    if (month === 5 && date === 1) {
+    if (month === 3 && date === 1) {
         document.body.style.backgroundColor = '#28B9AB'; // April Fools
     }
 
