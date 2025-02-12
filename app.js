@@ -7,7 +7,7 @@ function getConfigFile() {
     return '/valentines-particlesjs-config.json';
   }
 
-  if (month === 5 && day === 1) {
+  if (month === 3 && day === 1) {
     return '/troll-particlesjs-config.json';
   }
 
