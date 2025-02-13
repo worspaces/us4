@@ -54,8 +54,14 @@
         window.onload = changeText;
     </script>
     <script type="text/javascript" src="/storage/js/background.js"></script>
-    <script defer>
-        registerSW();
+    <script>
+    async function regsw(){
+        await navigator.serviceWorker.register("/static/uv-sw.js", {
+            scope: "/static/",
+        });
+    }
+
+    regsw();
     </script>
 </body>
 </html>
