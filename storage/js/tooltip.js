@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tooltip.style.pointerEvents = "none";
     tooltip.style.whiteSpace = "nowrap";
     tooltip.style.display = "none";
+    tooltip.style.zIndex = "1000";
     document.body.appendChild(tooltip);
 
     document.querySelectorAll(".game-button").forEach(button => {
