@@ -6,10 +6,6 @@ function getColumbusDay(year) {
     return date;
 }
 
-function getVeteransDay(year) {
-    return new Date(year, 10, 11);
-}
-
 window.addEventListener('load', function () {
     const today = new Date();
     const month = today.getMonth();
@@ -18,7 +14,7 @@ window.addEventListener('load', function () {
     const columbusDay = getColumbusDay(year);
     const veteransDay = getVeteransDay(year);
 
-    if (month === 0 && date === 14) {
+    if (month === 1 && date === 14) {
         document.body.style.backgroundColor = '#b61924'; // Valentine's Day
     } else if (month === 3 && date === 1) {
         document.body.style.backgroundColor = '#28B9AB'; // April Fools
@@ -28,7 +24,7 @@ window.addEventListener('load', function () {
         document.body.style.backgroundColor = '#0033A0'; // Presidents Day
     } else if (month === 9 && date === columbusDay.getDate() && today.getDay() === 1) {
         document.body.style.backgroundColor = '#0033A0'; // Columbus Day
-    } else if (month === 10 && date === veteransDay.getDate()) {
+    } else if (month === 10 && date === 11) {
         document.body.style.backgroundColor = '#0033A0'; // Veterans Day
     } else {
         document.body.style.backgroundColor = localStorage.getItem('backgroundColor') || '#000';
