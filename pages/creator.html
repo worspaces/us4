@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -182,7 +181,7 @@
         <a href="https://heartive-us4.pages.dev" target="_blank">
           <i class="fa-solid fa-video"></i>
         </a>
-        <a href="https://voucan.github.io/extension.html" target="_blank">
+        <a href="/extension.html" target="_blank">
           <i class="fa fa-plug" aria-hidden="true"></i>
         </a>
       </div>
@@ -192,6 +191,9 @@
     </audio>
     <audio id="enterAudio" loop>
       <source src="/storage/mp3/audio.mp3" type="audio/mp3">
+    </audio>
+    <audio id="spinAudio">
+      <source src="/storage/mp3/spin.mp3" type="audio/mp3">
     </audio>
     <script>
       function enterSite() {
@@ -217,6 +219,8 @@
 
       document.getElementById('profilePicture').addEventListener('click', function() {
         this.classList.add('spin');
+        const spinAudio = document.getElementById('spinAudio');
+        spinAudio.play();
         
         this.addEventListener('animationend', function() {
           this.classList.remove('spin');
