@@ -3,10 +3,10 @@ const Notify = true;
 function createNotification(message) {
     if (!Notify) return;
 
-    const savedMessage = localStorage.getItem('readMessage');
+   /* const savedMessage = localStorage.getItem('readMessage');
     if (savedMessage === message) return;
 
-    localStorage.setItem('readMessage', message);
+    localStorage.setItem('readMessage', message); */
 
     const notification = document.createElement('div');
     notification.style.position = 'fixed';
