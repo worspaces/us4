@@ -19,7 +19,7 @@ function createNotification(message) {
     notification.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.2)';
     notification.style.fontFamily = 'Arial, sans-serif';
     notification.style.fontSize = '16px';
-    notification.style.zIndex = '1000';
+    notification.style.zIndex = '999999';
     notification.style.display = 'flex';
     notification.style.justifyContent = 'space-between';
     notification.style.alignItems = 'center';
