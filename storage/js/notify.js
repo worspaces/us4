@@ -69,5 +69,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('26 new links! Check link hub.');
+    createNotification('27/27 on my science test guys!!');
 };
