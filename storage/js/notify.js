@@ -1,4 +1,4 @@
-const Notify = false;
+const Notify = true;
 
 function createNotification(message) {
     if (!Notify) return;
@@ -13,7 +13,7 @@ function createNotification(message) {
     notification.style.top = '20px';
     notification.style.right = '20px';
     notification.style.backgroundColor = '#222';
-    notification.style.color = 'gold';
+    notification.style.color = 'white';
     notification.style.padding = '15px 20px';
     notification.style.borderRadius = '5px';
     notification.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.2)';
@@ -31,7 +31,7 @@ function createNotification(message) {
     const closeButton = document.createElement('button');
     closeButton.textContent = 'X';
     closeButton.style.backgroundColor = 'transparent';
-    closeButton.style.color = 'gold';
+    closeButton.style.color = 'white';
     closeButton.style.border = 'none';
     closeButton.style.cursor = 'pointer';
     closeButton.style.marginLeft = '10px';
@@ -49,7 +49,7 @@ function createNotification(message) {
     topBar.style.top = '0';
     topBar.style.left = '0';
     topBar.style.height = '4px';
-    topBar.style.backgroundColor = 'gold';
+    topBar.style.backgroundColor = 'blue';
     topBar.style.width = '100%';
     topBar.style.transition = 'width 5s linear';
 
