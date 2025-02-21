@@ -69,5 +69,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('27/27 on my science test guys!!');
+    createNotification('17/17 on my science test guys!!');
 };
