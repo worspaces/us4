@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const userMessage = userInput.value.trim();
         if (!userMessage) return;
         
-        addMessageToChat(userMessage, "guest.png", ".message.user");
+        addMessageToChat(userMessage, "guest.png", "message-user");
         userInput.value = "";
         
         messageHistory.push({ role: 'user', content: userMessage });
