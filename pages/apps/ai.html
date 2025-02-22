@@ -3,32 +3,23 @@
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-K8CCSDNPV3');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-K8CCSDNPV3');
     </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>US4 - AI</title>
-    <link href="https://voucan-us4.github.io/storage/css/style.css" rel="stylesheet">
-    <link href="https://voucan-us4.github.io/storage/css/ai.css" rel="stylesheet">
+    <link href="../../storage/css/style.css" rel="stylesheet">
+    <link href="../../storage/css/ai.css" rel="stylesheet">
 </head>
 <body>
-    <div id="chat-container">
-        <div class="message bot"><img src="https://voucan-us4.github.io/ai/logo.png" alt="AI Logo">Hello. How are you doing today?</div>
-    </div>
-    
+    <div id="chat-container"></div>
     <div id="input-container">
         <textarea id="user-input" placeholder="Type your message here..."></textarea>
-       <button id="send-button"></button>
+        <button id="send-button"></button>
     </div>
-
-    <script>
-                document.getElementById('chat-container').appendChild(newMessage);
-                document.getElementById('user-input').value = '';
-                document.getElementById('chat-container').scrollTop = document.getElementById('chat-container').scrollHeight;
-            }
-        });
-    </script>
-    <script src="/storage/js/ai-html.js"></script>
+    <script src="/storage/js/ai-chat.js"></script>
 </body>
 </html>
