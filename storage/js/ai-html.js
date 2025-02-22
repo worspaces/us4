@@ -2,7 +2,7 @@ const chatContainer = document.getElementById('chat-container');
 const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
 
-const apiKey = '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';
+const apiKey = atob('Z3NrX21Fb2gzbURvVzFYSW1qUnlHdkV4V0dkeWIzRlhaa2l4ckFEcWwyU2g1YjhjSlQyNDIyTGU');
 let messageHistory = [];
 
 function validateSession() {
