@@ -96,15 +96,25 @@ img {
 }
 
 .message {
+  display: flex;
+  align-items: center;
   padding: 10px;
   margin: 5px 0;
   border-radius: 5px;
 }
 
 .message.user {
+  flex-direction: row-reverse;
   text-align: right;
 }
 
 .message.bot {
+  flex-direction: row;
   text-align: left;
+}
+
+.message img {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
 }
