@@ -3,9 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const userInput = document.getElementById('user-input');
     const sendButton = document.getElementById('send-button');
     
-    sendButton.innerHTML = "Send";
-    
-    const apiKey = atob('Z3NrX21Fb2gzbURvVzFYSW1qUnlHdkV4V0dkeWIzRlhaa2l4ckFEcWwyU2g1YjhjSlQyNDIyTGU');
+    const apiKey = atob('Z3NrX21Fb2gzbURvVzFYSW1qUnlHdkV4V0dkeWIzRlloa2l4ckFEcWwyU2g1YjhjSlQyNDIyTGU');
     let messageHistory = [];
     
     function validateSession() {
