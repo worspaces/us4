@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const userMessage = userInput.value.trim();
         if (!userMessage) return;
         
-        addMessageToChat(userMessage, "guest.png", "message-user");
+        addMessageToChat(userMessage, "guest.png", "user");
         userInput.value = "";
         
         messageHistory.push({ role: 'user', content: userMessage });
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
             messageHistory.push({ role: 'assistant', content: aiResponse });
             if (messageHistory.length > 10) messageHistory.shift();
             
-            addMessageToChat(aiResponse, "logo.png", "ai-message");
+            addMessageToChat(aiResponse, "logo.png", "bot");
         } catch (error) {
             addMessageToChat(`Error: Failed to get AI response. ${error.message}`, null, "error");
         }
