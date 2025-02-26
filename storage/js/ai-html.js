@@ -17,14 +17,21 @@ document.addEventListener("DOMContentLoaded", function() {
     let messageHistory = [];
 
     function validateSession() {
-        const encodedKey = atob("Ry1LOENDU0ROUFYz");
-        const scriptValid = Array.from(document.scripts).some(script => script.src.includes(encodedKey));
-        const dataLayerValid = window.dataLayer && window.dataLayer.some(entry => JSON.stringify(entry).includes(encodedKey));
-        if (!(scriptValid && dataLayerValid)) {
-            addMessageToChat("Failed to validate session.", null, "error");
+        try {
+            const encodedKey = atob("Ry1LOENDU0ROUFYz");
+            const scriptValid = Array.from(document.scripts).some(script => script.src.includes(encodedKey));
+            const dataLayerValid = window.dataLayer && Array.isArray(window.dataLayer) &&
+                window.dataLayer.some(entry => typeof entry === 'object' && JSON.stringify(entry).includes(encodedKey));
+
+            if (!scriptValid || !dataLayerValid) {
+                addMessageToChat("Failed to validate session.", null, "error");
+                return false;
+            }
+            return true;
+        } catch (error) {
+            console.error("Session validation error:", error);
             return false;
         }
-        return true;
     }
 
     async function sendMessage() {
@@ -62,17 +69,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     })
                 });
 
-                if (response.status === 419) {
-                    console.warn(`API key ${apiKey} failed with 419. Switching key...`);
+                if (!response.ok) {
+                    console.warn(`API key ${apiKey} failed with status ${response.status}.`);
                     currentKeyIndex = (currentKeyIndex + 1) % apiKeys.length;
                     continue;
                 }
 
-                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-
                 const data = await response.json();
-                if (!data.choices || !data.choices[0] || !data.choices[0].message) {
-                    throw new Error("Invalid API response");
+                if (!data || !data.choices || !data.choices[0] || !data.choices[0].message) {
+                    throw new Error("Invalid API response format");
                 }
 
                 const aiResponse = data.choices[0].message.content;
