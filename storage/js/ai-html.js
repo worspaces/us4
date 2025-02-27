@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        addMessageToChat("Error: All API keys failed.", null, "error");
+        addMessageToChat("Error: All API Keys failed, or messages/message history is too long.", null, "error");
     }
 
     function addMessageToChat(message, imgSrc, messageType) {
