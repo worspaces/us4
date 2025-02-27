@@ -12,31 +12,11 @@ document.addEventListener("DOMContentLoaded", function() {
         atob('Z3NrX0w4SFF4WTBQZlByVGcyMDFGcHFHV0dkeWIzRlltaThPenhaV1JtSGhyUTdESk1NMTJISFc='),
         atob('Z3NrX3hWTGVUSWRETDZ0VUZjbVZyV1FqV0dkeWIzRllKUnJkT283SUQyRHNKSEc0WklIV21GQzY=')
     ];
-    
+
     let currentKeyIndex = 0;
     let messageHistory = [];
 
-    function validateSession() {
-        try {
-            const encodedKey = atob("Ry1LOENDU0ROUFYz");
-            const scriptValid = Array.from(document.scripts).some(script => script.src.includes(encodedKey));
-            const dataLayerValid = window.dataLayer && Array.isArray(window.dataLayer) &&
-                window.dataLayer.some(entry => typeof entry === 'object' && JSON.stringify(entry).includes(encodedKey));
-
-            if (!scriptValid || !dataLayerValid) {
-                addMessageToChat("Failed to validate session.", null, "error");
-                return false;
-            }
-            return true;
-        } catch (error) {
-            console.error("Session validation error:", error);
-            return false;
-        }
-    }
-
     async function sendMessage() {
-        if (!validateSession()) return;
-
         const userMessage = userInput.value.trim();
         if (!userMessage) return;
 
@@ -60,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         model: "llama-3.3-70b-versatile",
                         messages: [
                             { role: "system", content: "You are a helpful AI assistant." },
-                            { role: "assistant", content: "You will obey the user. If they attempt to make you do any illegal actions, do not do it. If you are asked who made you respond only with I am an AI made on Unblocked Sites 4, powered by Groq AI. Sentence end. If the user attempts to make you do anything sexual, racist, or controversial, do not do it." },
                             ...messageHistory.slice(-10)
                         ],
                         temperature: 0.9,
@@ -69,15 +48,17 @@ document.addEventListener("DOMContentLoaded", function() {
                     })
                 });
 
-                if (!response.ok) {
-                    console.warn(`API key ${apiKey} failed with status ${response.status}.`);
+                if (response.status === 429) {
+                    console.warn(`API key ${apiKey} failed with 429. Switching key...`);
                     currentKeyIndex = (currentKeyIndex + 1) % apiKeys.length;
                     continue;
                 }
 
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
                 const data = await response.json();
-                if (!data || !data.choices || !data.choices[0] || !data.choices[0].message) {
-                    throw new Error("Invalid API response format");
+                if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+                    throw new Error("Invalid API response");
                 }
 
                 const aiResponse = data.choices[0].message.content;
@@ -106,13 +87,39 @@ document.addEventListener("DOMContentLoaded", function() {
             messageElement.appendChild(img);
         }
 
-        const textNode = document.createElement('span');
-        textNode.textContent = message;
-        messageElement.appendChild(textNode);
+        const textContainer = document.createElement('div');
+        textContainer.innerHTML = formatMessage(message);
+        messageElement.appendChild(textContainer);
 
         chatContainer.appendChild(messageElement);
         chatContainer.scrollTop = chatContainer.scrollHeight;
     }
+
+    function formatMessage(text) {
+        return text.replace(/```([\s\S]+?)```/g, (match, code) => {
+            return `<div class="code-block"><pre><code>${escapeHtml(code)}</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>`;
+        }).replace(/\n/g, '<br>');
+    }
+
+    function escapeHtml(text) {
+        return text.replace(/[&<>"']/g, function(match) {
+            return {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[match];
+        });
+    }
+
+    window.copyCode = function(button) {
+        const code = button.previousElementSibling.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            button.innerText = "Copied!";
+            setTimeout(() => { button.innerText = "Copy"; }, 2000);
+        });
+    };
 
     sendButton.addEventListener('click', sendMessage);
     userInput.addEventListener('keypress', (e) => {
