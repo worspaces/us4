@@ -69,5 +69,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('viola');
+    createNotification('w concert 2/28');
 };
