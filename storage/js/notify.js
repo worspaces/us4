@@ -1,4 +1,4 @@
-const Notify = false;
+const Notify = true;
 
 function createNotification(message) {
     if (!Notify) return;
@@ -69,5 +69,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('hi');
+    createNotification('viola');
 };
