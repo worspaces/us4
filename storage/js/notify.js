@@ -1,4 +1,4 @@
-const Notify = true;
+const Notify = false;
 
 function createNotification(message) {
     if (!Notify) return;
