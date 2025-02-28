@@ -69,5 +69,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('hi guys its my birthday');
+    createNotification('hi');
 };
