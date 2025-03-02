@@ -13,17 +13,8 @@
             padding-top: 20px;
         }
 *::-webkit-scrollbar {
-  width: 15px;
-}
-
-*::-webkit-scrollbar-track {
-  background: rgba(5, 5, 5, 0.3);
-}
-
-*::-webkit-scrollbar-thumb {
-  background: rgba(5, 5, 5, 0.5);
-  border-radius: 10px;
-  transition: background-color 0.3s ease-in-out;
+  width: 0px;
+  height: 0px
 }
 
 *::-webkit-scrollbar-thumb:hover {
