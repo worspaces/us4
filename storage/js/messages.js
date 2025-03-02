@@ -1,10 +1,14 @@
-const messages = [
-    "Make sure to save your data!",
-    "Deport Brunys",
-    "Batman was playing paper.io",
-    "Thank you Benrogo.net!",
-    "Thank you for using US4",
-    "hi",
-    "stupid",
-    "Join our Discord!",
-];
+        const phrases = [
+            "hi guys",
+            "cheese"
+        ];
+
+        const paragraph = document.getElementById('dynamicParagraph');
+
+        function changeText() {
+            const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+            paragraph.textContent = randomPhrase;
+        }
+
+        paragraph.addEventListener('click', changeText);
+        window.onload = changeText;
