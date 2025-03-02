@@ -117,5 +117,24 @@ function saveData() {
 <script type="text/javascript" src="/storage/js/settings-1.js"></script>
 <script type="text/javascript" src="/storage/js/notify.js"></script>
     <script type="text/javascript" src="/storage/js/cheese-algorithm"></script>
+
+<!-- Ultraviolet -->
+    <script src="/static/uv/uv.bundle.js" defer></script>
+    <script src="/static/uv/uv.config.js" defer></script>
+    <script src="/static/register-sw.js" defer></script>
+    <script src="/static/search.js" defer></script>
+    <script src="/static/index.js" defer></script>
+
+    <script>
+    async function regsw(){
+        await navigator.serviceWorker.register("/static/uv-sw.js", {
+            scope: "/static/",
+        });
+    }
+
+    regsw();
+    </script>
+<!-- Ultraviolet -->
+
 </body>
 </html>
