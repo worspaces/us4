@@ -2,7 +2,7 @@ const phrases = [
     "hi guys",
     "cheese",
     { type: "image", src: "https://i.ibb.co/v6xfHBB5/7th-graders.png" },
-    "dont type this on your computer: up, up, down, down, left, right, left, right, B, A, enter"
+    "dont type this on your keyboard: up, up, down, down, left, right, left, right, B, A, enter"
 ];
 
 const paragraph = document.getElementById('dynamicParagraph');
