@@ -23,14 +23,5 @@
     <script src="register-sw.js"></script>
     <script src="embed.js"></script>1
     <script type="text/javascript" src="/storage/js/background.js"></script>
-    <script>
-    async function regsw(){
-        await navigator.serviceWorker.register("/static/uv-sw.js", {
-            scope: "/static/embed.html",
-        });
-    }
-
-    regsw();
-    </script>
 </body>
 </html>
