@@ -51,7 +51,8 @@
         z-index: 1200;
         border-radius: 10px 10px 0 0;
         justify-content: flex-start;
-        overflow: hidden;
+        overflow-x: auto;
+        overflow-y: hidden;
         max-height: 40px;
         border-bottom: 2px solid rgba(255, 255, 255, 0.3);
         transition: transform 0.3s ease-in-out;
@@ -68,10 +69,11 @@
         transition: background-color 0.3s;
         flex-shrink: 0;
         min-width: 100px;
-        max-width: 200px;
+        max-width: 500px;
         overflow: hidden;
         border-radius: 5px;
         text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .tab.active {
@@ -103,6 +105,25 @@
         outline: none;
         font-size: 20px;
         border-radius: 5px;
+      }
+
+      .tabs::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      .tabs::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+      }
+
+      .tabs::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      .tabs::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.7);
       }
 
       .navbar {
@@ -214,7 +235,8 @@
   </head>
   <body>
     <div class="tabs" id="tabs">
-      <div class="tab active" onclick="selectTab(this)">New Tab <span class="close-button" onclick="closeTab(event)">×</span></div>
+      <div class="tab active" onclick="selectTab(this)">New Tab <span class="close-button" onclick="closeTab(event)">×</span>
+      </div>
       <button class="add-tab-button">+</button>
     </div>
     <div class="navbar" id="navbar">
@@ -269,7 +291,9 @@
         const newTab = document.createElement('div');
         newTab.classList.add('tab');
         newTab.innerHTML = `New Tab 
-                                            <span class="close-button" onclick="closeTab(event)">×</span>`;
+                                            
+											
+											<span class="close-button" onclick="closeTab(event)">×</span>`;
         newTab.addEventListener("click", () => selectTab(newTab));
         tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
         const iframe = document.createElement('iframe');
@@ -295,7 +319,9 @@
           const tab = document.querySelectorAll('.tab')[tabIndex];
           if (tab) {
             tab.innerHTML = `${iframe.contentWindow.document.title || 'New Tab'} 
-                                            <span class="close-button" onclick="closeTab(event)">×</span>`;
+                                            
+											
+											<span class="close-button" onclick="closeTab(event)">×</span>`;
           }
         }, 500);
       }
@@ -304,8 +330,8 @@
         const input = document.getElementById('search-input').value.trim();
         const iframe = document.querySelector('.tab-iframe.active');
         if (input) {
-            const url = input.startsWith('http') ? input : `https://duckduckgo.com/?q=${encodeURIComponent(input)}`;
-            iframe.src = `/static/embed#${url}`;
+          const url = input.startsWith('http') ? input : `https://duckduckgo.com/?q=${encodeURIComponent(input)}`;
+          iframe.src = `/static/embed#${url}`;
         }
       }
 
@@ -346,13 +372,30 @@
         showNavbarBtn.classList.toggle('active');
         hideNavbarBtn.classList.toggle('active');
       }
-
       document.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".add-tab-button").addEventListener("click", addTab);
         document.getElementById("search-input").addEventListener("keydown", (e) => {
           if (e.key === "Enter") search();
         });
       });
+
+      function updateTabName(iframe) {
+        setTimeout(() => {
+          const tabIndex = Array.from(document.querySelectorAll('.tab-iframe')).indexOf(iframe);
+          const tab = document.querySelectorAll('.tab')[tabIndex];
+          if (tab) {
+            const title = iframe.contentWindow.document.title || 'New Tab';
+            tab.innerHTML = `${truncateText(title)} 
+											
+											<span class="close-button" onclick="closeTab(event)">×</span>`;
+          }
+        }, 500);
+      }
+
+      function truncateText(text) {
+        const maxLength = 25;
+        return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
+      }
     </script>
     <script src="/storage/js/prox-settings.js"></script>
     <script src="/storage/js/notify.js"></script>
