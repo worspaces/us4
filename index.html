@@ -38,10 +38,10 @@
 </div>
 
 
-    <div class="game-title blur-content">US4 | Featured</div>
-    <div id="dynamicParagraph" class="games-title blur-content">purple (you shouldnt be seeing this message, pls report to dc)</div>
+    <div class="game-title ">US4 | Featured</div>
+    <div id="dynamicParagraph" class="games-title ">purple (you shouldnt be seeing this message, pls report to dc)</div>
 
-    <div class="game-grid blur-content" id="gameGrid">
+    <div class="game-grid " id="gameGrid">
         <div class="game-button">
             <a href="/pages/iframe2?url=/pages/apps/print3r">
                 <img src="https://raw.githubusercontent.com/Blobby-Boi/ExtPrint3r/refs/heads/main/icon.png" alt="ExtPrint3r">
@@ -91,7 +91,7 @@
             </a>
         </div>
     </div>
-    <div class="update-log-overlay" id="updateLog">
+   <!-- <div class="update-log-overlay" id="updateLog">
         <div class="update-log-content">
             <h2>Update Log</h2>
             <p>Make sure to use link hub - voucan.github.io/link-hub</p>
@@ -102,7 +102,7 @@
             <p>Version 1.76: Made the site look better, adapts to your background color</p>
             <p>Version 1.75: Added customized background colors + Navbar update</p>
         </div>
-    </div>
+    </div> -->
 
     <script>
         const currentVersion = "1.78.2"; 
@@ -111,13 +111,13 @@
             const storedVersion = localStorage.getItem('updateLogVersion');
             if (storedVersion !== currentVersion) {
                 document.getElementById('updateLog').style.display = 'flex';
-                document.querySelectorAll('.blur-content').forEach(function(element) {
-                    element.classList.add('blur-content');
+                document.querySelectorAll('.').forEach(function(element) {
+                    element.classList.add('');
                 });
             } else {
                 document.getElementById('updateLog').style.display = 'none';
-                document.querySelectorAll('.blur-content').forEach(function(element) {
-                    element.classList.remove('blur-content');
+                document.querySelectorAll('.').forEach(function(element) {
+                    element.classList.remove('');
                 });
             }
 
@@ -173,8 +173,8 @@ document.getElementById('updateLog').addEventListener('click', function() {
         document.getElementById('updateLog').style.opacity = '0';
         setTimeout(function() {
             document.getElementById('updateLog').style.display = 'none';
-            document.querySelectorAll('.blur-content').forEach(function(element) {
-                element.classList.remove('blur-content');
+            document.querySelectorAll('.').forEach(function(element) {
+                element.classList.remove('');
             });
         }, 500);
         localStorage.setItem('updateLogVersion', currentVersion);
