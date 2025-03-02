@@ -33,7 +33,7 @@
         </a>
     </div>
 <div class="right-side">
-     <script type="text/javascript" src="/storage/js/nav.js"></script>
+<script src="/storage/js/nav.js" defer></script>
 </div>
 </div>
 
@@ -95,6 +95,7 @@
         <div class="update-log-content">
             <h2>Update Log</h2>
             <p>Make sure to use link hub - voucan.github.io/link-hub</p>
+            <p>Version 1.78.2: More bug fixes, added osu (web)</p>
             <p>Version 1.78.1: Bug Fixes, Removed Boredom V2</p>
             <p>Version 1.78: ImageButtons now grow when you hover, Added Rooftop Snipers</p>
             <p>Version 1.77: Added extprint3r (Extension disabler)</p>
@@ -104,7 +105,7 @@
     </div>
 
     <script>
-        const currentVersion = "1.72"; 
+        const currentVersion = "1.78.2"; 
 
         window.onload = function() {
             const storedVersion = localStorage.getItem('updateLogVersion');
@@ -120,67 +121,67 @@
                 });
             }
 
-        document.getElementById('updateLog').addEventListener('click', function() {
-            if (!localStorage.getItem('firstVisit')) {
-                localStorage.setItem('firstVisit', 'true');
+document.getElementById('updateLog').addEventListener('click', function() {
+    if (!localStorage.getItem('firstVisit')) {
+        localStorage.setItem('firstVisit', 'true');
 
-                const container = document.createElement('div');
-                container.style.position = 'relative';
-                container.style.width = '100%';
-                container.style.height = '100%';
+        const container = document.createElement('div');
+        container.style.position = 'relative';
+        container.style.width = '100%';
+        container.style.height = '100%';
 
-                const closeButton = document.createElement('button');
-                closeButton.textContent = 'X';
-                closeButton.style.position = 'absolute';
-                closeButton.style.top = '10px';
-                closeButton.style.right = '10px';
-                closeButton.style.background = 'black';
-                closeButton.style.color = 'white';
-                closeButton.style.border = 'none';
-                closeButton.style.padding = '5px 10px';
-                closeButton.style.fontSize = '16px';
-                closeButton.style.cursor = 'pointer';
-                closeButton.style.borderRadius = '5px';
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'X';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '10px';
+        closeButton.style.right = '10px';
+        closeButton.style.background = 'black';
+        closeButton.style.color = 'white';
+        closeButton.style.border = 'none';
+        closeButton.style.padding = '5px 10px';
+        closeButton.style.fontSize = '16px';
+        closeButton.style.cursor = 'pointer';
+        closeButton.style.borderRadius = '5px';
 
-                closeButton.addEventListener('click', function() {
-                    container.parentElement.style.display = 'none';
-                });
-
-                const message = document.createElement('div');
-                message.textContent = 'Select Your Site Settings - You can edit this in the settings tab';
-                message.style.textAlign = 'center';
-                message.style.fontFamily = 'Comfortaa, sans-serif';
-                message.style.fontWeight = 'bold';
-                message.style.fontSize = '20px';
-                message.style.marginBottom = '10px';
-
-                const iframe = document.createElement('iframe');
-                iframe.src = '/pages/settings';
-                iframe.style.width = '100%';
-                iframe.style.height = 'calc(100% - 40px)';
-                iframe.style.border = 'none';
-                iframe.style.borderRadius = 'inherit';
-
-                container.appendChild(message);
-                container.appendChild(closeButton);
-                container.appendChild(iframe);
-
-                const updateLog = document.getElementById('updateLog');
-                updateLog.innerHTML = '';
-                updateLog.appendChild(container);
-            } else {
-                document.getElementById('updateLog').style.opacity = '0';
-                setTimeout(function() {
-                    document.getElementById('updateLog').style.display = 'none';
-                    document.querySelectorAll('.blur-content').forEach(function(element) {
-                        element.classList.remove('blur-content');
-                    });
-                }, 500);
-                localStorage.setItem('updateLogVersion', currentVersion);
-            }
+        closeButton.addEventListener('click', function() {
+            container.parentElement.style.display = 'none';
         });
+
+        const message = document.createElement('div');
+        message.textContent = 'Select Your Site Settings - You can edit this in the settings tab';
+        message.style.textAlign = 'center';
+        message.style.fontFamily = 'Comfortaa, sans-serif';
+        message.style.fontWeight = 'bold';
+        message.style.fontSize = '20px';
+        message.style.marginBottom = '10px';
+
+        const iframe = document.createElement('iframe');
+        iframe.src = '/pages/settings';
+        iframe.style.width = '100%';
+        iframe.style.height = 'calc(100% - 40px)';
+        iframe.style.border = 'none';
+        iframe.style.borderRadius = 'inherit';
+
+        container.appendChild(message);
+        container.appendChild(closeButton);
+        container.appendChild(iframe);
+
+        const updateLog = document.getElementById('updateLog');
+        updateLog.innerHTML = '';
+        updateLog.appendChild(container);
+    } else {
+        document.getElementById('updateLog').style.opacity = '0';
+        setTimeout(function() {
+            document.getElementById('updateLog').style.display = 'none';
+            document.querySelectorAll('.blur-content').forEach(function(element) {
+                element.classList.remove('blur-content');
+            });
+        }, 500);
+        localStorage.setItem('updateLogVersion', currentVersion);
+    }
+});
     </script>
-    <script src="/storage/js/messages.js"></script>
+    <script src="/storage/js/messages.js" defer></script>
     <script type="text/javascript" src="storage/js/settings-1.js"></script>
     <script type="text/javascript" src="storage/js/notify.js"></script>
     <script type="text/javascript" src="/storage/js/background.js"></script>
