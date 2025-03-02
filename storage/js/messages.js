@@ -1,6 +1,8 @@
         const phrases = [
-            "hi guys",
-            "cheese"
+                "hi guys",
+                "cheese",
+                { type: "image", src: "https://i.ibb.co/v6xfHBB5/7th-graders.png" },
+        
         ];
 
         const paragraph = document.getElementById('dynamicParagraph');
