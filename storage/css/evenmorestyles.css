@@ -81,7 +81,7 @@ h1 {
 
 .search-bar-home:focus {
     background-color: rgba(0, 0, 0, 0.7);
-    border-color: #FFD700;
+    border-color: white;
 }
 
 #search-button {
