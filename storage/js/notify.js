@@ -49,7 +49,7 @@ function createNotification(message) {
     topBar.style.top = '0';
     topBar.style.left = '0';
     topBar.style.height = '4px';
-    topBar.style.backgroundColor = 'blue';
+    topBar.style.backgroundColor = '#444';
     topBar.style.width = '100%';
     topBar.style.transition = 'width 5s linear';
 
@@ -69,5 +69,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('w concert 2/27, chamber was cool');
+    createNotification('Added Image to Text convertor (AI) - tesseract.js');
 };
