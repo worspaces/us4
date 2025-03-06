@@ -49,7 +49,7 @@ function createNotification(message) {
     topBar.style.top = '0';
     topBar.style.left = '0';
     topBar.style.height = '4px';
-    topBar.style.backgroundColor = '#444';
+    topBar.style.backgroundColor = '#111';
     topBar.style.width = '100%';
     topBar.style.transition = 'width 5s linear';
 
