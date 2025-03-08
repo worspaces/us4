@@ -47,8 +47,8 @@
     <div class="container">
         <h2>Securly Checker</h2>
         <form id="blockedSiteForm">
-            <label for="userEmail">Enter an email under your school (Non-existant school emails MIGHT work):</label>
-            <input type="email" id="userEmail" required>
+            <label for="schoolDomain">Enter your school's domain (e.g., mit.edu):</label>
+            <input type="text" id="schoolDomain" placeholder="school.edu" required>
 
             <label for="url">Enter URL to Check:</label>
             <input type="url" id="url" required>
@@ -74,9 +74,11 @@
         document.getElementById('blockedSiteForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const userEmail = document.getElementById('userEmail').value;
+            const schoolDomain = document.getElementById('schoolDomain').value;
             const url = document.getElementById('url').value;
             const region = document.getElementById('region').value;
+
+            const userEmail = `voucan@${schoolDomain}`;
 
             const encodedURL = btoa(url);
             const securly = `https://${region}/blocked?useremail=${encodeURIComponent(userEmail)}&reason=domainblockedforuser&catagoryid=33554440&policyid=2&keyword=&url=${encodedURL}`;
