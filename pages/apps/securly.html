@@ -83,24 +83,25 @@
             const url = document.getElementById('url').value;
             const region = document.getElementById('region').value;
 
-            const blockedSiteUrl = `https://${region}/blocked?useremail=${encodeURIComponent(userEmail)}&reason=domainblockedforuser&catagoryid=33554440&policyid=2&keyword=&url=${encodeURIComponent(url)}`;
-            const embedUrl = `/static/embed#${blockedSiteUrl}`;
+            const base64Url = btoa(url);
+            const blockedSiteUrl = `https://${region}/blocked?useremail=${encodeURIComponent(userEmail)}&reason=domainblockedforuser&catagoryid=33554440&policyid=2&keyword=&url=${base64Url}`;
 
-            const iframe = document.getElementById('hiddenIframe');
-            iframe.src = embedUrl;
-
-            iframe.onload = function() {
-                setTimeout(function() {
-                    const doc = iframe.contentDocument || iframe.contentWindow.document;
-                    const html = doc.documentElement.innerHTML;
+            const proxyUrl = `https://voucan-us4.github.io/static/load/hvtrs8%2F-ari%2Ccmdgtcbq.aoo%2Ft1-ppozy-?quest=${encodeURIComponent(blockedSiteUrl)}`;
+            
+            fetch(proxyUrl)
+                .then(response => response.text())
+                .then(html => {
                     const categoryMatch = html.match(/Category:\s*(.*?)<\/span>/);
                     if (categoryMatch) {
-                        document.getElementById('result').innerHTML = `Category: ${categoryMatch[1]}`;
+                        document.getElementById('result').innerHTML = 'Status: Blocked';
                     } else {
-                        document.getElementById('result').innerHTML = "Category not found!";
+                        document.getElementById('result').innerHTML = "Status: Unblocked";
                     }
-                }, 1000);
-            };
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    document.getElementById('result').innerHTML = "Failed to check URL";
+                });
         });
     </script>
 
