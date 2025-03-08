@@ -48,9 +48,9 @@
 <body>
 
     <div class="container">
-        <h2>Blocked Site Checker</h2>
+        <h2>Securly Checker</h2>
         <form id="blockedSiteForm">
-            <label for="userEmail">Enter your Email:</label>
+            <label for="userEmail">Enter your school Email:</label>
             <input type="email" id="userEmail" required>
 
             <label for="url">Enter URL to Check:</label>
@@ -83,10 +83,10 @@
             const url = document.getElementById('url').value;
             const region = document.getElementById('region').value;
 
-            const base64Url = btoa(url);
-            const blockedSiteUrl = `https://${region}/blocked?useremail=${encodeURIComponent(userEmail)}&reason=domainblockedforuser&catagoryid=33554440&policyid=2&keyword=&url=${base64Url}`;
+            const encodedURL = btoa(url);
+            const securly = `https://${region}/blocked?useremail=${encodeURIComponent(userEmail)}&reason=domainblockedforuser&catagoryid=33554440&policyid=2&keyword=&url=${encodedURL}`;
 
-            const proxyUrl = `https://voucan-us4.github.io/static/load/hvtrs8%2F-ari%2Ccmdgtcbq.aoo%2Ft1-ppozy-?quest=${encodeURIComponent(blockedSiteUrl)}`;
+            const proxyUrl = `https://voucan-us4.github.io/static/load/hvtrs8%2F-ari%2Ccmdgtcbq.aoo%2Ft1-ppozy-?quest=${encodeURIComponent(securly)}`;
             
             fetch(proxyUrl)
                 .then(response => response.text())
