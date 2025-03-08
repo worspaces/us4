@@ -86,8 +86,7 @@
             fetch(proxyUrl)
                 .then(response => response.text())
                 .then(html => {
-                    const categoryMatch = html.match(/Category:\s*(.*?)<\/span>/);
-                    if (categoryMatch) {
+                    if (html.includes('Category:')) {
                         document.getElementById('result').innerHTML = 'Status: Blocked';
                     } else {
                         document.getElementById('result').innerHTML = "Status: Unblocked";
