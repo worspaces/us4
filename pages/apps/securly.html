@@ -83,19 +83,25 @@
 
             const proxyUrl = `/static/load/hvtrs8%2F-ari%2Ccmdgtcbq.aoo%2Ft1-ppozy-?quest=${encodeURIComponent(securly)}`;
 
-            fetch(proxyUrl)
-                .then(response => response.text())
-                .then(html => {
-                    if (html.includes('<div class="details"><span>Category: </span>')) {
-                        document.getElementById('result').innerHTML = 'Status: Blocked';
-                    } else {
-                        document.getElementById('result').innerHTML = "Status: Unblocked";
-                    }
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                    document.getElementById('result').innerHTML = "Failed to check URL.";
-                });
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = proxyUrl;
+            document.body.appendChild(iframe);
+
+            iframe.onload = function() {
+                const doc = iframe.contentWindow.document.body.textContent || iframe.contentWindow.document.body.innerText;
+                if (doc.includes('Category:')) {
+                    document.getElementById('result').innerHTML = 'Status: Blocked';
+                } else {
+                    document.getElementById('result').innerHTML = "Status: Unblocked";
+                }
+                document.body.removeChild(iframe);
+            };
+
+            iframe.onerror = function() {
+                document.getElementById('result').innerHTML = "Failed to check URL.";
+                document.body.removeChild(iframe);
+            };
         });
     </script>
 
