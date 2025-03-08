@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             { role: "system", content: "You are a helpful AI assistant." },
                             ...messageHistory.slice(-10)
                         ],
-                        temperature: 0.9,
+                        temperature: 1,
                         max_tokens: 1024,
                         stream: false
                     })
