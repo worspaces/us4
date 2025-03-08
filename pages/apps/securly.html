@@ -81,12 +81,12 @@
             const encodedURL = btoa(url);
             const securly = `https://${region}/blocked?useremail=${encodeURIComponent(userEmail)}&reason=domainblockedforuser&catagoryid=33554440&policyid=2&keyword=&url=${encodedURL}`;
 
-            const proxyUrl = `https://voucan-us4.github.io/static/load/hvtrs8%2F-ari%2Ccmdgtcbq.aoo%2Ft1-ppozy-?quest=${encodeURIComponent(securly)}`;
+            const proxyUrl = `/static/load/hvtrs8%2F-ari%2Ccmdgtcbq.aoo%2Ft1-ppozy-?quest=${encodeURIComponent(securly)}`;
 
             fetch(proxyUrl)
                 .then(response => response.text())
                 .then(html => {
-                    if (html.includes('Category:')) {
+                    if (html.includes('<div class="details"><span>Category: </span>')) {
                         document.getElementById('result').innerHTML = 'Status: Blocked';
                     } else {
                         document.getElementById('result').innerHTML = "Status: Unblocked";
