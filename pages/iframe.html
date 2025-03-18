@@ -118,7 +118,7 @@ function saveData() {
 function proxyFrame() {
     const iframe = document.getElementById('game-frame');
     const url = getUrlParameter('url');
-    iframe.src = "/static/embed#${url}";
+    iframe.src = `/static/embed#${url}`
 }
 </script>
 
