@@ -35,6 +35,8 @@
         <button onclick="AI()"><i class="fa-solid fa-robot"></i></button>
         <button onclick="openInAboutBlank()"><i class="fa-solid fa-up-right-from-square"></i></button>
         <button onclick="saveData()"><i class="fa-solid fa-file-arrow-down"></i></button>
+        <!-- New Button with Globe Icon -->
+        <button onclick="proxyFrame()"><i class="fas fa-globe"></i></button>
     </div>
 </div>
 
@@ -112,28 +114,34 @@ function saveData() {
     newTab.document.body.style.margin = '0';
     newTab.document.body.appendChild(iframe);
 }
+
+function proxyFrame() {
+    const iframe = document.getElementById('game-frame');
+    const url = getUrlParameter('url');
+    iframe.src = "/static/embed#${url}";
+}
 </script>
 
 <script type="text/javascript" src="/storage/js/settings-1.js"></script>
 <script type="text/javascript" src="/storage/js/notify.js"></script>
-    <script type="text/javascript" src="/storage/js/cheese-algorithm"></script>
+<script type="text/javascript" src="/storage/js/cheese-algorithm"></script>
 
 <!-- Ultraviolet -->
-    <script src="/static/uv/uv.bundle.js" defer></script>
-    <script src="/static/uv/uv.config.js" defer></script>
-    <script src="/static/register-sw.js" defer></script>
-    <script src="/static/search.js" defer></script>
-    <script src="/static/index.js" defer></script>
+<script src="/static/uv/uv.bundle.js" defer></script>
+<script src="/static/uv/uv.config.js" defer></script>
+<script src="/static/register-sw.js" defer></script>
+<script src="/static/search.js" defer></script>
+<script src="/static/index.js" defer></script>
 
-    <script>
-    async function regsw(){
-        await navigator.serviceWorker.register("/static/uv-sw.js", {
-            scope: "/static/",
-        });
-    }
+<script>
+async function regsw(){
+    await navigator.serviceWorker.register("/static/uv-sw.js", {
+        scope: "/static/",
+    });
+}
 
-    regsw();
-    </script>
+regsw();
+</script>
 <!-- Ultraviolet -->
 
 </body>
