@@ -46,7 +46,7 @@ window.addEventListener("load", function () {
         maxWidth: "80%",
         opacity: "0.8"
     });
-    tipText.textContent = "(If your game does not load correctly, try using the site outside of about:blank. If that doesn't work, contact me on Discord - @voucan)";
+    tipText.textContent = "If your game does not work, try click the globe icon on the gamebar.";
 
     const progressBarContainer = document.createElement("div");
     Object.assign(progressBarContainer.style, {
