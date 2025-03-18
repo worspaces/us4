@@ -46,7 +46,7 @@ window.addEventListener("load", function () {
         maxWidth: "80%",
         opacity: "0.8"
     });
-    tipText.textContent = "If your game does not work, try click the globe icon on the gamebar.";
+    tipText.textContent = "Want to suggest a game? Join our discord!";
 
     const progressBarContainer = document.createElement("div");
     Object.assign(progressBarContainer.style, {
