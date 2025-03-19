@@ -13,7 +13,7 @@
     document.body.appendChild(openingScreen);
 
     setTimeout(() => {
-        openingScreen.classList.add("shrink");
+        openingScreen.style.animation = "shrinkScreen 0.8s ease-in-out forwards";
 
         setTimeout(() => {
             registerSW()
