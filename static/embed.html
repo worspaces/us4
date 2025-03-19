@@ -7,23 +7,31 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap">
     <link rel="stylesheet" href="../storage/css/static-embed.css">
     <style>
-        #openingScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            animation: shrinkScreen 0.8s ease-in-out forwards;
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
         }
 
-        @keyframes shrinkScreen {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(0); opacity: 0; }
+        #screenEffect {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            width: 100vw;
+            height: 2px;
+            background: white;
+            z-index: 9999;
+            transition: height 0.5s ease-in-out, top 0.5s ease-in-out;
+        }
+
+        .expand {
+            height: 100vh;
+            top: 0;
+        }
+
+        .split {
+            height: 0;
+            top: 50%;
         }
     </style>
 </head>
