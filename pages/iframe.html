@@ -129,7 +129,8 @@ function help() {
 function proxyFrame() {
     const iframe = document.getElementById('game-frame');
     const url = getUrlParameter('url');
-    iframe.src = `/static/embed#${url}`
+    const base = 'https://voucan-us4.github.io';
+    iframe.src = `/static/embed#${base}${url}`
 }
 </script>
 
