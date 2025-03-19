@@ -18,11 +18,12 @@
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: transform 0.8s ease-in-out;
+            animation: shrinkScreen 0.8s ease-in-out forwards;
         }
 
-        .shrink {
-            transform: scale(0);
+        @keyframes shrinkScreen {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
         }
     </style>
 </head>
