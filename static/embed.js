@@ -8,23 +8,28 @@
         throw err;
     }
 
-    const openingScreen = document.createElement("div");
-    openingScreen.id = "openingScreen";
-    document.body.appendChild(openingScreen);
+    const screenEffect = document.createElement("div");
+    screenEffect.id = "screenEffect";
+    document.body.appendChild(screenEffect);
 
     setTimeout(() => {
-        openingScreen.style.animation = "shrinkScreen 0.8s ease-in-out forwards";
+        screenEffect.classList.add("expand");
 
         setTimeout(() => {
             registerSW()
                 .then(() => {
-                    window.open(
+                    const newWindow = window.open(
                         __uv$config.prefix + __uv$config.encodeUrl(destination),
                         "_self"
                     );
+
+                    newWindow.onload = () => {
+                        screenEffect.classList.add("split");
+                        setTimeout(() => screenEffect.remove(), 500);
+                    };
                 })
                 .catch((err) => {
                     alert(`Encountered error:\n${err}`);
                 });
-        }, 800);
+        }, 500);
     }, 200);
