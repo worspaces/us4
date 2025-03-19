@@ -111,12 +111,12 @@
         window.onload = function() {
             const storedVersion = localStorage.getItem('updateLogVersion');
             if (storedVersion !== currentVersion) {
-                document.getElementById('updateLog').style.display = 'flex';
+                document.getElementById('update-log-content').style.display = 'flex';
                 document.querySelectorAll('.blur-content').forEach(function(element) {
                     element.classList.add('blur-content');
                 });
             } else {
-                document.getElementById('updateLog').style.display = 'none';
+                document.getElementById('update-log-content').style.display = 'none';
                 document.querySelectorAll('.blur-content').forEach(function(element) {
                     element.classList.remove('blur-content');
                 });
