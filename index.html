@@ -91,10 +91,11 @@
             </a>
         </div>
     </div>
-   <!-- <div class="update-log-overlay" id="updateLog">
+     <div class="update-log-overlay" id="updateLog">
         <div class="update-log-content">
             <h2>Update Log</h2>
             <p>Make sure to use link hub - voucan.github.io/link-hub</p>
+            <p>Version 1.8: Bug Fixes, Gamebar update</p>
             <p>Version 1.78.2: More bug fixes, added osu (web)</p>
             <p>Version 1.78.1: Bug Fixes, Removed Boredom V2</p>
             <p>Version 1.78: ImageButtons now grow when you hover, Added Rooftop Snipers</p>
@@ -102,24 +103,28 @@
             <p>Version 1.76: Made the site look better, adapts to your background color</p>
             <p>Version 1.75: Added customized background colors + Navbar update</p>
         </div>
-    </div> -->
+    </div>
 
     <script>
-        const currentVersion = "1.78.2"; 
+        const currentVersion = "1.8"; 
 
         window.onload = function() {
             const storedVersion = localStorage.getItem('updateLogVersion');
             if (storedVersion !== currentVersion) {
                 document.getElementById('updateLog').style.display = 'flex';
-                document.querySelectorAll('.').forEach(function(element) {
-                    element.classList.add('');
+                document.querySelectorAll('.blur-content').forEach(function(element) {
+                    element.classList.add('blur-content');
                 });
             } else {
                 document.getElementById('updateLog').style.display = 'none';
-                document.querySelectorAll('.').forEach(function(element) {
-                    element.classList.remove('');
+                document.querySelectorAll('.blur-content').forEach(function(element) {
+                    element.classList.remove('blur-content');
                 });
             }
+
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('randomMessage').textContent = randomMessage;
+        };
 
 document.getElementById('updateLog').addEventListener('click', function() {
     if (!localStorage.getItem('firstVisit')) {
@@ -173,8 +178,8 @@ document.getElementById('updateLog').addEventListener('click', function() {
         document.getElementById('updateLog').style.opacity = '0';
         setTimeout(function() {
             document.getElementById('updateLog').style.display = 'none';
-            document.querySelectorAll('.').forEach(function(element) {
-                element.classList.remove('');
+            document.querySelectorAll('.blur-content').forEach(function(element) {
+                element.classList.remove('blur-content');
             });
         }, 500);
         localStorage.setItem('updateLogVersion', currentVersion);
