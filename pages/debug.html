@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:title" content="US4 | Iframe2">
+    <meta property="og:description" content="Fullscreen embed for US4">
+    <meta property="og:image" content="/storage/images/logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="/storage/images/googleclassroom.png" type="image/png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="/storage/css/iframe2.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <div class="content">
+        <iframe id="game-frame" class="game-iframe" allowfullscreen></iframe>
+    </div>
+</div>
+
+<script>
+function getUrlParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+// Prevent background.js from changing the body after iframe is loaded
+setTimeout(function() {
+    const iframe = document.getElementById('game-frame');
+    const url = getUrlParameter('url') || '/';
+    iframe.src = url;
+}, 100);
+
+function refreshGame() {
+    const iframe = document.getElementById('game-frame');
+    iframe.src = iframe.src;
+}
+
+function toggleFullscreen() {
+    const iframe = document.getElementById('game-frame');
+    if (!document.fullscreenElement) {
+        iframe.requestFullscreen().catch(err => {
+            alert(`Error attempting to enable fullscreen mode: ${err.message}`);
+        });
+    } else {
+        document.exitFullscreen();
+    }
+}
+
+function DiscordBM() {
+    window.location.href = "javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3';s.async=true;s.defer=true;document.body.appendChild(s);s.onload=function(){new Crate({server:'1157125685178007672',channel:'1210407964586807376'})}})();";
+}
+
+function AI() {
+    window.location.href = "javascript: (function() { fetch('https://voucan-us4.github.io/ai/bookmarklet.js') .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); }) .then(scriptText => eval(scriptText)) .catch(error => console.error('Error fetching or executing the script:', error)); })();";
+}
+
+function openInAboutBlank() {
+    const siteTitle = localStorage.getItem('siteTitle') || "Home";
+    const siteLogo = localStorage.getItem('siteLogo') || "https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png";
+
+    const newTab = window.open('about:blank', '_blank');
+
+    if (newTab) {
+        newTab.document.title = siteTitle;
+
+        const favicon = newTab.document.createElement('link');
+        favicon.rel = 'icon';
+        favicon.href = siteLogo;
+        newTab.document.head.appendChild(favicon);
+
+        const iframe = newTab.document.createElement('iframe');
+        iframe.src = document.getElementById('game-frame').src;
+        iframe.style.width = '100vw';
+        iframe.style.height = '100vh';
+        iframe.style.border = 'none';
+
+        newTab.document.body.style.margin = '0';
+        newTab.document.body.appendChild(iframe);
+    } else {
+        console.error("Failed to open About:Blank page.");
+    }
+}
+
+function saveData() {
+    const newTab = window.open('about:blank', '_blank');
+    const iframe = document.createElement('iframe');
+    iframe.src = '/pages/data';
+    iframe.style.width = '100vw';
+    iframe.style.height = '100vh';
+    iframe.style.border = 'none';
+    newTab.document.body.style.margin = '0';
+    newTab.document.body.appendChild(iframe);
+}
+</script>
+<script src="/storage/js/settings-1.js"></script>
+<script type="text/javascript" src="/storage/js/notify.js"></script>
+    <script type="text/javascript" src="/storage/js/cheese-algorithm.js"></script>
+
+<!-- Ultraviolet -->
+    <script src="/static/uv/uv.bundle.js" defer></script>
+    <script src="/static/uv/uv.config.js" defer></script>
+    <script src="/static/register-sw.js" defer></script>
+    <script src="/static/search.js" defer></script>
+    <script src="/static/index.js" defer></script>
+
+    <script>
+    async function regsw(){
+        await navigator.serviceWorker.register("/static/uv-sw.js", {
+            scope: "/static/",
+        });
+    }
+
+    regsw();
+    </script>
+<!-- Ultraviolet -->
+
+<script>
+javascript:(function() {
+    let statsBox = document.createElement('div');
+    statsBox.id = 'stats-display';
+    statsBox.style.position = 'fixed';
+    statsBox.style.top = '15px';
+    statsBox.style.left = '15px';
+    statsBox.style.background = 'rgba(25, 25, 25, 0.8)';
+    statsBox.style.color = '#009dff';
+    statsBox.style.padding = '14px';
+    statsBox.style.borderRadius = '12px';
+    statsBox.style.fontSize = '16px';
+    statsBox.style.pointerEvents = 'none';
+    statsBox.style.fontFamily = 'Arial, sans-serif';
+    statsBox.style.boxShadow = '0 0 10px rgba(0, 157, 255, 0.7)';
+	statsBox.style.zIndex = '999999';
+    document.body.appendChild(statsBox);
+
+    let toggleButton = document.createElement('button');
+    toggleButton.id = 'toggle-graphs';
+    toggleButton.innerText = 'Show More';
+    toggleButton.style.position = 'fixed';
+    toggleButton.style.top = '70px';
+    toggleButton.style.left = '15px';
+    toggleButton.style.padding = '8px 16px';
+    toggleButton.style.background = 'rgba(25, 25, 25, 0.8)';
+    toggleButton.style.color = '#009dff';
+    toggleButton.style.border = '1px solid #009dff';
+    toggleButton.style.cursor = 'pointer';
+    toggleButton.style.borderRadius = '8px';
+    toggleButton.style.transition = 'background 0.3s, color 0.3s';
+    toggleButton.style.fontSize = '14px';
+    toggleButton.style.fontWeight = 'bold';
+    toggleButton.onmouseenter = () => toggleButton.style.background = '#009dff';
+    toggleButton.onmouseleave = () => toggleButton.style.background = '#222';
+    toggleButton.onmouseenter = () => toggleButton.style.color = '#222';
+    toggleButton.onmouseleave = () => toggleButton.style.color = '#009dff';
+	toggleButton.style.boxShadow = '0 0 10px rgba(0, 157, 255, 0.7)';
+	toggleButton.style.zIndex = '999999';
+    toggleButton.onclick = function() {
+        if (chartBox.style.display === 'none') {
+            chartBox.style.display = 'block';
+            toggleButton.innerText = 'Hide';
+        } else {
+            chartBox.style.display = 'none';
+            toggleButton.innerText = 'Show More';
+        }
+    };
+    document.body.appendChild(toggleButton);
+
+    let chartBox = document.createElement('div');
+    chartBox.id = 'chart-container';
+    chartBox.style.position = 'fixed';
+    chartBox.style.top = '15px';
+    chartBox.style.right = '15px';
+    chartBox.style.background = 'rgba(20, 20, 20, 0.9)';
+    chartBox.style.padding = '10px';
+    chartBox.style.borderRadius = '8px';
+    chartBox.style.boxShadow = '0 0 15px rgba(0, 157, 255, 0.5)';
+    chartBox.style.display = 'none';
+	chartBox.style.zIndex = '999999';
+    document.body.appendChild(chartBox);
+
+    let fpsCanvas = document.createElement('canvas');
+    fpsCanvas.id = 'fps-chart';
+    fpsCanvas.width = 300;
+    fpsCanvas.height = 100;
+    chartBox.appendChild(fpsCanvas);
+    
+    let cpuCanvas = document.createElement('canvas');
+    cpuCanvas.id = 'cpu-chart';
+    cpuCanvas.width = 300;
+    cpuCanvas.height = 100;
+    chartBox.appendChild(cpuCanvas);
+
+    let prevFrameTime = performance.now();
+    let fpsCtx = fpsCanvas.getContext('2d');
+    let cpuCtx = cpuCanvas.getContext('2d');
+    let fpsLog = [];
+    let cpuLog = [];
+    const logLimit = 100;
+
+    function refreshStats() {
+        const now = performance.now();
+        const fpsValue = Math.round(1000 / (now - prevFrameTime));
+        prevFrameTime = now;
+
+        let cpuLoad = 0;
+        if (performance.memory) {
+            cpuLoad = Math.round((performance.memory.usedJSHeapSize / performance.memory.totalJSHeapSize) * 100);
+        }
+
+        statsBox.textContent = `FPS: ${fpsValue} | CPU: ${cpuLoad}%`;
+        fpsLog.push(fpsValue);
+        cpuLog.push(cpuLoad);
+        if (fpsLog.length > logLimit) fpsLog.shift();
+        if (cpuLog.length > logLimit) cpuLog.shift();
+
+        renderChart(fpsCtx, fpsLog, 'FPS');
+        renderChart(cpuCtx, cpuLog, 'CPU%');
+        requestAnimationFrame(refreshStats);
+    }
+
+    function renderChart(ctx, data, label) {
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.strokeStyle = 'rgba(200, 200, 200, 0.3)';
+        
+        for (let i = 0; i < ctx.canvas.width; i += 30) {
+            ctx.beginPath();
+            ctx.moveTo(i, 0);
+            ctx.lineTo(i, ctx.canvas.height);
+            ctx.stroke();
+        }
+
+        ctx.beginPath();
+        ctx.strokeStyle = '#009dff';
+        ctx.moveTo(0, ctx.canvas.height - data[0]);
+
+        for (let i = 1; i < data.length; i++) {
+            const x = (i / logLimit) * ctx.canvas.width;
+            const y = ctx.canvas.height - data[i];
+            ctx.lineTo(x, y);
+        }
+
+        ctx.stroke();
+        ctx.fillStyle = 'white';
+        ctx.fillText(label, 10, 20);
+    }
+
+    refreshStats();
+})();
+</script>
+
+</body>
+</html>
