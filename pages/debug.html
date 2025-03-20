@@ -215,7 +215,7 @@ javascript:(function() {
         if (cpuLog.length > logLimit) cpuLog.shift();
 
         renderChart(fpsCtx, fpsLog, 'FPS');
-        renderChart(cpuCtx, cpuLog, 'CPU%');
+        renderChart(cpuCtx, cpuLog, 'CPU (%)');
         requestAnimationFrame(refreshStats);
     }
 
