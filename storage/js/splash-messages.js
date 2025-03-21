@@ -8,8 +8,8 @@ const phrases = [
     `shoutout to @literalaj on yt`,
     `im in your walls`,
     `"play the strongest battlegrounds" - literalaj`,
-    { extra: 'loop', width: '200px', type: "video", src: `https://media.tenor.com/SIpmtvnEsDIAAAPo/rotating-chips.mp4` },
-    `jackson is batman`,
+    { other: 'loop', width: '200px', type: "video", src: `https://media.tenor.com/SIpmtvnEsDIAAAPo/rotating-chips.mp4` },
+    `jackson is batman`
 ];
 
 const paragraph = document.getElementById('dynamicParagraph');
@@ -22,7 +22,7 @@ function changeText() {
     } else if (randomPhrase.type === "image") {
         paragraph.innerHTML = `<img src="${randomPhrase.src}" alt="Splash Image" style="max-width: ${randomPhrase.width};">`;
     } else if (randomPhrase.type === "video") {
-        paragraph.innerHTML = `<video ${randomPhrase.extra} autoplay style="max-width: ${randomPhrase.width}; height: auto;"> <source src="${randomPhrase.src}" type="video/mp4"> </video>`;
+        paragraph.innerHTML = `<video ${randomPhrase.other} autoplay style="max-width: ${randomPhrase.width}; height: auto;"> <source src="${randomPhrase.src}" type="video/mp4"> </video>`;
     }
 }
 
