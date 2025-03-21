@@ -21,7 +21,7 @@ function changeText() {
     } else if (randomPhrase.type === "image") {
         paragraph.innerHTML = `<img src="${randomPhrase.src}" alt="Splash Image" style="max-width: 100%;">`;
     } else if (randomPhrase.type === "video") {
-        paragraph.innerHTML = `<video controls style="max-width: 100%; height: auto;"> <source src="${randomPhrase.src}" type="video/mp4"> </video>`;
+        paragraph.innerHTML = `<video controls autoplay style="max-width: 200px; height: auto;"> <source src="${randomPhrase.src}" type="video/mp4"> </video>`;
     }
 }
 
