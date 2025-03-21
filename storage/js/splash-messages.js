@@ -8,7 +8,7 @@ const phrases = [
     `shoutout to @literalaj on yt`,
     `im in your walls`,
     `"play the strongest battlegrounds" - literalaj`,
-    { width: '200px', type: "video", src: `https://media.tenor.com/SIpmtvnEsDIAAAPo/rotating-chips.mp4` },
+    { extra: 'loop', width: '200px', type: "video", src: `https://media.tenor.com/SIpmtvnEsDIAAAPo/rotating-chips.mp4` },
     `jackson is batman`,
 ];
 
@@ -22,7 +22,7 @@ function changeText() {
     } else if (randomPhrase.type === "image") {
         paragraph.innerHTML = `<img src="${randomPhrase.src}" alt="Splash Image" style="max-width: 100%;">`;
     } else if (randomPhrase.type === "video") {
-        paragraph.innerHTML = `<video controls loop autoplay style="max-width: ${randomPhrase.width}; height: auto;"> <source src="${randomPhrase.src}" type="video/mp4"> </video>`;
+        paragraph.innerHTML = `<video ${randomPhrase.extra} autoplay style="max-width: ${randomPhrase.width}; height: auto;"> <source src="${randomPhrase.src}" type="video/mp4"> </video>`;
     }
 }
 
