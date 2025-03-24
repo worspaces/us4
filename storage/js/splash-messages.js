@@ -9,7 +9,8 @@ const phrases = [
     `im in your walls`,
     `"play the strongest battlegrounds" - literalaj`,
     { other: 'loop', width: '200px', type: "video", src: `https://media.tenor.com/SIpmtvnEsDIAAAPo/rotating-chips.mp4` },
-    `jackson is batman`
+    `jackson is batman`,
+    `jacob is the WORST violin. Make sure to bully him`
 ];
 
 const paragraph = document.getElementById('dynamicParagraph');
