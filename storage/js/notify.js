@@ -69,5 +69,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('Added Image to Text convertor (AI) - tesseract.js');
+    createNotification('guys if you know who i am, go to the orchestra room, and put a random note in the 23rd cubby');
 };
