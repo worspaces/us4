@@ -69,5 +69,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('guys if you know who i am, go to the orchestra room, and put a random note in the 23rd cubby');
+    createNotification('my bad, i meant 26th cubby not 23rd, room 123 btw');
 };
