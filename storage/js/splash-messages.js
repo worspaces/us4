@@ -10,7 +10,7 @@ const phrases = [
     `"play the strongest battlegrounds" - literalaj`,
     { other: 'loop', width: '200px', type: "video", src: `https://media.tenor.com/SIpmtvnEsDIAAAPo/rotating-chips.mp4` },
     `jackson is batman`,
-    `jacob is the WORST violin. Make sure to bully him`
+    `jacob is the WORST violin. Make sure to bully him (8th grade violin, probably 400 pounds tbh)`
 ];
 
 const paragraph = document.getElementById('dynamicParagraph');
