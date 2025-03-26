@@ -69,5 +69,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('my bad, i meant 26th cubby not 23rd, room 123 btw');
+    createNotification('hi 2477');
 };
