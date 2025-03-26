@@ -69,5 +69,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('hi 2477');
+    createNotification('i might quit us4, kind of boring to make now');
 };
