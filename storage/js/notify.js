@@ -69,5 +69,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('Jaxon I see U');
+    createNotification('imagine being named after brie cheese, but its just spelt different');
 };
