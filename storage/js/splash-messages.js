@@ -12,7 +12,7 @@ const phrases = [
     `jackson is batman`,
     `jacob is the WORST violin. Make sure to bully him (8th grade violin, probably 400 pounds tbh)`,
     `Jaxon I see U`,
-    { type: "image", width: '50%', src: `https://c.tenor.com/9MVlipGuNioAAAAC/tenor.gif` },
+    { type: "image", width: '400px', src: `https://c.tenor.com/9MVlipGuNioAAAAC/tenor.gif` },
 ];
 
 const paragraph = document.getElementById('dynamicParagraph');
