@@ -11,7 +11,8 @@ const phrases = [
     { other: 'loop', width: '200px', type: "video", src: `https://media.tenor.com/SIpmtvnEsDIAAAPo/rotating-chips.mp4` },
     `jackson is batman`,
     `jacob is the WORST violin. Make sure to bully him (8th grade violin, probably 400 pounds tbh)`,
-    `Jaxon I see U`
+    `Jaxon I see U`,
+    { type: "image", width: '100%', src: `https://c.tenor.com/9MVlipGuNioAAAAC/tenor.gif` },
 ];
 
 const paragraph = document.getElementById('dynamicParagraph');
