@@ -54,5 +54,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('imagine being named after brie cheese, but its just spelt different');
+    createNotification('people at my school, first person to put 1 pound of brie cheese in the 26th cubby (rm 123) gets legal rights to jacob');
 };
