@@ -54,5 +54,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('people at my school, first person to put 1 pound of brie cheese in the 26th cubby (rm 123) gets legal rights to jacob');
+    createNotification('one');
 };
