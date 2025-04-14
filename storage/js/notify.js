@@ -54,5 +54,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('one');
+    createNotification('Added Fairy Tail VS One Piece and Flood Runner 2');
 };
