@@ -54,5 +54,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('new links: https://hi-sw.global.ssl.fastly.net and https://earthquake.global.ssl.fastly.net')
+    createNotification('btw the hi-(letters) are actually peoples initials, js an easy way to make up link names')
 };
