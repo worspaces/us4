@@ -54,5 +54,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('state tests make me depressed')
+    createNotification('new links: https://hi-sw.global.ssl.fastly.net and https://earthquake.global.ssl.fastly.net')
 };
