@@ -54,5 +54,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('Added Fairy Tail VS One Piece, Flood Runner 2, Blooket Bot, and more!.')
+    createNotification('state tests make me depressed')
 };
