@@ -54,5 +54,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('btw the hi-(letters) are actually peoples initials, js an easy way to make up link names')
+    createNotification('Added WebGL Fluid Simulator (Apps)')
 };
