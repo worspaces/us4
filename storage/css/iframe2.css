@@ -1,19 +1,17 @@
 body {
   font-family: Arial, sans-serif;
-  background: url("/storage/images/bg.gif");
+  background: url("/storage/images/bg.gif") repeat center center fixed;
   background-color: black;
   background-size: 200px, 105px;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   overflow: hidden;
 }
 *::-webkit-scrollbar {
   width: 15px;
-  height: 15px;
+  height: 15px
 }
 
 *::-webkit-scrollbar-track {
@@ -28,6 +26,18 @@ body {
 
 *::-webkit-scrollbar-thumb:hover {
   background: rgba(5, 5, 5, 0.7);
+}
+.container {
+  display: flex;
+  flex-grow: 1;
+  height: 100vh;
+  width: 100vw;
+  margin-left: 50px;
+}
+.game-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 .button-bar {
   display: flex;
@@ -84,13 +94,11 @@ body {
 .popup button:hover {
   background: #ccc;
 }
-
 .navbar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 0 0 10px 10px;
+  background-color: #222;
   padding: 10px 5px;
   color: white;
   position: fixed;
@@ -99,9 +107,8 @@ body {
   height: 100vh;
   width: 50px;
   z-index: 1000;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
 }
-
 .navbar .left-side {
   display: flex;
   flex-direction: column;
@@ -109,12 +116,10 @@ body {
   align-items: center;
   width: 100%;
 }
-
 .navbar .left-side img {
   height: 35px;
   margin-bottom: 10px;
 }
-
 .navbar .left-side a {
   text-decoration: none;
   color: white;
@@ -123,35 +128,23 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.7);
+  background-color: #666;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease, color 0.3s ease;
   font-weight: bold;
 }
-
 .navbar .left-side a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #444;
   color: white;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
-
-.container {
-  margin-left: 50px;
-  height: 100vh;
-  width: calc(100% - 50px);
-  overflow: hidden;
-}
-
 .content {
-  height: 100%;
-  width: 100%;
-}
-
-.game-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 50px);
+  height: 100vh;
 }
