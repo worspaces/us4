@@ -1,11 +1,11 @@
-{ 
-  "name": "US4", 
-  "short_name": "US4", 
-  "start_url": "/", 
+{
+  "name": "US4",
+  "short_name": "US4",
+  "start_url": "/",
   "display": "standalone",
-  "description": "US4 is an unblоcked site made by Voucan. Our site is completely ad free and runs off free services and domain/subdomain donations.",
+  "description": "US4 is an unblocked site made by Voucan. It is completely ad-free and runs on free services, with support from domain and subdomain donations.",
   "background_color": "#0d0d0d",
-  "theme_color": "#0d0d0d", 
+  "theme_color": "#0d0d0d",
   "icons": [
     {
       "src": "/storage/images/72x72.png",
