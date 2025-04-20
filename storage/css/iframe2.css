@@ -1,8 +1,13 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: white;
+  background: url("/storage/images/bg.gif");
+  background-color: black;
+  background-size: 200px, 105px;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   overflow: hidden;
 }
