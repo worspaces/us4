@@ -54,5 +54,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('Added WebGL Fluid Simulator (Apps)')
+    createNotification('Added WebGL Fluid Simulator (Apps), Crazy Cattle 3D, manifest.json (download US4 as an app by clicking the monitor with a down arrow)')
 };
