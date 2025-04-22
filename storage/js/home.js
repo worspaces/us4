@@ -32,6 +32,11 @@ form.addEventListener("submit", async (event) => {
   }
 
   const url = search(address.value, searchEngine.value);
-  const openTabUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
-  location.search = "/pages/prox?opentab=" + openTabUrl;
+
+  const encodedUrl = encodeURIComponent(url);
+  
+  const redirectUrl = "/pages/prox?opentab=" + encodedUrl;
+
+
+  location.href = redirectUrl;
 });
