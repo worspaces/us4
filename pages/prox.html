@@ -416,7 +416,8 @@
         document.querySelectorAll('.tab, .tab-iframe').forEach(el => el.classList.remove('active'));
         tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
         const iframe = document.createElement('iframe');
-        iframe.src = document.querySelector('.tab-iframe.active');
+        iframe.classList.add('tab-iframe', 'active');
+        iframe.src = url;
         iframe.onload = () => updateTabName(iframe);
         document.getElementById('content-wrapper').appendChild(iframe);
       }
