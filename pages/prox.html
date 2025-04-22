@@ -415,7 +415,7 @@
 
     const isAbsoluteUrl = /^https?:\/\//.test(decodedUrl);
 
-    const finalUrl = isAbsoluteUrl ? decodedUrl : `/${decodedUrl}`;
+    const finalUrl = isAbsoluteUrl ? decodedUrl : `https://${window.location.hostname}${decodedUrl}`;
 
     const tabsContainer = document.getElementById('tabs');
     const newTab = document.createElement('div');
