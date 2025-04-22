@@ -294,6 +294,7 @@
                                             
 											
 											
+											
 											<span class="close-button" onclick="closeTab(event)">×</span>`;
         newTab.addEventListener("click", () => selectTab(newTab));
         tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
@@ -323,6 +324,7 @@
                                             
 											
 											
+											
 											<span class="close-button" onclick="closeTab(event)">×</span>`;
           }
         }, 500);
@@ -332,8 +334,19 @@
         const input = document.getElementById('search-input').value.trim();
         const iframe = document.querySelector('.tab-iframe.active');
         if (input) {
-          const url = input.startsWith('http') ? input : `https://duckduckgo.com/?q=${encodeURIComponent(input)}`;
-          iframe.src = `/static/embed#${url}`;
+          if (input.includes('.') && !input.startsWith('https')) {
+            const inputWithoutSpaces = input.replace(/\s+/g, '');
+            if (inputWithoutSpaces === input) {
+              const url = `https://${input}`;
+              iframe.src = `/static/embed#${url}`;
+            } else {
+              const url = `https://duckduckgo.com/?q=${encodeURIComponent(input)}`;
+              iframe.src = `/static/embed#${url}`;
+            }
+          } else {
+            const url = input.startsWith('http') ? input : `https://duckduckgo.com/?q=${encodeURIComponent(input)}`;
+            iframe.src = `/static/embed#${url}`;
+          }
         }
       }
 
@@ -390,6 +403,7 @@
             tab.innerHTML = `${truncateText(title)} 
 											
 											
+											
 											<span class="close-button" onclick="closeTab(event)">×</span>`;
           }
         }, 500);
@@ -411,6 +425,7 @@
         newTab.classList.add('tab', 'active');
         newTab.innerHTML = `Loading...
     
+											
 											<span class="close-button" onclick="closeTab(event)">×</span>`;
         newTab.addEventListener("click", () => selectTab(newTab));
         document.querySelectorAll('.tab, .tab-iframe').forEach(el => el.classList.remove('active'));
