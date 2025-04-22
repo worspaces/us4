@@ -54,5 +54,5 @@ function createNotification(message) {
 }
 
 window.onload = () => {
-    createNotification('Added WebGL Fluid Simulator (Apps), Crazy Cattle 3D (Likely Broken), Tiny Fishing, and US4 can now be downloaded as an app')
+    createNotification('go play tiny fishing')
 };
