@@ -294,6 +294,7 @@
                                             
 											
 											
+											
 											<span class="close-button" onclick="closeTab(event)">×</span>`;
         newTab.addEventListener("click", () => selectTab(newTab));
         tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
@@ -321,6 +322,7 @@
           if (tab) {
             tab.innerHTML = `${iframe.contentWindow.document.title || 'New Tab'} 
                                             
+											
 											
 											
 											<span class="close-button" onclick="closeTab(event)">×</span>`;
@@ -390,6 +392,7 @@
             tab.innerHTML = `${truncateText(title)} 
 											
 											
+											
 											<span class="close-button" onclick="closeTab(event)">×</span>`;
           }
         }, 500);
@@ -400,33 +403,28 @@
         return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
       }
 
-      function getOpenTabParam() {
-        const params = new URLSearchParams(window.location.search);
-        return params.get('opentab');
-      }
-
       function openTabWithUrl(url) {
-        const tabsContainer = document.getElementById('tabs');
-        const newTab = document.createElement('div');
-        newTab.classList.add('tab', 'active');
-        newTab.innerHTML = `Loading...
-    
+        const activeTab = document.querySelector('.tab.active');
+        const activeIframe = document.querySelector('.tab-iframe.active');
+        if (activeTab && activeIframe) {
+          activeIframe.src = url;
+          activeIframe.onload = () => updateTabName(activeIframe);
+        } else {
+          const tabsContainer = document.getElementById('tabs');
+          const newTab = document.createElement('div');
+          newTab.classList.add('tab', 'active');
+          newTab.innerHTML = `Loading...
+      
 											<span class="close-button" onclick="closeTab(event)">×</span>`;
-        newTab.addEventListener("click", () => selectTab(newTab));
-        document.querySelectorAll('.tab, .tab-iframe').forEach(el => el.classList.remove('active'));
-        tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
-        const iframe = document.createElement('iframe');
-        iframe.classList.add('tab-iframe', 'active');
-        iframe.src = url;
-        iframe.onload = () => updateTabName(iframe);
-        document.getElementById('content-wrapper').appendChild(iframe);
-      }
-      document.addEventListener("DOMContentLoaded", () => {
-        const urlToOpen = getOpenTabParam();
-        if (urlToOpen) {
-          openTabWithUrl(urlToOpen);
+          newTab.addEventListener("click", () => selectTab(newTab));
+          tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
+          const iframe = document.createElement('iframe');
+          iframe.classList.add('tab-iframe', 'active');
+          iframe.src = url;
+          iframe.onload = () => updateTabName(iframe);
+          document.getElementById('content-wrapper').appendChild(iframe);
         }
-      });
+      }
     </script>
     <script src="/storage/js/prox-settings.js"></script>
     <script src="/storage/js/notify.js"></script>
