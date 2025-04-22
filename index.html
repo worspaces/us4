@@ -18,172 +18,426 @@
     <title>Home</title>
     <link rel="icon" href="storage/images/googleclassroom.png" type="image/png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="/storage/css/index.css" rel="stylesheet">
+    <link href="https://voucan-us4.github.io//storage/css/index.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+<style>
+body {
+  /*    background: url('/storage/images/bg.gif') repeat center center fixed; */
+  background-color: black;
+  background-size: 100%;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding-top: 60px;
+}
+#dynamicParagraph {
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 10px 0;
+    font-weight: 300;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+#dynamicParagraph:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+*::-webkit-scrollbar {
+  width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(5, 5, 5, 0.3);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(5, 5, 5, 0.5);
+  border-radius: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(5, 5, 5, 0.7);
+}
+#particles-js {
+  width: 100%;
+  height: 100%;
+  background-position: 50% 50%;
+  position: fixed;
+  top: 0px;
+  z-index: -1;
+}
+.game-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+.game-button {
+  position: relative;
+  border-radius: 10px;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.game-button:hover {
+  transform: scale(1.1);
+}
+.game-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: opacity 0.3s ease;
+}
+.game-button:hover img {
+  opacity: 0.3;
+}
+.overlay-text {
+  position: absolute;
+  color: white;
+  font-family: "Comfortaa", sans-serif;
+  font-size: 18px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.game-button:hover .overlay-text {
+  opacity: 1;
+}
+.game-title {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 36px;
+  margin: 10px 0 0 0;
+}
+.games-title {
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+a {
+  text-decoration: none;
+}
+.update-log-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+.update-log-content {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+}
+.update-log-content h2 {
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+.update-log-content p {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+.blur-content {
+  filter: blur(5px);
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px); 
+  padding: 10px 5%;
+  color: white;
+  border-radius: 10px;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  z-index: 1000;
+}
+
+.navbar .left-side {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 20px;
+  color: white;
+}
+
+.navbar .left-side img {
+  height: 40px;
+}
+
+.navbar .right-side {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar .right-side a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  color: white;
+  z-index: 1000;
+  overflow-x: auto;
+}
+
+.nav-buttons a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.logo-text img {
+  height: 40px;
+  margin-right: 10px;
+}
+.game-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+.game-button {
+  position: relative;
+  border-radius: 10px;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+.game-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: opacity 0.3s ease;
+}
+.game-button:hover img {
+  opacity: 0.3;
+}
+.overlay-text {
+  position: absolute;
+  color: white;
+  font-family: "Comfortaa", sans-serif;
+  font-size: 18px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.game-button:hover .overlay-text {
+  opacity: 1;
+}
+.game-title {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 36px;
+  margin: 20px 0 10px 0;
+}
+.games-title {
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+a {
+  text-decoration: none;
+}
+.search-wp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  margin-top: 30px;
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 100%;
+}
+
+.search-bar {
+  flex: 1;
+  width: 700px;
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  text-align: center;
+  margin: 0 auto; 
+}
+.search-bar::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+.search-bar:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.5);
+}
+.game-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px 0;
+  margin-top: -100px;
+}
+
+.game-button {
+  position: relative;
+  border-radius: 8px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.game-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.overlay-text {
+  font-size: 14px;
+}
+</style>
 </head>
 <body>
 
-<script src="/particles.js"></script>
-  <script src="/app.js"></script>
+<script src="https://voucan-us4.github.io//particles.js"></script>
+  <script src="https://voucan-us4.github.io//app.js"></script>
 <div id="particles-js"></div>
 
 <div class="navbar">
     <div class="left-side">
         <a href="/">
-            <img src="/storage/images/logo.png" alt="logo">
+            <img src="https://voucan-us4.github.io//storage/images/logo.png" alt="logo">
         </a>
     </div>
 <div class="right-side">
-<script src="/storage/js/nav.js" defer></script>
+<script src="https://voucan-us4.github.io//storage/js/nav.js" defer></script>
 </div>
 </div>
 
+  <div class="game-title ">US4 | Search</div>
+  <div id="dynamicParagraph" class="games-title ">splash</div>
 
-    <div class="game-title ">US4 | Featured</div>
-    <div id="dynamicParagraph" class="games-title ">calculator</div>
+<div class="search-wp">
+  <div class="search-bar-container" id="search-container">
+    <form id="uv-form" onsubmit="submitSearch(); return false;">
+      <input id="uv-search-engine" value="https://duckduckgo.com/?q=%s" type="hidden" />
+      <input id="uv-address" type="text" class="search-bar" placeholder="Search or enter a URL" />
+    </form>
+  </div>
+</div>
 
-    <div class="game-grid " id="gameGrid">
-        <div class="game-button">
-            <a href="/pages/iframe2?url=/pages/apps/print3r">
-                <img src="https://raw.githubusercontent.com/Blobby-Boi/ExtPrint3r/refs/heads/main/icon.png" alt="ExtPrint3r">
-                <div class="overlay-text">ExtPrint3r</div>
-            </a>
-        </div>
-        <div class="game-button">
-            <a href="/pages/iframe?url=/clusterrush/index">
-                <img src="/clusterrush/clusterrush.png" alt="Cluster Rush">
-                <div class="overlay-text">Cluster Rush</div>
-            </a>
-        </div>
-        <div class="game-button">
-            <a href="/pages/iframe?url=/basketrandom/index">
-                <img src="/basketrandom/basketrandom.jfif" alt="Basket Random">
-                <div class="overlay-text">Basket Random</div>
-            </a>
-        </div>
-        <div class="game-button">
-            <a href="/pages/iframe?url=/SubwaySurfers/proxed">
-                <img src="/SubwaySurfers/subway.jfif" alt="Subway Surfers">
-                <div class="overlay-text">Subway Surfers</div>
-            </a>
-        </div>
-        <div class="game-button">
-            <a href="/pages/iframe2?url=/pages/apps/ai">
-                <img src="/pages/apps/images/ai.png" alt="AI">
-                <div class="overlay-text">AI</div>
-            </a>
-        </div>
-        <div class="game-button">
-            <a href="/pages/iframe?url=/snowrider3D/index">
-                <img src="/games-repo/snow-rider/snowrider.png" alt="Snow Rider 3D">
-                <div class="overlay-text">Snow Rider 3D</div>
-            </a>
-        </div>
-        <div class="game-button">
-            <a href="/pages/media">
-                <img src="/pages/apps/images/hvtrs8_-hgaptkvg.raeeq.fet_rrgvkeus-iaols-rgtpo_tt.png" alt="Movies">
-                <div class="overlay-text">Movies</div>
-            </a>
-        </div>
-        <div class="game-button">
-            <a href="/pages/prox">
-                <img src="/pages/apps/images/download.png" alt="Prցxy">
-                <div class="overlay-text">Prօxy</div>
-            </a>
-        </div>
+<div class="game-grid" id="gameGrid">
+    <div class="game-button">
+        <a href="/pages/iframe2?url=/pages/apps/print3r">
+            <img src="https://raw.githubusercontent.com/Blobby-Boi/ExtPrint3r/refs/heads/main/icon.png" alt="ExtPrint3r">
+            <div class="overlay-text">ExtPrint3r</div>
+        </a>
     </div>
-<!--     <div class="update-log-overlay" id="updateLog">
-        <div class="update-log-content">
-            <h2>Update Log</h2>
-            <p>Make sure to use link hub - voucan.github.io/link-hub</p>
-            <p>Version 1.8: Bug Fixes, Gamebar update</p>
-            <p>Version 1.78.2: More bug fixes, added osu (web)</p>
-            <p>Version 1.78.1: Bug Fixes, Removed Boredom V2</p>
-            <p>Version 1.78: ImageButtons now grow when you hover, Added Rooftop Snipers</p>
-            <p>Version 1.77: Added extprint3r (Extension disabler)</p>
-            <p>Version 1.76: Made the site look better, adapts to your background color</p>
-            <p>Version 1.75: Added customized background colors + Navbar update</p>
-        </div>
-    </div> -->
+    <div class="game-button">
+        <a href="/pages/iframe?url=/clusterrush/index">
+            <img src="/clusterrush/clusterrush.png" alt="Cluster Rush">
+            <div class="overlay-text">Cluster Rush</div>
+        </a>
+    </div>
+    <div class="game-button">
+        <a href="/pages/iframe?url=/basketrandom/index">
+            <img src="/basketrandom/basketrandom.jfif" alt="Basket Random">
+            <div class="overlay-text">Basket Random</div>
+        </a>
+    </div>
+    <div class="game-button">
+        <a href="/pages/iframe?url=/SubwaySurfers/proxed">
+            <img src="/SubwaySurfers/subway.jfif" alt="Subway Surfers">
+            <div class="overlay-text">Subway Surfers</div>
+        </a>
+    </div>
+    <div class="game-button">
+        <a href="/pages/iframe2?url=/pages/apps/ai">
+            <img src="/pages/apps/images/ai.png" alt="AI">
+            <div class="overlay-text">AI</div>
+        </a>
+    </div>
+    <div class="game-button">
+        <a href="/pages/iframe?url=/snowrider3D/index">
+            <img src="/games-repo/snow-rider/snowrider.png" alt="Snow Rider 3D">
+            <div class="overlay-text">Snow Rider 3D</div>
+        </a>
+    </div>
 
-<script>
-    const currentVersion = "1.8"; // Current version
-
-    window.onload = function() {
-        const storedVersion = localStorage.getItem('updateLogVersion');
-        if (storedVersion !== currentVersion) {
-            document.getElementById('updateLog').style.display = 'block';
-            document.querySelectorAll('.blur-content').forEach(function(element) {
-                element.classList.add('blur-content');
-            });
-        } else {
-            document.getElementById('updateLog').style.display = 'none';
-            document.querySelectorAll('.blur-content').forEach(function(element) {
-                element.classList.remove('blur-content');
-            });
-        }
-    };
-
-    document.getElementById('updateLog').addEventListener('click', function() {
-        if (!localStorage.getItem('firstVisit')) {
-            localStorage.setItem('firstVisit', 'true');
-
-            const container = document.createElement('div');
-            container.style.position = 'relative';
-            container.style.width = '100%';
-            container.style.height = '100%';
-
-            const closeButton = document.createElement('button');
-            closeButton.textContent = 'X';
-            closeButton.style.position = 'absolute';
-            closeButton.style.top = '10px';
-            closeButton.style.right = '10px';
-            closeButton.style.background = 'black';
-            closeButton.style.color = 'white';
-            closeButton.style.border = 'none';
-            closeButton.style.padding = '5px 10px';
-            closeButton.style.fontSize = '16px';
-            closeButton.style.cursor = 'pointer';
-            closeButton.style.borderRadius = '5px';
-
-            closeButton.addEventListener('click', function() {
-                container.parentElement.style.display = 'none';
-            });
-
-            const message = document.createElement('div');
-            message.textContent = 'Select Your Site Settings - You can edit this in the settings tab';
-            message.style.textAlign = 'center';
-            message.style.fontFamily = 'Comfortaa, sans-serif';
-            message.style.fontWeight = 'bold';
-            message.style.fontSize = '20px';
-            message.style.marginBottom = '10px';
-
-            const iframe = document.createElement('iframe');
-            iframe.src = '/pages/settings';
-            iframe.style.width = '100%';
-            iframe.style.height = 'calc(100% - 40px)';
-            iframe.style.border = 'none';
-            iframe.style.borderRadius = 'inherit';
-
-            container.appendChild(message);
-            container.appendChild(closeButton);
-            container.appendChild(iframe);
-
-            const updateLog = document.getElementById('updateLog');
-            updateLog.innerHTML = '';
-            updateLog.appendChild(container);
-        } else {
-            document.getElementById('updateLog').style.opacity = '0';
-            setTimeout(function() {
-                document.getElementById('updateLog').style.display = 'none';
-                document.querySelectorAll('.blur-content').forEach(function(element) {
-                    element.classList.remove('blur-content');
-                });
-            }, 500);
-            localStorage.setItem('updateLogVersion', currentVersion);
-        }
-    });
-</script>
     <script src="/storage/js/splash-messages.js" defer></script>
     <script type="text/javascript" src="storage/js/settings-1.js"></script>
     <script type="text/javascript" src="storage/js/notify.js"></script>
