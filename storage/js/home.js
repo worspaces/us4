@@ -33,9 +33,9 @@ form.addEventListener("submit", async (event) => {
 
   const url = search(address.value, searchEngine.value);
 
-  const encodedUrl = encodeURIComponent(url);
+  const url2 = __uv$config.prefix + __uv$config.encodeUrl(url);
   
-  const redirectUrl = "/pages/prox?opentab=" + encodedUrl;
+  const redirectUrl = "/pages/prox?opentab=" + url2;
 
 
   location.href = redirectUrl;
