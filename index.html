@@ -1,484 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-K8CCSDNPV3');
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-K8CCSDNPV3');
     </script>
-    <meta property="og:title" content="US4 | Home">
-    <meta property="og:description" content="Search the web freely, watch your favorite movies and shows, and play your favorite gаmes with US4.">
-    <meta property="og:image" content="/storage/images/logo.png">
-    <meta name="keywords" content="US4">
-    <link rel="manifest" href="manifest.json">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="US4 | Proxy">
+    <meta property="og:description" content="Search the web freely with our web proxy!">
+    <meta property="og:image" content="/storage/images/logo.png">
     <title>Home</title>
-    <link rel="icon" href="storage/images/googleclassroom.png" type="image/png">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://voucan-us4.github.io//storage/css/index.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
-<style>
-body {
-  /*    background: url('/storage/images/bg.gif') repeat center center fixed; */
-  background-color: black;
-  background-size: 100%;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding-top: 60px;
-}
-#dynamicParagraph {
-    font-size: 1.5rem;
-    color: #fff;
-    margin: 10px 0;
-    font-weight: 300;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
+    <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Comfortaa', sans-serif;
+        font-weight: bold;
+      }
 
-#dynamicParagraph:hover {
-    opacity: 1;
-    cursor: pointer;
-}
-*::-webkit-scrollbar {
-  width: 15px;
-}
+      body,
+      html {
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        background-color: black;
+      }
 
-*::-webkit-scrollbar-track {
-  background: rgba(5, 5, 5, 0.3);
-}
+      .tabs {
+        display: flex;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        padding: 2px 5px;
+        width: 85%;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1200;
+        border-radius: 10px 10px 0 0;
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        max-height: 40px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        transition: transform 0.3s ease-in-out;
+      }
 
-*::-webkit-scrollbar-thumb {
-  background: rgba(5, 5, 5, 0.5);
-  border-radius: 10px;
-  transition: background-color 0.3s ease-in-out;
-}
+      .tab {
+        display: flex;
+        align-items: center;
+        padding: 3px 10px;
+        color: white;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-right: 2px solid rgba(255, 255, 255, 0.3);
+        transition: background-color 0.3s;
+        flex-shrink: 0;
+        min-width: 100px;
+        max-width: 500px;
+        overflow: hidden;
+        border-radius: 5px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
 
-*::-webkit-scrollbar-thumb:hover {
-  background: rgba(5, 5, 5, 0.7);
-}
-#particles-js {
-  width: 100%;
-  height: 100%;
-  background-position: 50% 50%;
-  position: fixed;
-  top: 0px;
-  z-index: -1;
-}
-.game-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px 0;
-}
-.game-button {
-  position: relative;
-  border-radius: 10px;
-  width: 150px;
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-.game-button:hover {
-  transform: scale(1.1);
-}
-.game-button img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: opacity 0.3s ease;
-}
-.game-button:hover img {
-  opacity: 0.3;
-}
-.overlay-text {
-  position: absolute;
-  color: white;
-  font-family: "Comfortaa", sans-serif;
-  font-size: 18px;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 1;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.game-button:hover .overlay-text {
-  opacity: 1;
-}
-.game-title {
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  font-size: 36px;
-  margin: 10px 0 0 0;
-}
-.games-title {
-  text-align: center;
-  color: white;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-a {
-  text-decoration: none;
-}
-.update-log-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 20px;
-  text-align: center;
-  opacity: 1;
-  transition: opacity 0.5s ease;
-}
-.update-log-content {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 600px;
-}
-.update-log-content h2 {
-  margin-bottom: 10px;
-  font-size: 28px;
-}
-.update-log-content p {
-  margin-bottom: 20px;
-  font-size: 18px;
-}
-.blur-content {
-  filter: blur(5px);
-}
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px); 
-  padding: 10px 5%;
-  color: white;
-  border-radius: 10px;
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 85%;
-  z-index: 1000;
-}
+      .tab.active {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
 
-.navbar .left-side {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  font-size: 20px;
-  color: white;
-}
+      .tab:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
 
-.navbar .left-side img {
-  height: 40px;
-}
+      .tab .close-button {
+        margin-left: 5px;
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+      }
 
-.navbar .right-side {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
+      .tab .close-button:hover {
+        color: white;
+      }
 
-.navbar .right-side a {
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
-  color: white;
-  z-index: 1000;
-  overflow-x: auto;
-}
+      .add-tab-button {
+        padding: 10px;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        outline: none;
+        font-size: 20px;
+        border-radius: 5px;
+      }
 
-.nav-buttons a {
-  color: white;
-  margin-left: 15px;
-  text-decoration: none;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.logo-text img {
-  height: 40px;
-  margin-right: 10px;
-}
-.game-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px 0;
-}
-.game-button {
-  position: relative;
-  border-radius: 10px;
-  width: 150px;
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  overflow: hidden;
-}
-.game-button img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: opacity 0.3s ease;
-}
-.game-button:hover img {
-  opacity: 0.3;
-}
-.overlay-text {
-  position: absolute;
-  color: white;
-  font-family: "Comfortaa", sans-serif;
-  font-size: 18px;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 1;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.game-button:hover .overlay-text {
-  opacity: 1;
-}
-.game-title {
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  font-size: 36px;
-  margin: 20px 0 10px 0;
-}
-.games-title {
-  text-align: center;
-  color: white;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-a {
-  text-decoration: none;
-}
-.search-wp {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40vh;
-  margin-top: 30px;
-}
+      .tabs::-webkit-scrollbar {
+        height: 8px;
+      }
 
-.search-bar-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px auto;
-  width: 100%;
-}
-.search-bar {
-  flex: 1;
-  width: 750px;
-  padding: 15px 25px;
-  border-radius: 25px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  color: white;
-  font-size: 15px;
-  outline: none;
-  transition: all 0.3s ease;
-  text-align: center;
-  margin: 0 auto; 
-}
-.search-bar::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-.search-bar:focus {
-  border-color: rgba(255, 255, 255, 0.5);
-  background: rgba(0, 0, 0, 0.5);
-}
-.game-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  padding: 10px 0;
-  margin-top: -100px;
-}
+      .tabs::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+      }
 
-.game-button {
-  position: relative;
-  border-radius: 8px;
-  width: 105px;
-  height: 105px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
+      .tabs::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+        transition: background-color 0.3s ease-in-out;
+      }
 
-.game-button img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: opacity 0.3s ease;
-}
+      .tabs::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.7);
+      }
 
-.overlay-text {
-  font-size: 14px;
-}
-</style>
-</head>
-<body>
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        padding: 10px 5%;
+        color: white;
+        border-radius: 0 0 10px 10px;
+        position: fixed;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 85%;
+        z-index: 1100;
+        transition: transform 0.3s ease-in-out;
+      }
 
-<script src="https://voucan-us4.github.io//particles.js"></script>
-  <script src="https://voucan-us4.github.io//app.js"></script>
-<div id="particles-js"></div>
+      .navbar-left {
+        display: flex;
+        gap: 10px;
+      }
 
-<div class="navbar">
-    <div class="left-side">
-        <a href="/">
-            <img src="https://voucan-us4.github.io//storage/images/logo.png" alt="logo">
-        </a>
+      .nav-btn {
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        transition: background-color 0.3s;
+      }
+
+      .nav-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .search-bar-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-left: 15px;
+      }
+
+      .search-bar {
+        flex-grow: 1;
+        max-width: 600px;
+        padding: 10px;
+        border-radius: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        color: white;
+        font-size: 16px;
+        outline: none;
+        text-align: center;
+      }
+
+      .search-bar::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .search-bar:focus {
+        border-color: rgba(255, 255, 255, 0.5);
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .content-wrapper {
+        flex-grow: 1;
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: none;
+      }
+
+      iframe.active {
+        display: block;
+      }
+
+      .navbar.hidden,
+      .tabs.hidden {
+        transform: translateY(-200%);
+      }
+
+      .show-navbar-btn {
+        display: none;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 20px;
+      }
+
+      .show-navbar-btn.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tabs" id="tabs">
+      <div class="tab active" onclick="selectTab(this)">New Tab <span class="close-button" onclick="closeTab(event)">×</span>
+      </div>
+      <button class="add-tab-button">+</button>
     </div>
-<div class="right-side">
-<script src="https://voucan-us4.github.io//storage/js/nav.js" defer></script>
-</div>
-</div>
-
-  <div class="game-title ">US4 | Search</div>
-  <div id="dynamicParagraph" class="games-title ">splash</div>
-
-<div class="search-wp">
-  <div class="search-bar-container" id="search-container">
-    <form id="uv-form" onsubmit="search(); return false;">
-      <input id="uv-search-engine" value="https://duckduckgo.com/?q=%s" type="hidden" />
-      <input id="uv-address" type="text" class="search-bar" placeholder="Search or enter a URL" />
-    </form>
-  </div>
-</div>
-
-<div class="game-grid" id="gameGrid">
-    <div class="game-button">
-        <a href="/pages/iframe2?url=/pages/apps/print3r">
-            <img src="https://raw.githubusercontent.com/Blobby-Boi/ExtPrint3r/refs/heads/main/icon.png" alt="ExtPrint3r">
-            <div class="overlay-text">ExtPrint3r</div>
-        </a>
+    <div class="navbar" id="navbar">
+      <div class="navbar-left">
+        <button onclick="home()" class="nav-btn">
+          <i class="fa fa-home"></i>
+        </button>
+        <button onclick="document.querySelector('.tab-iframe.active').contentWindow.history.back()" class="nav-btn">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <button onclick="document.querySelector('.tab-iframe.active').contentWindow.history.forward()" class="nav-btn">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+        <button onclick="document.querySelector('.tab-iframe.active').contentWindow.location.reload()" class="nav-btn">
+          <i class="fas fa-redo"></i>
+        </button>
+        <button onclick="inspect()" class="nav-btn">
+          <i class="fa fa-code"></i>
+        </button>
+        <button onclick="toggleFullscreen()" class="nav-btn">
+          <i class="fas fa-expand"></i>
+        </button>
+        <button onclick="settings()" class="nav-btn">
+          <i class="fa fa-cog"></i>
+        </button>
+        <button onclick="toggleNavbar()" class="nav-btn" id="hide-navbar-btn">
+          <i class="fa fa-chevron-up"></i>
+        </button>
+      </div>
+      <div class="search-bar-container">
+        <input type="text" id="search-input" class="search-bar" placeholder="Search or enter a URL">
+      </div>
     </div>
-    <div class="game-button">
-        <a href="/pages/iframe?url=/clusterrush/index">
-            <img src="/clusterrush/clusterrush.png" alt="Cluster Rush">
-            <div class="overlay-text">Cluster Rush</div>
-        </a>
+    <div class="show-navbar-btn" id="show-navbar-btn" onclick="toggleNavbar()">
+      <i class="fa fa-chevron-down"></i>
     </div>
-    <div class="game-button">
-        <a href="/pages/iframe?url=/basketrandom/index">
-            <img src="/basketrandom/basketrandom.jfif" alt="Basket Random">
-            <div class="overlay-text">Basket Random</div>
-        </a>
+    <div class="content-wrapper" id="content-wrapper">
+      <iframe class="tab-iframe active" src="/static/index.html" onload="updateTabName(this)"></iframe>
     </div>
-    <div class="game-button">
-        <a href="/pages/iframe?url=/SubwaySurfers/proxed">
-            <img src="/SubwaySurfers/subway.jfif" alt="Subway Surfers">
-            <div class="overlay-text">Subway Surfers</div>
-        </a>
-    </div>
-    <div class="game-button">
-        <a href="/pages/iframe2?url=/pages/apps/ai">
-            <img src="/pages/apps/images/ai.png" alt="AI">
-            <div class="overlay-text">AI</div>
-        </a>
-    </div>
-    <div class="game-button">
-        <a href="/pages/iframe?url=/snowrider3D/index">
-            <img src="/games-repo/snow-rider/snowrider.png" alt="Snow Rider 3D">
-            <div class="overlay-text">Snow Rider 3D</div>
-        </a>
-    </div>
-
-    <script src="/storage/js/splash-messages.js" defer></script>
-    <script type="text/javascript" src="storage/js/settings-1.js"></script>
-    <script type="text/javascript" src="storage/js/notify.js"></script>
-    <script type="text/javascript" src="/storage/js/background.js"></script>
-    <script type="text/javascript" src="/storage/js/resort.js"></script>
-    <script type="text/javascript" src="/storage/js/cheese-algorithm.js"></script>
-
-<!-- Ultraviolet -->
-    <script src="/static/uv/uv.bundle.js" defer></script>
-    <script src="/static/uv/uv.config.js" defer></script>
-    <script src="/static/register-sw.js" defer></script>
-    <script src="/static/search.js" defer></script>
-    <script src="/storage/js/home.js" defer></script>
-
     <script>
-    async function regsw(){
-        await navigator.serviceWorker.register("/static/uv-sw.js", {
-            scope: "/static/",
-        });
-    }
+      let tabCount = 1;
 
-    regsw();
-    </script>
-<!-- Ultraviolet -->
+      function selectTab(tab) {
+        document.querySelectorAll('.tab, .tab-iframe').forEach(el => el.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelectorAll('.tab-iframe')[Array.from(tab.parentNode.children).indexOf(tab)].classList.add('active');
+      }
 
-<script>
+      function addTab() {
+        tabCount++;
+        const tabsContainer = document.getElementById('tabs');
+        const newTab = document.createElement('div');
+        newTab.classList.add('tab');
+        newTab.innerHTML = `New Tab 
+                                            
+											
+											
+											
+											<span class="close-button" onclick="closeTab(event)">×</span>`;
+        newTab.addEventListener("click", () => selectTab(newTab));
+        tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
+        const iframe = document.createElement('iframe');
+        iframe.classList.add('tab-iframe');
+        iframe.src = '/static/index.html';
+        iframe.onload = function() {
+          updateTabName(iframe);
+        };
+        document.getElementById('content-wrapper').appendChild(iframe);
+      }
 
-const code = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a', 'Enter'];
-let currentKeyIndex = 0;
+      function closeTab(event) {
+        event.stopPropagation();
+        const tab = event.target.closest('.tab');
+        const iframe = document.querySelectorAll('.tab-iframe')[Array.from(tab.parentNode.children).indexOf(tab)];
+        tab.remove();
+        iframe.remove();
+      }
 
-document.addEventListener('keydown', (event) => {
-    if (event.key === code[currentKeyIndex]) {
-        currentKeyIndex++;
-        if (currentKeyIndex === code.length) {
-            window.location.pathname = "/pages/super-secret.html"
-            currentKeyIndex = 0;
+      function updateTabName(iframe) {
+        setTimeout(() => {
+          const tabIndex = Array.from(document.querySelectorAll('.tab-iframe')).indexOf(iframe);
+          const tab = document.querySelectorAll('.tab')[tabIndex];
+          if (tab) {
+            tab.innerHTML = `${iframe.contentWindow.document.title || 'New Tab'} 
+                                            
+											
+											
+											
+											<span class="close-button" onclick="closeTab(event)">×</span>`;
+          }
+        }, 500);
+      }
+
+      function search() {
+        const input = document.getElementById('search-input').value.trim();
+        const iframe = document.querySelector('.tab-iframe.active');
+        if (input) {
+          if (input.includes('.') && !input.startsWith('https')) {
+            const inputWithoutSpaces = input.replace(/\s+/g, '');
+            if (inputWithoutSpaces === input) {
+              const url = `https://${input}`;
+              iframe.src = `/static/embed#${url}`;
+            } else {
+              const url = `https://duckduckgo.com/?q=${encodeURIComponent(input)}`;
+              iframe.src = `/static/embed#${url}`;
+            }
+          } else {
+            const url = input.startsWith('http') ? input : `https://duckduckgo.com/?q=${encodeURIComponent(input)}`;
+            iframe.src = `/static/embed#${url}`;
+          }
         }
-    } else {
-        currentKeyIndex = 0;
-    }
-});
-</script>
+      }
 
-</body>
+      function home() {
+        const iframe = document.querySelector('.tab-iframe.active');
+        iframe.src = '/static/index';
+      }
+
+      function settings() {
+        const iframe = document.querySelector('.tab-iframe.active');
+        iframe.src = 'settings';
+      }
+
+      function toggleFullscreen() {
+        const iframe = document.querySelector('.tab-iframe.active');
+        if (iframe.requestFullscreen) {
+          iframe.requestFullscreen();
+        } else if (iframe.mozRequestFullScreen) {
+          iframe.mozRequestFullScreen();
+        } else if (iframe.webkitRequestFullscreen) {
+          iframe.webkitRequestFullscreen();
+        } else if (iframe.msRequestFullscreen) {
+          iframe.msRequestFullscreen();
+        }
+      }
+
+      function inspect() {
+        window.location.href = "javascript: (function() { fetch('/storage/js/eruda.js') .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); }) .then(scriptText => eval(scriptText)) .catch(error => console.error('Error fetching or executing the script:', error)); })();"
+      }
+
+      function toggleNavbar() {
+        const navbar = document.getElementById('navbar');
+        const tabs = document.getElementById('tabs');
+        const showNavbarBtn = document.getElementById('show-navbar-btn');
+        const hideNavbarBtn = document.getElementById('hide-navbar-btn');
+        navbar.classList.toggle('hidden');
+        tabs.classList.toggle('hidden');
+        showNavbarBtn.classList.toggle('active');
+        hideNavbarBtn.classList.toggle('active');
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector(".add-tab-button").addEventListener("click", addTab);
+        document.getElementById("search-input").addEventListener("keydown", (e) => {
+          if (e.key === "Enter") search();
+        });
+      });
+
+      function updateTabName(iframe) {
+        setTimeout(() => {
+          const tabIndex = Array.from(document.querySelectorAll('.tab-iframe')).indexOf(iframe);
+          const tab = document.querySelectorAll('.tab')[tabIndex];
+          if (tab) {
+            const title = iframe.contentWindow.document.title || 'New Tab';
+            tab.innerHTML = `${truncateText(title)} 
+											
+											
+											
+											<span class="close-button" onclick="closeTab(event)">×</span>`;
+          }
+        }, 500);
+      }
+
+      function truncateText(text) {
+        const maxLength = 25;
+        return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
+      }
+
+      function getOpenTabParam() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('opentab');
+      }
+
+      function openTabWithUrl(url) {
+        const tabsContainer = document.getElementById('tabs');
+        const newTab = document.createElement('div');
+        newTab.classList.add('tab', 'active');
+        newTab.innerHTML = `Loading...
+    
+											
+											<span class="close-button" onclick="closeTab(event)">×</span>`;
+        newTab.addEventListener("click", () => selectTab(newTab));
+        document.querySelectorAll('.tab, .tab-iframe').forEach(el => el.classList.remove('active'));
+        tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
+        const iframe = document.createElement('iframe');
+        iframe.classList.add('tab-iframe', 'active');
+        iframe.src = url;
+        iframe.onload = () => updateTabName(iframe);
+        document.getElementById('content-wrapper').appendChild(iframe);
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlToOpen = getOpenTabParam();
+        if (urlToOpen) {
+          openTabWithUrl(urlToOpen);
+        }
+      });
+    </script>
+    <script src="/storage/js/prox-settings.js"></script>
+    <script src="/storage/js/notify.js"></script>
+    <script type="text/javascript" src="/storage/js/cheese-algorithm.js"></script>
+  </body>
 </html>
